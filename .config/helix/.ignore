@@ -1,8 +1,0 @@
-# unignore in file picker and global search
-!.github/
-!.gitignore
-!.gitattributes
-
-# ignore in file picker and global search
-node_modules/
-dist/
