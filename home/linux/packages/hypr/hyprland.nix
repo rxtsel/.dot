@@ -85,8 +85,8 @@
         "$mod, B, exec, $browser"
         "$mod, F, fullscreen, 1"
         "$mod SHIFT, M, exec, wlogout"
-        # "$mod SHIFT, S, exec, ~/grim.sh"
-        "$mod SHIFT, z, exec, ~/.dots/home/linux/packages/hypr/scripts/wallpapers.sh"
+        "$mod SHIFT, S, exec, ~/.dots/home/linux/packages/hypr/scripts/grim.sh.sh"
+        "$mod SHIFT, Z, exec, ~/.dots/home/linux/packages/hypr/scripts/wallpapers.sh"
         # "$mod, P, pseudo," # dwindl
         # "$mod, J, toggleSplit," # dwindle
 
