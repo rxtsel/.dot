@@ -1,4 +1,5 @@
 { pkgs, ... }:
+
 {
   # TODO: install nvim from repo
   home.packages = with pkgs; [

@@ -1,4 +1,4 @@
-{ config, pkgs, ... }:
+{ config, ... }:
 
 {
   programs.zsh = {
@@ -15,13 +15,14 @@
       theme = "robbyrussell";
     };
 
-    shellAliases = let flakeDir = "~/.dots"; in {
+    shellAliases = let flakeDir = "~/.dots";
+    in {
       # Update system
       nixsw = "sudo nixos-rebuild switch --flake ${flakeDir}";
       # Delete all old versions
       nixprune = "sudo nix-collect-garbage -d";
       # Update home packages
-      hmsw = "home-manager switch --flake ${flakeDir}";
+      hmsw = "home-manager switch -b backup --flake ${flakeDir}";
       # List home-manager generations.
       # For rollback, first identify your version to rollback,
       # then use: /nix/store/<hash>-home-manager-generation/activate

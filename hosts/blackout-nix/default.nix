@@ -2,13 +2,12 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, myVars, inputs, ... }:
+{ pkgs, myVars, inputs, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [ # Include the results of the hardware scan.
+    ./hardware-configuration.nix
+  ];
 
   # Use the systemd-boot EFI boot loader.
   boot.loader.systemd-boot.enable = true;
@@ -17,7 +16,8 @@
   networking.hostName = "blackout-nix"; # Define your hostname.
   # Pick only one of the below networking options.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-  networking.networkmanager.enable = true;  # Easiest to use and most distros use this by default.
+  networking.networkmanager.enable =
+    true; # Easiest to use and most distros use this by default.
 
   # Set your time zone.
   time.timeZone = "America/Bogota";
@@ -68,7 +68,6 @@
     isNormalUser = true;
     description = myVars.userFullName;
     extraGroups = [ "wheel" "networkmanager" "docker" ]; # Enable ‘sudo’ for the
-    packages = with pkgs; [];
   };
 
   programs.firefox.enable = true;
@@ -90,7 +89,6 @@
     bat
 
     # Hyprland
-    ghostty
     brave
     yazi
     grim
@@ -100,6 +98,19 @@
     wlogout
     wlr-randr
     swww
+
+    # Dev
+    cargo
+  ];
+
+  fonts.packages = with pkgs; [
+    noto-fonts-emoji
+    nerd-fonts.symbols-only
+    nerd-fonts.caskaydia-cove
+    twemoji-color-font
+    font-awesome
+    powerline-fonts
+    powerline-symbols
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
