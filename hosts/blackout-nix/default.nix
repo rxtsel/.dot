@@ -118,6 +118,7 @@
 
     # CLI utils
     bluetui
+    pavucontrol
 
     # Dev
     cargo
