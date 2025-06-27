@@ -108,8 +108,6 @@
     yazi
     grim
     slurp
-    wofi
-    waybar
     wlogout
     wlr-randr
     swww

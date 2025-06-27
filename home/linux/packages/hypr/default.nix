@@ -138,13 +138,11 @@
       layerrule = [
         "blur, waybar"
         "blur, launcher"
+        "blur, wofi"
 
         # Swaync
         "blur, ignorezero, ignorealpha 0.5, swaync-control-center"
         "blur, ignorezero, ignorealpha 0.5, swaync-notification-window"
-
-        # Wofi
-        "blur, ignorezero, ignorealpha 0.5, wofi"
       ];
 
       windowrule = [
