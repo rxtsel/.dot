@@ -137,9 +137,7 @@
 
       layerrule = [
         "blur, waybar"
-        "blur, launcher"
         "blur, wofi"
-
         # Swaync
         "blur, ignorezero, ignorealpha 0.5, swaync-control-center"
         "blur, ignorezero, ignorealpha 0.5, swaync-notification-window"
@@ -150,12 +148,12 @@
         "workspace 2, class:Brave-browser"
         "float, workspace 3, class:feh"
         "float, workspace 3, class:mpv"
-        "float, size 55% 55%, center, workspace 3, class:(yaak-app)"
-        "float, size 55% 55%, right, workspace 5, class:(Slack)"
+        "float, size 55% 55%, center, workspace 3, class:yaak-app"
+        "float, size 55% 55%, right, workspace 5, class:Slack"
         "float, workspace 5, class:Clockify"
-        "float, size 55% 55%, right, workspace 5, class:(discord)"
+        "float, size 55% 55%, right, workspace 5, class:discord"
         "workspace 6, class:thunderbird"
-        "float, size 55% 55%, center, workspace 4, class:(AppleMusic)"
+        "float, size 55% 55%, center, workspace 4, class:AppleMusic"
 
         # Disable border when only one window
         "noborder, onworkspace:w[t1]"
