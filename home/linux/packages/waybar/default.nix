@@ -9,9 +9,10 @@
         height = 32;
         exclusive = true;
         mode = "dock";
-        spacing = 4;
+        spacing = 11;
 
-        modules-left = [ "hyprland/workspaces" "group/quicklinks" ];
+        modules-left =
+          [ "custom/launcher" "hyprland/workspaces" "group/quicklinks" ];
         modules-center = [ ];
         modules-right = [
           "tray"
@@ -144,6 +145,15 @@
           "format-en" = "DV";
           "format-es" = "SP";
         };
+
+        "custom/launcher" = {
+          format = " ";
+          tooltip = false;
+          "on-click" = "wlogout";
+          interval = 3600;
+          "icon-size" = 24;
+        };
+
       };
     };
 

@@ -75,7 +75,7 @@ tooltip label {
 
 #window {
   background-color: transparent;
-  margin: 0 15px 0;
+  margin: 0 11px 0;
   padding: 2px 10px 0 10px;
   color: #ffffff;
   font-size: 16px;
@@ -122,7 +122,7 @@ window#waybar.empty #window {
   color: #ffffff;
   font-weight: normal;
   transition: background-color 0.5s ease;
-  margin-right: 16px;
+  margin-right: 11px;
 }
 
 /* -----------------------------------------------------
@@ -151,6 +151,7 @@ window#waybar.empty #window {
 #network.ethernet {
   background-color: transparent;
   color: #ffffff;
+  margin-right: 11px;
 }
 
 #network.wifi {
@@ -226,3 +227,10 @@ label:focus {
 /* -----------------------------------------------------
  * Custom
  * ----------------------------------------------------- */
+
+#custom-launcher {
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: normal;
+  margin-left: 11px;
+}
