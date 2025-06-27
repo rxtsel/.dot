@@ -5,9 +5,10 @@
     nixpkgs.url = "nixpkgs/nixos-unstable";
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
+    hyprland.url = "github:hyprwm/Hyprland";
   };
 
-  outputs = { self, nixpkgs, home-manager, ... }:
+  outputs = { self, nixpkgs, home-manager, ... }@inputs:
     let
       system = "x86_64-linux";
       lib = nixpkgs.lib;
@@ -19,7 +20,7 @@
       blackout-nix = lib.nixosSystem {
       	inherit system; # Use `system = "x86_64-linux"` but with var.
 	specialArgs = {
-	  inherit myVars;
+	  inherit myVars inputs;
 	};
 	# Use system modules
 	modules = [

@@ -2,7 +2,7 @@
 # your system. Help is available in the configuration.nix(5) man page, on
 # https://search.nixos.org/options and in the NixOS manual (`nixos-help`).
 
-{ config, lib, pkgs, myVars, ... }:
+{ config, lib, pkgs, myVars, inputs, ... }:
 
 {
   imports =
@@ -72,6 +72,10 @@
   };
 
   programs.firefox.enable = true;
+  programs.hyprland = {
+    enable = true;
+    package = inputs.hyprland.packages."${pkgs.system}".hyprland;
+  };
 
   # List packages installed in system profile.
   # You can use https://search.nixos.org/ to find more packages (and options).
@@ -84,6 +88,18 @@
     tree
     eza
     bat
+
+    # Hyprland
+    ghostty
+    brave
+    yazi
+    grim
+    slurp
+    wofi
+    waybar
+    wlogout
+    wlr-randr
+    swww
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

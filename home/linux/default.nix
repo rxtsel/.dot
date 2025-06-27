@@ -4,6 +4,8 @@
   imports = [
     ./packages/sh.nix
     ./packages/git.nix
+    ./packages/nvim.nix
+    ./packages/hyprland.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
@@ -25,7 +27,7 @@
   home.packages = [
     # # Adds the 'hello' command to your environment. It prints a friendly
     # # "Hello, world!" when run.
-    pkgs.hello
+    # pkgs.hello
 
     # # It is sometimes useful to fine-tune packages, for example, by applying
     # # overrides. You can do that directly here, just don't forget the
@@ -75,9 +77,6 @@
   home.sessionVariables = {
     EDITOR = "nvim";
   };
-
-  # TODO: Migrate one of one first
-  # home.file.".config/hypr/hyprland.conf".source = ./user/twm/hyprland/hyperland.conf;
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
