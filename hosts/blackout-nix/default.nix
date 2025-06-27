@@ -113,6 +113,12 @@
     wlogout
     wlr-randr
     swww
+    imagemagick
+    swaynotificationcenter
+    gammastep
+
+    # CLI utils
+    bluetui
 
     # Dev
     cargo

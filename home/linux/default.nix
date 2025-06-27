@@ -5,7 +5,7 @@
     ./packages/sh.nix
     ./packages/git.nix
     ./packages/nvim.nix
-    ./packages/hyprland.nix
+    ./packages/hypr/hyprland.nix
     ./packages/ghostty.nix
   ];
 
