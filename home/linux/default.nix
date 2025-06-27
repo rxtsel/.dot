@@ -5,8 +5,9 @@
     ./packages/sh.nix
     ./packages/git.nix
     ./packages/nvim.nix
-    ./packages/hypr/hyprland.nix
     ./packages/ghostty.nix
+    ./packages/hypr
+    ./packages/waybar
   ];
 
   # Home Manager needs a bit of information about you and the paths it should

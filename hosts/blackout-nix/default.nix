@@ -116,6 +116,7 @@
     imagemagick
     swaynotificationcenter
     gammastep
+    btop
 
     # CLI utils
     bluetui
