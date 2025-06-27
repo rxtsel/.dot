@@ -55,13 +55,28 @@
   # Enable sound.
   # services.pulseaudio.enable = true;
   # OR
-  # services.pipewire = {
-  #   enable = true;
-  #   pulse.enable = true;
-  # };
+  services.pipewire = {
+    enable = true;
+    alsa.enable = true;
+    alsa.support32Bit = true;
+    pulse.enable = true;
+    wireplumber.enable = true;
+  };
+
+  # rtkit is optional but recommended
+  security.rtkit.enable = true;
+
+  # Disable pulseaudio, it clonflicts with pipewire too
+  services.pulseaudio.enable = false;
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
+
+  # Bluetooth
+  hardware.bluetooth.enable = true;
+
+  # Location
+  services.geoclue2.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${myVars.userName} = {

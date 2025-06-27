@@ -26,6 +26,11 @@
         # "$mod, P, pseudo," # dwindl
         # "$mod, J, toggleSplit," # dwindle
 
+        # Volume
+        ", XF86AudioRaiseVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ +5%"
+        ", XF86AudioLowerVolume, exec, pactl set-sink-volume @DEFAULT_SINK@ -5%"
+        ", XF86AudioMute, exec, pactl set-sink-mute @DEFAULT_SINK@ toggle"
+
         # Switch workspaces with mainMod + [0-9]
         "$mod, 1, workspace, 1"
         "$mod, 2, workspace, 2"
