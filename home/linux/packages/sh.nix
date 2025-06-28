@@ -20,7 +20,7 @@
       # Update system
       nixsw = "sudo nixos-rebuild switch --flake ${flakeDir}";
       # Delete all old versions
-      nixprune = "sudo nix-collect-garbage -d";
+      nixprune = "sudo nix-collect-garbage -d && nix-collect-garbage -d";
       # Update home packages
       hmsw = "home-manager switch -b backup --flake ${flakeDir}";
       # List home-manager generations.
