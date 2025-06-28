@@ -9,13 +9,6 @@
         "~/.dots/home/linux/packages/hypr/scripts/wallpapers.sh"
       ];
 
-      # env = [
-      #   "XDG_CURRENT_DESKTOP,Hyprland"
-      #   "XDG_SESSION_DESKTOP,Hyprland"
-      #   "XDG_SESSION_TYPE,wayland"
-      #   "GDK_BACKEND,wayland"
-      # ];
-
       monitor = [ "DP-1, highrr, auto-left, 1" "DP-2, highrr, 0x0, 1" ];
 
       "$mod" = "SUPER";
