@@ -13,6 +13,7 @@
     ./packages/darkman.nix
     ./packages/lazygit.nix
     ./packages/swaync
+    ./packages/wlogout
   ];
 
   # Home Manager needs a bit of information about you and the paths it should

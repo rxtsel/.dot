@@ -90,11 +90,9 @@
     yazi
     grim
     slurp
-    wlogout
     wlr-randr
     swww
     imagemagick
-    gammastep
     btop
 
     # CLI utils
