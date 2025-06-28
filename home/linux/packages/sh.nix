@@ -35,5 +35,11 @@
       ls = "eza --icons";
       cat = "bat";
     };
+
+    initExtraFirst = ''
+      if [ "$(tty)" = "/dev/tty1" ];then
+        exec Hyprland
+      fi
+    '';
   };
 }

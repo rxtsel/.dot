@@ -5,8 +5,9 @@
     settings = {
       exec-once = [
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-        "swww-daemon & waybar & swaync & gammastep"
+        "swww-daemon & waybar & swaync & gammastep & thunderbird"
         "~/.dots/home/linux/packages/hypr/scripts/wallpapers.sh"
+        "hyprctl dispatch workspace 1"
       ];
 
       monitor = [ "DP-1, highrr, auto-left, 1" "DP-2, highrr, 0x0, 1" ];
