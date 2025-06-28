@@ -169,5 +169,8 @@
   # Fnm support
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [ fnm ];
+
+  # Docker support
+  virtualisation.docker.enable = true;
 }
 
