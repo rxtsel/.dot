@@ -60,14 +60,6 @@
   # Bluetooth
   hardware.bluetooth.enable = true;
 
-  # Location
-  services.geoclue2.enable = true;
-  services.avahi = {
-    enable = true;
-    nssmdns = true;
-    openFirewall = true;
-  };
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.${myVars.userName} = {
     isNormalUser = true;
@@ -169,5 +161,12 @@
 
   # Custom
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
+  xdg.portal = {
+    enable = true;
+    xdgOpenUsePortal = true;
+    extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
+    config.common = { "org.freedesktop.impl.portal.Settings" = [ "darkman" ]; };
+  };
 }
 
