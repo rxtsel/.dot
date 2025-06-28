@@ -165,5 +165,9 @@
     extraPortals = with pkgs; [ xdg-desktop-portal-gtk ];
     config.common = { "org.freedesktop.impl.portal.Settings" = [ "darkman" ]; };
   };
+
+  # Fnm support
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [ fnm ];
 }
 
