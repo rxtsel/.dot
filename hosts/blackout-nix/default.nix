@@ -85,6 +85,9 @@
     eza
     bat
 
+    # Dev tools
+    dbeaver-bin
+
     # Hyprland
     brave
     yazi
