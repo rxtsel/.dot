@@ -11,6 +11,7 @@
     ./packages/wofi.nix
     ./packages/gammastep.nix
     ./packages/darkman.nix
+    ./packages/lazygit.nix
   ];
 
   # Home Manager needs a bit of information about you and the paths it should
