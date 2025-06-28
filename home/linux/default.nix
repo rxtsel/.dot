@@ -12,6 +12,7 @@
     ./packages/gammastep.nix
     ./packages/darkman.nix
     ./packages/lazygit.nix
+    ./packages/swaync
   ];
 
   # Home Manager needs a bit of information about you and the paths it should

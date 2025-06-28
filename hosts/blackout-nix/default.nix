@@ -94,7 +94,6 @@
     wlr-randr
     swww
     imagemagick
-    swaynotificationcenter
     gammastep
     btop
 

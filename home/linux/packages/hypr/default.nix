@@ -81,6 +81,7 @@
         "$mod SHIFT, M, exec, wlogout"
         "$mod SHIFT, S, exec, ~/.dots/home/linux/packages/hypr/scripts/grim.sh"
         "$mod SHIFT, Z, exec, ~/.dots/home/linux/packages/hypr/scripts/wallpapers.sh"
+        "$mod, N, exec, swaync-client -t"
         # "$mod, P, pseudo," # dwindl
         # "$mod, J, toggleSplit," # dwindle
 
