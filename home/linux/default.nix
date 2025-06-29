@@ -71,4 +71,12 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # Custom cursor theme
+  home.pointerCursor = {
+    gtk.enable = true;
+    name = "macOS";
+    size = 24;
+    package = pkgs.apple-cursor;
+  };
 }

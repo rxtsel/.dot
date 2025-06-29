@@ -10,6 +10,8 @@
         "hyprctl dispatch workspace 1"
       ];
 
+      env = [ "HYPRCURSOR_THEME,macOS" "HYPRCURSOR_SIZE,24" ];
+
       monitor = [ "DP-1, highrr, auto-left, 1" "DP-2, highrr, 0x0, 1" ];
 
       "$mod" = "SUPER";

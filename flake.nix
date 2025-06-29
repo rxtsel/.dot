@@ -12,7 +12,14 @@
     let
       system = "x86_64-linux";
       lib = nixpkgs.lib;
-      pkgs = nixpkgs.legacyPackages.${system};
+      pkgs = import nixpkgs {
+        inherit system;
+        config = {
+          allowUnfree = true;
+          # Si prefieres permitir _solo_ apple_cursor, en vez de todo:
+          # allowUnfreePredicate = pkg: lib.elem (lib.getName pkg) [ "apple_cursor" ];
+        };
+      };
       myVars = import ./vars;
     in {
       nixosConfigurations = {
