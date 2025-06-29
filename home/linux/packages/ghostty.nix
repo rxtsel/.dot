@@ -12,7 +12,7 @@
       cursor-style = "block";
       cursor-style-blink = false;
       cursor-invert-fg-bg = true;
-      mouse-hide-while-typing = false;
+      mouse-hide-while-typing = true;
       gtk-tabs-location = "bottom";
       title = " ";
 
