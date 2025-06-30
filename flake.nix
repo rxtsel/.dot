@@ -6,6 +6,7 @@
     home-manager.url = "github:nix-community/home-manager/master";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
     hyprland.url = "github:hyprwm/Hyprland";
+    appimage-install.url = "github:rxtsel/appimage-install";
   };
 
   outputs = { self, nixpkgs, home-manager, ... }@inputs:
@@ -37,7 +38,7 @@
           inherit pkgs;
           # Home modules for rxtsel user
           modules = [ ./home/linux ];
-          extraSpecialArgs = { inherit myVars; };
+          extraSpecialArgs = { inherit myVars inputs; };
         };
       };
     };

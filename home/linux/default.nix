@@ -1,4 +1,4 @@
-{ pkgs, myVars, ... }:
+{ pkgs, myVars, inputs, ... }:
 
 {
   imports = [
@@ -34,7 +34,11 @@
 
   # The home.packages option allows you to install Nix packages into your
   # environment.
-  home.packages = with pkgs; [ nautilus discord ];
+  home.packages = with pkgs; [
+    nautilus
+    discord
+    inputs.appimage-install.packages.${system}.default
+  ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
   # plain files is through 'home.file'.
