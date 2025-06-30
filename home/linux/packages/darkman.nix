@@ -5,8 +5,8 @@
     enable = true;
 
     settings = {
-      lat = 1.2033996035846188;
-      lng = -77.27524860954428;
+      lat = 4.711;
+      lng = -74.0721;
       usegeoclue = false;
     };
 
