@@ -152,6 +152,7 @@
         "float, class:Slack"
         "float, class:discord"
         "float, class:Clockify"
+        "float, class:ClickUp"
 
         # Define workspaces and assign applications to them
         "workspace 2, class:Brave-browser"
@@ -163,6 +164,7 @@
         "workspace 4, class:AppleMusic"
         "workspace 5, class:Slack"
         "workspace 5, class:discord"
+        "workspace 5, class:ClickUp"
         "workspace 5, class:Clockify"
         "workspace 6, class:thunderbird"
 
