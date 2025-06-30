@@ -84,6 +84,7 @@
     tree
     eza
     bat
+    gnumake
 
     # Dev tools
     dbeaver-bin
