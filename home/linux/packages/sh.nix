@@ -36,7 +36,7 @@
       cat = "bat";
     };
 
-    initExtraFirst = ''
+    initContent = ''
       if [ "$(tty)" = "/dev/tty1" ];then
         exec Hyprland
       fi
