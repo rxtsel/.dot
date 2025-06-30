@@ -5,7 +5,7 @@
     settings = {
       exec-once = [
         "dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-        "swww-daemon & waybar & swaync & gammastep & thunderbird"
+        "swww-daemon & waybar & swaync & gammastep & thunderbird & discord"
         "~/.dots/home/linux/packages/hypr/scripts/wallpapers.sh"
         "hyprctl dispatch workspace 1"
       ];
@@ -142,16 +142,28 @@
       ];
 
       windowrule = [
-        "float, class:pavucontrol"
+        # Floating windows
+        "float, class:org.pulseaudio.pavucontrol"
+        "float, class:feh"
+        "float, class:mpv"
+        "float, class:yaak-app"
+        "float, class:DBeaver"
+        "float, class:AppleMusic"
+        "float, class:Slack"
+        "float, class:discord"
+        "float, class:Clockify"
+
+        # Define workspaces and assign applications to them
         "workspace 2, class:Brave-browser"
-        "float, workspace 3, class:feh"
-        "float, workspace 3, class:mpv"
-        "float, size 55% 55%, center, workspace 3, class:yaak-app"
-        "float, size 55% 55%, center, workspace 3, class:DBeaver"
-        "float, size 55% 55%, center, workspace 4, class:AppleMusic"
-        "float, size 55% 55%, right, workspace 5, class:Slack"
-        "float, workspace 5, class:Clockify"
-        "float, size 55% 55%, right, workspace 5, class:discord"
+        "workspace 2, class:Chromium-browser"
+        "workspace 3, class:feh"
+        "workspace 3, class:mpv"
+        "workspace 3, class:yaak-app"
+        "workspace 3, class:DBeaver"
+        "workspace 4, class:AppleMusic"
+        "workspace 5, class:Slack"
+        "workspace 5, class:discord"
+        "workspace 5, class:Clockify"
         "workspace 6, class:thunderbird"
 
         # Disable border when only one window
