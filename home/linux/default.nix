@@ -37,6 +37,7 @@
   home.packages = with pkgs; [
     nautilus
     discord
+    appimage-run
     inputs.appimage-install.packages.${system}.default
   ];
 
