@@ -88,6 +88,7 @@
 
     # Dev tools
     dbeaver-bin
+    chromium
 
     # Hyprland
     brave
@@ -102,6 +103,7 @@
     # CLI utils
     bluetui
     pavucontrol
+    mpv
 
     # Dev
     cargo
