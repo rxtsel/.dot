@@ -22,6 +22,7 @@
 
       # Window controls
       confirm-close-surface = true;
+      window-theme = "dark";
       window-decoration = true;
       window-padding-balance = true;
       window-save-state = "always";
