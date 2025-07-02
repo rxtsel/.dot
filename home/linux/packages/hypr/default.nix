@@ -133,6 +133,14 @@
         "$mod, mouse:273, resizewindow"
       ];
 
+      # Volume
+      binde = [
+        ", XF86AudioRaiseVolume, exec, wpctl set-volume -l 1.5 @DEFAULT_AUDIO_SINK@ 5%+"
+      ];
+      bindl = [
+        ", XF86AudioLowerVolume, exec, wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-"
+      ];
+
       layerrule = [
         "blur, waybar"
         "blur, wofi"
