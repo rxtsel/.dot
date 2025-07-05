@@ -117,18 +117,24 @@ If a folder exists, it is deleted before create symlinks.
 > **Note**: Only base configurations are included. You can add more configurations if you want. With `ln -s` command.
 
 ```bash
-[ -d ~/.config/kitty ] && rm -rf ~/.config/kitty
+[ -d ~/.config/hypr ] && rm -rf ~/.config/hypr
+[ -d ~/.config/ghostty ] && rm -rf ~/.config/ghostty
 [ -d ~/.config/gammastep ] && rm -rf ~/.config/gammastep
 [ -d ~/.config/yazi ] && rm -rf ~/.config/yazi
 [ -d ~/.config/zellij ] && rm -rf ~/.config/zellij
 [ -d ~/.config/neofetch ] && rm -rf ~/.config/neofetch
+[ -d ~/.config/swaync ] && rm -rf ~/.config/swaync
+[ -d ~/.config/wlogout ] && rm -rf ~/.config/wlogout
 [ -f ~/.zshrc ] && rm -r ~/.zshrc
 
-ln -s ~/dot/.config/kitty ~/.config/
+ln -s ~/dot/.config/hypr ~/.config/
+ln -s ~/dot/.config/ghostty ~/.config/
 ln -s ~/dot/.config/gammastep ~/.config/
 ln -s ~/dot/.config/yazi ~/.config/
 ln -s ~/dot/.config/zellij ~/.config/
 ln -s ~/dot/.config/neofetch ~/.config/
+ln -s ~/dot/.config/swaync ~/.config/
+ln -s ~/dot/.config/wlogout ~/.config/
 ln -s ~/dot/.zshrc ~/
 ```
 
