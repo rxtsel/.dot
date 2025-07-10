@@ -15,8 +15,8 @@ fi
 # Only for two display setups
 # Separate the image into two halves (left and right)
 magick "$RAMDOM" -crop 50%x100% +repage /tmp/output.png
-swww img -o "DP-2" --transition-type ramdon /tmp/output-0.png
-swww img -o "DP-1" --transition-type ramdon /tmp/output-1.png
+swww img -o "DP-2" --transition-type random /tmp/output-0.png
+swww img -o "DP-1" --transition-type random /tmp/output-1.png
 
 # For single display setups, comment the above lines and use this instead
 # swww img --transition-type ramdon "$RAMDOM"
