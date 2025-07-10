@@ -4,7 +4,7 @@
 git config --global core.editor $(which nvim) &&
 git config --global init.defaultBranch main &&
 git config --global user.email "email@example.com" &&
-git config --global user.name "Cristhian Melo" &&
+git config --global user.name "Your Name" &&
 git config --global alias.s "status -sb" &&
 git config --global alias.a "add" &&
 git config --global fetch.prune true &&
