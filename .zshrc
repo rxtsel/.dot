@@ -23,15 +23,6 @@ alias ls='exa --icons'
 alias l='exa --icons'
 alias cat='bat --style=plain --paging=never'
 
-
-# fnm
-FNM_PATH="/home/rxtsel/.local/share/fnm"
-if [ -d "$FNM_PATH" ]; then
-  export PATH="/home/rxtsel/.local/share/fnm:$PATH"
-  eval "`fnm env`"
-fi
-export PATH=$HOME/.local/bin:$PATH
-
 # Bat theme
 export BAT_THEME="Solarized (dark)"
 
