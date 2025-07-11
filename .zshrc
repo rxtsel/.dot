@@ -21,7 +21,7 @@ alias clean="sudo pacman -Rns \$(pacman -Qtdq) --noconfirm && sudo pacman -Sc --
 alias z="zellij"
 alias ls='exa --icons'
 alias l='exa --icons'
-alias cat='bat --paging=never'
+alias cat='bat --style=plain --paging=never'
 
 
 # fnm
