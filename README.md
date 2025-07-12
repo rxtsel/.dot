@@ -125,11 +125,11 @@ You have 2 options to install an AUR helper:
 3. **AUR packages**:
 
    ```bash
-   paru -S swww gammastep wlr-randr brave-bin ttf-twemoji-color wlogout
+   paru -S swww gammastep wlr-randr brave-bin ttf-twemoji-color wlogout apple_cursor
 
    # Or
 
-   yay -S swww gammastep wlr-randr brave-bin ttf-twemoji-color wlogout
+   yay -S swww gammastep wlr-randr brave-bin ttf-twemoji-color wlogout apple_cursor
    ```
 
 ## 3. Oh-my-zsh
