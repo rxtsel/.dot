@@ -16,7 +16,8 @@ My setup for Arch Linux with Hyprland, Waybar, Ghostty, and other tools. This se
 - [4. Create symlinks for configurations](#4-create-symlinks-for-configurations)
 - [5. Icons and Cursor Theme](#5-icons-and-cursor-theme-optional) (optional)
 - [6. Utils for development](#6-utils-for-development-optional) (optional)
-- [7. rEFInd](#7-refindhttpswikiarchlinuxorgtitlerefind-optional) (optional)
+- [7. Darkman](#7-darkman) (optional)
+- [8. rEFInd](#8-refind) (optional)
 <!--toc:end-->
 
 ## Gallery
@@ -246,7 +247,18 @@ mv ~/Downloads/macOS* ~/.icons/
    echo '{ "path": "cz-conventional-changelog" }' > ~/.czrc
    ```
 
-## 7. [rEFInd](https://wiki.archlinux.org/title/REFInd) (optional)
+## 7. [Darkman](https://darkman.whynothugo.nl/) (optional)
+
+Darkman is a tool for automatically switching between light and dark modes on Linux. It works by calculating sunrise and sunset times based on your geographical location to automatically change system themes. Key features include:
+
+- Automatic light/dark mode switching based on time of day
+- Manual toggle support with `darkman toggle` command  
+- Integration with GTK themes and desktop portals
+- Configurable based on geographical coordinates
+
+For detailed installation instructions, configuration, and setup, please refer to the [Darkman documentation](utils/darkman/README.md).
+
+## 8. [rEFInd](https://wiki.archlinux.org/title/REFInd) (optional)
 
 rEFInd is more customizable than GRUB or systemd-boot; for example, you can change the theme, add icons, etc. It also allows the use of a mouse or touchpad, which is very useful when you have a wireless keyboard. Some features include:
 
