@@ -283,7 +283,8 @@ install_icons() {
 install_mkos_icons() {
   info "Installing Mkos-Big-Sur icon theme..."
   cd ~/Downloads/ &&
-    wget https://github.com/zayronxio/Mkos-Big-Sur/releases/download/0.3/Mkos-Big-Sur.tar.xz &&
+    ICON_VERSION=$(curl -s https://api.github.com/repos/zayronxio/Mkos-Big-Sur/releases/latest | grep -Po '"tag_name": "\K.*?(?=")') &&
+    wget https://github.com/zayronxio/Mkos-Big-Sur/releases/download/$ICON_VERSION/Mkos-Big-Sur.tar.xz &&
     7z x ~/Downloads/Mkos-Big-Sur.tar.xz &&
     7z x ~/Downloads/Mkos-Big-Sur.tar &&
     mkdir -p ~/.icons &&
@@ -295,7 +296,8 @@ install_mkos_icons() {
 install_macos_cursor() {
   info "Installing macOS cursor theme..."
   cd ~/Downloads/ &&
-    wget https://github.com/ful1e5/apple_cursor/releases/download/v2.0.1/macOS.tar.xz &&
+    CURSOR_VERSION=$(curl -s https://api.github.com/repos/ful1e5/apple_cursor/releases/latest | grep -Po '"tag_name": "\K.*?(?=")') &&
+    wget https://github.com/ful1e5/apple_cursor/releases/download/$CURSOR_VERSION/macOS.tar.xz &&
     7z x ~/Downloads/macOS.tar.xz &&
     7z x ~/Downloads/macOS.tar &&
     mkdir -p ~/.icons &&

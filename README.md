@@ -182,7 +182,8 @@ Download and install the macOS-style [icon theme](https://github.com/zayronxio/M
 
 ```bash
 cd ~/Downloads/ &&
-wget https://github.com/zayronxio/Mkos-Big-Sur/releases/download/0.3/Mkos-Big-Sur.tar.xz &&
+ICON_VERSION=$(curl -s https://api.github.com/repos/zayronxio/Mkos-Big-Sur/releases/latest | grep -Po '"tag_name": "\K.*?(?=")') &&
+wget https://github.com/zayronxio/Mkos-Big-Sur/releases/download/$ICON_VERSION/Mkos-Big-Sur.tar.xz &&
 7z x ~/Downloads/Mkos-Big-Sur.tar.xz &&
 7z x ~/Downloads/Mkos-Big-Sur.tar &&
 mkdir -p ~/.icons &&
@@ -196,7 +197,8 @@ Download and install the macOS [cursor theme](https://github.com/ful1e5/apple_cu
 
 ```bash
 cd ~/Downloads/ &&
-wget https://github.com/ful1e5/apple_cursor/releases/download/v2.0.1/macOS.tar.xz &&
+CURSOR_VERSION=$(curl -s https://api.github.com/repos/ful1e5/apple_cursor/releases/latest | grep -Po '"tag_name": "\K.*?(?=")') &&
+wget https://github.com/ful1e5/apple_cursor/releases/download/$CURSOR_VERSION/macOS.tar.xz &&
 7z x ~/Downloads/macOS.tar.xz &&
 7z x ~/Downloads/macOS.tar &&
 mkdir -p ~/.icons &&
