@@ -113,7 +113,8 @@ You have 2 options to install an AUR helper:
      polkit-kde-agent swaync ghostty xdg-desktop-portal-hyprland chromium yazi fd \
      mpv nautilus ark bluez bluez-utils ripgrep wl-clipboard pavucontrol unzip libnotify fuse2 \
      7zip zsh imagemagick feh bat exa fzf thunderbird bluetui wget tree btop macchina lazygit waybar \
-     gst-plugin-pipewire libpipewire pipewire pipewire-alsa pipewire-audio pipewire-jack pipewire-pulse discord aichat
+     gst-plugin-pipewire libpipewire pipewire pipewire-alsa pipewire-audio pipewire-jack pipewire-pulse discord aichat \
+     darkman xdg-desktop-portal-gtk
    ```
 
 2. **Fonts for emoji support**:
