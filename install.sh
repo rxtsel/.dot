@@ -121,7 +121,6 @@ install_aur_packages() {
   install_aur_package brave-bin
   install_aur_package ttf-twemoji-color
   install_aur_package wlogout
-  install_aur_package apple_cursor
 }
 
 install_aur_package() {
@@ -275,6 +274,37 @@ install_cz_cli() {
   fi
 }
 
+install_icons() {
+  info "Installing icons and cursor theme..."
+  install_mkos_icons
+  install_macos_cursor
+}
+
+install_mkos_icons() {
+  info "Installing Mkos-Big-Sur icon theme..."
+  cd ~/Downloads/ &&
+    wget https://github.com/zayronxio/Mkos-Big-Sur/releases/download/0.3/Mkos-Big-Sur.tar.xz &&
+    7z x ~/Downloads/Mkos-Big-Sur.tar.xz &&
+    7z x ~/Downloads/Mkos-Big-Sur.tar &&
+    mkdir -p ~/.icons &&
+    rm -rf ~/Downloads/Mkos-Big-Sur.tar ~/Downloads/Mkos-Big-Sur.tar.xz &&
+    mv ~/Downloads/Mkos-Big-Sur* ~/.icons/ &&
+    success "Mkos-Big-Sur icon theme installed successfully."
+}
+
+install_macos_cursor() {
+  info "Installing macOS cursor theme..."
+  cd ~/Downloads/ &&
+    wget https://github.com/ful1e5/apple_cursor/releases/download/v2.0.1/macOS.tar.xz &&
+    7z x ~/Downloads/macOS.tar.xz &&
+    7z x ~/Downloads/macOS.tar &&
+    mkdir -p ~/.icons &&
+    rm -rf ~/Downloads/macOS.tar ~/Downloads/macOS.tar.xz &&
+    mv ~/Downloads/macOS* ~/.icons/ &&
+    success "macOS cursor theme installed successfully."
+  info "Cursor theme environment variables are already configured in Hyprland."
+}
+
 dev_utils() {
   install_fnm
   install_python
@@ -292,4 +322,5 @@ install_base_packages &&
   create_symlinks &&
   zlogin_tty &&
   install_emojis_support &&
+  install_icons &&
   dev_utils

@@ -14,7 +14,8 @@ My setup for Arch Linux with Hyprland, Waybar, Ghostty, and other tools. This se
 - [2. Install dependencies](#2-install-dependencies)
 - [3. Oh-my-zsh](#3-oh-my-zsh)
 - [4. Create symlinks for configurations](#4-create-symlinks-for-configurations)
-- [5. Utils for development](#5-utils-for-development-optional) (optional)
+- [5. Icons and Cursor Theme](#5-icons-and-cursor-theme-optional) (optional)
+- [6. Utils for development](#6-utils-for-development-optional) (optional)
 - [7. rEFInd](#7-refindhttpswikiarchlinuxorgtitlerefind-optional) (optional)
 <!--toc:end-->
 
@@ -126,11 +127,11 @@ You have 2 options to install an AUR helper:
 3. **AUR packages**:
 
    ```bash
-   paru -S swww gammastep wlr-randr brave-bin ttf-twemoji-color wlogout apple_cursor
+   paru -S swww gammastep wlr-randr brave-bin ttf-twemoji-color wlogout
 
    # Or
 
-   yay -S swww gammastep wlr-randr brave-bin ttf-twemoji-color wlogout apple_cursor
+   yay -S swww gammastep wlr-randr brave-bin ttf-twemoji-color wlogout
    ```
 
 ## 3. Oh-my-zsh
@@ -172,7 +173,47 @@ ln -s ~/.dot/.zshrc ~/.zshrc &&
 ln -s ~/.dot/.config/{gammastep,ghostty,hypr,lazygit,swaync,waybar,wlogout,wofi,yazi,zellij} ~/.config
 ```
 
-## 5. Utils for development (optional)
+## 5. Icons and Cursor Theme (optional)
+
+### Install Mkos-Big-Sur Icon Theme
+
+Download and install the macOS-style [icon theme](https://github.com/zayronxio/Mkos-Big-Sur):
+
+```bash
+cd ~/Downloads/ &&
+wget https://github.com/zayronxio/Mkos-Big-Sur/releases/download/0.3/Mkos-Big-Sur.tar.xz &&
+7z x ~/Downloads/Mkos-Big-Sur.tar.xz &&
+7z x ~/Downloads/Mkos-Big-Sur.tar &&
+mkdir -p ~/.icons &&
+rm -rf ~/Downloads/Mkos-Big-Sur.tar ~/Downloads/Mkos-Big-Sur.tar.xz &&
+sudo mv ~/Downloads/Mkos-Big-Sur* ~/.icons/
+```
+
+### Install macOS Cursor Theme
+
+Download and install the macOS [cursor theme](https://github.com/ful1e5/apple_cursor):
+
+```bash
+cd ~/Downloads/ &&
+wget https://github.com/ful1e5/apple_cursor/releases/download/v2.0.1/macOS.tar.xz &&
+7z x ~/Downloads/macOS.tar.xz &&
+7z x ~/Downloads/macOS.tar &&
+mkdir -p ~/.icons &&
+rm -rf ~/Downloads/macOS.tar ~/Downloads/macOS.tar.xz &&
+mv ~/Downloads/macOS* ~/.icons/
+```
+
+> [!NOTE]
+> The cursor theme environment variables are already configured in the Hyprland configuration (`~/.config/hypr/conf/environment.conf`):
+>
+> ```conf
+> env = HYPRCURSOR_THEME,macOS
+> env = HYPRCURSOR_SIZE,24
+> env = XCURSOR_THEME,macOS
+> env = XCURSOR_SIZE,24
+> ```
+
+## 6. Utils for development (optional)
 
 1. **Install [fnm](https://github.com/Schniz/fnm) node version manager**:
 
