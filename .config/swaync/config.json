@@ -51,10 +51,8 @@
     "buttons-grid": {
       "actions": [
         {
-          "label": "",
-          "command": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
-          "type": "toggle",
-          "active": false
+          "label": "󰔎",
+          "command": "darkman toggle"
         },
         {
           "label": "",
