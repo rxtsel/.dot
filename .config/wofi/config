@@ -1,10 +1,10 @@
 [config]
 allow_images=true
-width=500
+allow_markup=true
 show=drun
 prompt=Search
+width=500
 height=400
-term=ghostty
 hide_scroll=true
 print_command=true
 insensitive=true
@@ -12,3 +12,4 @@ columns=1
 no_actions=true
 location=top
 y=150
+term=ghostty

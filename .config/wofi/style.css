@@ -1,113 +1,76 @@
-@define-color text            #839395;
-@define-color background      #001419;
-@define-color background-alt  #002c38;
-@define-color selected        #268bd3;
-@define-color white           #FFFFFF;
-
-@keyframes fadeIn {
-    0% {
-    }
-    100% {
-    }
-}
+@define-color text #b7c7c9;
+@define-color background #001419;
+@define-color background-alt #002c38;
+@define-color selected #268bd3;
+@define-color white #FFFFFF;
 
 * {
-    all:unset;
-    font-family: 'Noto Sans', monospace;
-    font-size: 18px;
-    outline: none;
-    border: none;
-    text-shadow:none;
-    background-color:transparent;
+  all: unset;
+  font-family: 'Noto Sans', monospace;
+  font-size: 18px;
 }
 
 window {
-    all:unset;
+  all: unset;
 }
 
 #outer-box {
-    padding: 20px;
-    border: 1px solid @background;
-    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.6);
-    border-radius: 30px;
-    background-color: alpha(@background, .5);
+  padding: 20px;
+  border-radius: 30px;
+  background-color: alpha(@background, .5);
 }
 
 #inner-box {
-    margin: 2px;
-    border: none;
+  margin: 2px;
 }
 
 #scroll {
-    margin: 0px;
-    padding: 20px;
-    border: none;
+  margin: 0px;
+  padding: 20px;
 }
 
 #input {
-    all: unset;
-    margin: 20px 26px 0px 26px;
-    padding: 14px 20px;
-    border: none;
-    outline: none;
-    color: @text;
-    box-shadow: 1px 1px 5px rgba(0,0,0, .5);
-    border-radius: 16px;
-    background-color: @background;
+  all: unset;
+  margin: 20px 26px 0px 26px;
+  padding: 14px 20px;
+  color: @text;
+  border: 2px solid transparent;
+  border-radius: 16px;
+  background-color: @background-alt;
 }
 
 #input image {
-    border: none;
-    color: @text;
-    padding-right:10px;
+  color: @text;
+  padding-right: 10px;
 }
 
 #input * {
-    border: none;
-    outline: none;
+  border: 2px solid transparent;
 }
 
 #input:focus {
-    outline: none;
-    border: none;
-    border-radius: 10px;
+  border: 2px solid @white;
 }
 
 #text {
-    margin: 5px;
-    border: none;
-    color: @text;
-    outline: none;
+  margin: 5px;
+  color: @text;
 }
 
-#text {
-    margin: 5px;
-    border: none;
-    color: @text;
-    outline: none;
-}
 #entry {
-    border: none;
-    margin: 5px;
-    padding: 10px;
+  margin: 5px;
+  padding: 10px;
 }
 
 #entry arrow {
-    border: none;
-    color: @selected;
+  color: @selected;
 }
 
 #entry:selected {
-    box-shadow: 1px 1px 5px rgba(255,255,255, .03);
-    border: none;
-    border-radius: 16px;
-    background-color: @background-alt;
+  border-radius: 16px;
+  background-color: @background-alt;
 }
 
 #entry:selected #text {
-    color: @white;
-}
-
-#entry:drop(active) {
-    background-color: red;
+  color: @white;
 }
