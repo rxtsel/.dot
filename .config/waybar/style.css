@@ -70,37 +70,15 @@ tooltip label {
 }
 
 /* -----------------------------------------------------
- * Window
- * ----------------------------------------------------- */
-
-#window {
-  background-color: transparent;
-  margin: 0 15px 0;
-  padding: 2px 10px 0 10px;
-  color: #ffffff;
-  font-size: 16px;
-  font-weight: normal;
-  opacity: 0.8;
-}
-
-window#waybar.empty #window {
-  background-color: transparent;
-}
-
-/* -----------------------------------------------------
  * Modules
  * ----------------------------------------------------- */
-.modules-left > widget:first-child > #workspaces {
+.modules-left>widget:first-child>#workspaces {
   margin-left: 0;
 }
 
-.modules-right > widget:last-child > #workspaces {
+.modules-right>widget:last-child>#workspaces {
   margin-right: 0;
 }
-
-/* -----------------------------------------------------
- * Custom Quicklinks
- * ----------------------------------------------------- */
 
 /* -----------------------------------------------------
  * Hardware Group
@@ -122,7 +100,7 @@ window#waybar.empty #window {
   color: #ffffff;
   font-weight: normal;
   transition: background-color 0.5s ease;
-  margin-right: 16px;
+  margin-right: 11px;
 }
 
 /* -----------------------------------------------------
@@ -183,11 +161,11 @@ window#waybar.empty #window {
   min-width: 24px;
 }
 
-#tray > .passive {
+#tray>.passive {
   -gtk-icon-effect: dim;
 }
 
-#tray > .needs-attention {
+#tray>.needs-attention {
   -gtk-icon-effect: highlight;
   background-color: #eb4d4b;
 }
@@ -224,5 +202,11 @@ label:focus {
 }
 
 /* -----------------------------------------------------
- * Custom
+ * Custom Quicklinks
  * ----------------------------------------------------- */
+#custom-aichat {
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: normal;
+  margin-left: 11px;
+}

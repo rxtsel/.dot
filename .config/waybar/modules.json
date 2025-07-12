@@ -5,36 +5,10 @@
     "all-outputs": true,
     "format": "{}",
     "format-icons": {
-      "urgent": "",
-      "active": "",
-      "default": ""
+      "urgent": "",
+      "focused": "",
+      "default": ""
     }
-  },
-  "wlr/taskbar": {
-    "format": "{icon}",
-    "icon-size": 24,
-    "tooltip-format": "{title}",
-    "on-click": "activate",
-    "on-click-middle": "close",
-    "ignore-list": [
-      "kitty"
-    ],
-    "app_ids-mapping": {
-      "chromium": "chromium-browser"
-    },
-    "rewrite": {
-      "Firefox Web Browser": "Firefox",
-      "Chromium": "Chromium",
-      "Foot Server": "Terminal"
-    }
-  },
-  "hyprland/window": {
-    "rewrite": {
-      "(.*) - Brave": "$1",
-      "(.*) - Chromium": "$1",
-      "(.*) - Brave Search": "$1"
-    },
-    "separate-outputs": true
   },
   "tray": {
     "icon-size": 16,
@@ -42,7 +16,8 @@
   },
   "clock": {
     "format": "{:%a %d %B %H:%M}",
-    "tooltip": false,
+    "tooltip": true,
+    "tooltip-format": "Click to open notification center",
     "on-click": "swaync-client -t -sw",
     "on-click-right": "swaync-client -d -sw",
     "escape": true
@@ -58,27 +33,27 @@
     "format": "DISK {percentage_used}% "
   },
   "network": {
-    "format-wifi": " ",
-    "format-ethernet": "󱘖",
+   "format-wifi": " ",
+    "format-ethernet": "󱘖 ",
     "tooltip-format": "󰤪    {essid}",
     "format-linked": "󱘖   {ifname} (No IP)",
-    "format-disconnected": "󰤭",
+    "format-disconnected": "󰤭 ",
     "interval": 5,
     "tooltip": true,
     "icon-size": 24
   },
   "pulseaudio": {
     "format": "{icon}",
-    "format-muted": "󰝟",
+    "format-muted": "󰝟 ",
     "on-click": "pavucontrol -t 3",
-    "on-scroll-up": "pamixer -i 5",
-    "on-scroll-down": "pamixer -d 5",
+    "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 0.05+",
+    "on-scroll-down": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 0.05-",
     "tooltip-format": "{volume}%",
     "scroll-step": 5,
     "format-icons": {
-      "headphone": "",
-      "hands-free": "",
-      "headset": "",
+      "headphone": " ",
+      "hands-free": " ",
+      "headset": " ",
       "default": [
         " ",
         " ",
@@ -89,23 +64,23 @@
   },
   "bluetooth": {
     "format": "",
-    "format-disabled": "󰂲",
-    "format-connected": "󰂯",
+    "format-disabled": "󰂲 ",
+    "format-connected": "󰂲 ",
     "on-click": "ghostty -e bluetui",
     "tooltip-format": "{device_alias}",
     "tooltip-format-connected": "{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}",
     "icon-size": 24
   },
-  "user": {
-    "format": "{user}",
-    "interval": 60,
-    "icon": false,
-    "icon-size": 24
-  },
   "hyprland/language": {
     "format": "{}",
     "format-en": "DV",
-    "format-es": "SP"
-  }
+    "format-es": "SP",
+  },
+  "custom/aichat": {
+    "format": " ",
+    "on-click": "ghostty -e aichat",
+    "tooltip-format": "AIChat",
+    "icon-size": 24
+  },
 }

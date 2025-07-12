@@ -6,18 +6,18 @@
   "height": 32,
   "exclusive": true,
   "mode": "dock",
-  "spacing": 4,
+  "spacing": 11,
   "include": [
     "~/.dot/.config/waybar/modules.json"
   ],
   "modules-left": [
-    "hyprland/workspaces",
-    "group/quicklinks"
+    "hyprland/workspaces"
   ],
   "modules-center": [],
   "modules-right": [
     "tray",
     "bluetooth",
+    "group/quicklinks",
     "pulseaudio",
     "network",
     "custom/exit",
@@ -28,8 +28,8 @@
   "group/quicklinks": {
     "orientation": "horizontal",
     "modules": [
-      "custom/chatgpt",
-      "custom/music"
+      "custom/music",
+      "custom/aichat"
     ]
   },
   "group/hardware": {
