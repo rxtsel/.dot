@@ -78,7 +78,7 @@
         },
         {
           "label": "",
-          "command": "chromium --app=https://music.apple.com/co"
+          "command": "/home/rxtsel/AppImages/squashfs-root/AppRun"
         },
         {
           "label": "",
