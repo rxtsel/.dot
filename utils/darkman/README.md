@@ -40,6 +40,7 @@ Create the dark mode script at `~/.local/share/dark-mode.d/gtk-theme`:
 
 dconf write /org/gnome/desktop/interface/gtk-theme "'Adwaita-Dark'"
 dconf write /org/gnome/desktop/interface/color-scheme "'prefer-dark'"
+dconf write /org/gnome/desktop/interface/icon-theme "'Mkos-Big-Sur-Night'"
 ```
 
 Make it executable:
@@ -57,6 +58,7 @@ Create the light mode script at `~/.local/share/light-mode.d/gtk-theme`:
 
 dconf write /org/gnome/desktop/interface/gtk-theme "'Adwaita'"
 dconf write /org/gnome/desktop/interface/color-scheme "'prefer-light'"
+dconf write /org/gnome/desktop/interface/icon-theme "'Mkos-Big-Sur'"
 ```
 
 Make it executable:
