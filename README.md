@@ -6,6 +6,7 @@ My setup for Arch Linux with Hyprland, Waybar, Ghostty, and other tools. This se
 
 <!--toc:start-->
 - [Gallery](#gallery)
+- [Project Structure](#project-structure)
 - [Installation](#installation)
   - [Option 1: Automatic Installation (Recommended)](#option-1-automatic-installation-recommended)
   - [Option 2: Manual Installation](#option-2-manual-installation)
@@ -29,6 +30,31 @@ My setup for Arch Linux with Hyprland, Waybar, Ghostty, and other tools. This se
 | ![desktop screentshot](./screenshots/1714785616_grim.png) | ![nvim screenshot](./screenshots/1714786448_grim.png) |
 
 </details>
+
+## Project Structure
+
+```sh
+.
+├── install.sh
+├── README.md
+├── .config/
+│   ├── gammastep/
+│   ├── ghostty/
+│   ├── helix/
+│   ├── hypr/
+│   ├── lazygit/
+│   ├── swaync/
+│   ├── waybar/
+│   ├── wlogout/
+│   ├── wofi/
+│   ├── yazi/
+│   ├── zed/
+│   └── zellij/
+├── utils/
+├── wallpapers/
+├── .zlogin
+└── .zshrc
+```
 
 ## Installation
 
