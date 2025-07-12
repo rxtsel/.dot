@@ -2,7 +2,7 @@
 theme = Solarized Dark - Patched
 background-opacity = 0.65
 background-blur = true
-font-family = DankMono Nerd Font Mono
+font-family = CaskaydiaCove Nerd Font Mono # Use Mono variant for icons more smaller
 font-size = 18
 cursor-style = block
 cursor-style-blink = false
