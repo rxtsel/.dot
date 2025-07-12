@@ -85,7 +85,7 @@ install_base_packages() {
   info "Installing essential system packages..."
   sudo pacman -Syyu --noconfirm git neovim qt5-wayland qt6-wayland slurp wofi grim hyprland \
     polkit-kde-agent swaync ghostty xdg-desktop-portal-hyprland chromium yazi fd \
-    mpv nautilus ark bluez bluez-utils ripgrep wl-clipboard pavucontrol unzip \
+    mpv nautilus ark bluez bluez-utils ripgrep wl-clipboard pavucontrol unzip libnotify \
     7zip zsh imagemagick feh bat exa fzf thunderbird bluetui wget tree btop macchina lazygit waybar \
     gst-plugin-pipewire libpipewire pipewire pipewire-alsa pipewire-audio pipewire-jack pipewire-pulse discord
 }
