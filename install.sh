@@ -88,7 +88,7 @@ install_base_packages() {
     mpv nautilus ark bluez bluez-utils ripgrep wl-clipboard pavucontrol unzip libnotify fuse2 \
     7zip zsh imagemagick feh bat exa fzf thunderbird bluetui wget tree btop macchina lazygit waybar \
     gst-plugin-pipewire libpipewire pipewire pipewire-alsa pipewire-audio pipewire-jack pipewire-pulse discord aichat \
-    darkman xdg-desktop-portal-gtk nwg-look
+    darkman xdg-desktop-portal-gtk nwg-look gnome-keyring libsecret
 }
 
 choose_aur_helper() {
