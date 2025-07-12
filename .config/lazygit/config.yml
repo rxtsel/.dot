@@ -44,40 +44,75 @@ customCommands:
 
           COMMITS_TO_SUGGEST=10  # Required quantity per final example
 
-          aichat --model github:gpt-4o \"
+          aichat \"
 
-          You are an expert at writing Git commits. Your job is to write a short clear commit message that summarizes the changes using conventional commits format.
+          You are an expert at writing Git commits. Your job is to write a short, clear commit message that summarizes the changes using the Conventional Commits format.
 
-          Follow these guidelines for conventional commits:
-          - Always use one of these types: feat, fix, docs, style, refactor, perf, test, build, ci, chore
-          - Structure: <type>(<scope>): <description>
-            Example: feat(auth): add OAuth login support
-          - Scope is optional but encouraged (put component or area affected)
-          - Use ! after type/scope for breaking changes: feat(api)!: change API response format
+          Follow these guidelines for Conventional Commits:
+
+          - Always use one of these types:
+          feat, fix, docs, style, refactor, perf, test, build, ci, chore
+
+          - Structure:
+          <type>(<scope>): <description>
+
+          Example:
+          feat(auth): add OAuth login support
+
+          - Scope is optional but encouraged (put the affected component or area)
+
+          - Use an exclamation mark (!) after type/scope for breaking changes:
+          feat(api)!: change API response format
+
+          - Use lowercase for the description (unless it includes proper nouns like \"React\" or \"GitHub\")
+          - Do not end the subject line with a period
+          - Use the imperative mood (e.g., \"add\", not \"added\" or \"adds\")
+          - Limit the subject line to 50 characters when possible
+
+          Examples:
+          chore(config): update ESLint rules
+          fix(login): prevent crash on empty password
+          docs(readme): add installation instructions
+          style(css): fix button alignment on mobile
+          feat(ui): add dark mode toggle
+          refactor(settings): simplify theme loading logic
+          test(home): add unit tests for sidebar
+          build(deps): upgrade to React 18
+          ci(github): fix broken deployment workflow
+          perf(api): optimize response time for profile endpoint
 
           For the commit message body:
-          - Add a detailed body when the change is complex or requires explanation
-          - Always add a body for breaking changes with 'BREAKING CHANGE:' prefix
-          - Separate body from subject with a blank line
-          - Explain 'what' and 'why' in the body, not 'how'
+          - Add a body only if the change is complex or needs explanation
+          - Always add a body for breaking changes, with a 'BREAKING CHANGE:' section
+          - Separate the body from the subject line with a blank line
           - Wrap body text at 72 characters
-          - Example body format:
-            
-            This commit introduces X to solve Y problem.
-            
-            BREAKING CHANGE: API endpoint Z now returns JSON instead of XML.
+          - In the body, explain **what** and **why**, not **how**
 
-          General Git style rules:
-          - Try to limit the subject line to 50 characters
-          - Capitalize the subject line
-          - Do not end the subject line with any punctuation
-          - Use the imperative mood in the subject line
+          Example with body:
+
+          feat(theme): add system dark mode support
+
+          This change adds automatic detection of system dark/light theme.
+          It falls back to manual theme setting if system preference is unavailable.
+
+          Example with breaking change:
+
+          refactor(routes)!: update router structure for nested layouts
+
+          BREAKING CHANGE: All route definitions must now include layout wrappers.
+
+          General Git style notes:
+          - Capitalize only proper nouns and acronyms in the description
+          - Commas are allowed; periods at the end of the subject are discouraged
 
           Only return the commit message(s) in your response. Do not include any additional meta-commentary.
+
           Generate $COMMITS_TO_SUGGEST different commit suggestions.
 
-          IMPORTANT: Do not wrap your response in markdown code blocks. Do not use \\\`\\\`\\\` in your response at all.
-          Just list each commit message directly, one per line.
+          IMPORTANT:
+          - Do not wrap your response in markdown code blocks
+          - Do not use \\\`\\\`\\\` or any other formatting
+          - Just list each commit message directly, one per line
 
           Here is an example of previous commit messages in this repository:
 
@@ -89,6 +124,7 @@ customCommands:
           \""
     command: "# Create a temporary file for the commit message\ncommit_msg_file=$(mktemp)\n\n# Clean the suggestions and save them to the file\ncommit_suggestions=$(echo \"{{.Form.CommitMsg}}\" | \\\n  sed 's/```[a-zA-Z]*//g' | \\\n  sed 's/```//g' | \\\n  sed 's/^[ \\t]*//g' | \\\n  sed 's/[ \\t]*$//g')\n\n# Write the suggestions to the temporary file\necho \"$commit_suggestions\" > \"$commit_msg_file\"\n\n# Saves the initial modification timestamp of the file\ninitial_timestamp=$(stat -c %Y \"$commit_msg_file\" 2>/dev/null || stat -f %m \"$commit_msg_file\")\n\n# Opens the commit message editor and captures the exit code\n${EDITOR:-vim} \"$commit_msg_file\"\neditor_exit=$?\n\n# Gets the new modification timestamp\nnew_timestamp=$(stat -c %Y \"$commit_msg_file\" 2>/dev/null || stat -f %m \"$commit_msg_file\")\n\n# Checks if the editor exited normally and if the file was saved\nif [ $editor_exit -ne 0 ]; then\n    echo \"Editor exited abnormally, commit aborted.\"\nelif [ \"$initial_timestamp\" != \"$new_timestamp\" ]; then\n    # The file was saved (timestamp has changed)\n    selected_msg=$(grep -v \"^#\" \"$commit_msg_file\" | grep -v \"^$\" | head -n 1)\n    \n    if [ -n \"$selected_msg\" ]; then\n        echo \"Creating commit with message: $selected_msg\"\n        git commit -m \"$selected_msg\"\n    else\n        echo \"No commit message selected, commit aborted.\"\n    fi\nelse\n    echo \"File was not saved, commit aborted.\"\nfi\n\n# Clean temp files\nrm -f \"$commit_msg_file\"\n"
     output: terminal
+    loadingText: "Generating conventional commit suggestions with AI"
 
   - key: "<c-v>"
     context: "global"
