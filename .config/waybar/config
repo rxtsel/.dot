@@ -8,7 +8,7 @@
   "mode": "dock",
   "spacing": 4,
   "include": [
-    "~/dot/.config/waybar/modules.json"
+    "~/.dot/.config/waybar/modules.json"
   ],
   "modules-left": [
     "hyprland/workspaces",
