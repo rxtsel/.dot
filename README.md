@@ -1,6 +1,6 @@
 # After [minimal Arch linux setup](https://www.rxtsel.dev/en/blog/how-to-install-arch-linux-using-the-command-line/), then
 
-My setup for Arch Linux with Hyprland, Waybar, Ghostty, and other tools. This setup is for a desktop environment, but it can be adapted to a laptop. This setup is based on **solarized-dark** colors.
+My setup for Arch Linux with Hyprland, Waybar, Ghostty, and other tools. This setup is based on **solarized-dark** colors.
 
 ## Indice
 
@@ -17,8 +17,8 @@ My setup for Arch Linux with Hyprland, Waybar, Ghostty, and other tools. This se
 - [4. Create symlinks for configurations](#4-create-symlinks-for-configurations)
 - [5. Icons and Cursor Theme](#5-icons-and-cursor-theme-optional) (optional)
 - [6. Utils for development](#6-utils-for-development-optional) (optional)
-- [7. Darkman](#7-darkman) (optional)
-- [8. rEFInd](#8-refind) (optional)
+- [7. Darkman](#7-darkman-optional) (optional)
+- [8. rEFInd](#8-refind-optional) (optional)
 <!--toc:end-->
 
 ## Gallery
