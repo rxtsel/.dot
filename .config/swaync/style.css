@@ -146,8 +146,13 @@ trough {
 
 .widget-title button {
   background: alpha(@text, 0.3);
-  border-radius: 999px;
-  padding: 3px 12px;
+  border: none;
+  border-radius: 8px;
+  padding: 2px 10px;
+  margin: 2px;
+  font-size: 16px;
+  min-width: 30px;
+  min-height: 30px;
 }
 
 .widget-title button:hover {
@@ -158,18 +163,110 @@ trough {
   background-color: @background;
 }
 
+/* NOTIFICATION GROUPS --------------------------------------------------------------- */
+
+/* Group headers and containers */
+.notification-group,
+.group-header {
+  margin: 8px 0;
+}
+
+.notification-group-header,
+.group-header {
+  background: alpha(@background-alt, 0.6);
+  border-radius: 12px;
+  padding: 8px 12px;
+  margin: 4px 0;
+}
+
+/* Group collapse/expand buttons */
+.notification-group .notification-group-header button,
+.notification-group-collapse-button,
+.group-header button,
+.group-header .collapse-button,
+.notification-group-buttons button {
+  background: alpha(@text, 0.3);
+  border: none;
+  border-radius: 8px;
+  padding: 6px 10px;
+  margin: 2px;
+  font-size: 14px;
+  min-width: 30px;
+  min-height: 30px;
+}
+
+.notification-group .notification-group-header button:hover,
+.notification-group-collapse-button:hover,
+.group-header button:hover,
+.group-header .collapse-button:hover,
+.notification-group-buttons button:hover {
+  background: alpha(@selected, 0.4);
+  color: #ffffff;
+}
+
+.notification-group .notification-group-header button:active,
+.notification-group-collapse-button:active,
+.group-header button:active,
+.group-header .collapse-button:active,
+.notification-group-buttons button:active {
+  background: @selected;
+  color: #ffffff;
+}
+
+/* Clear group specific button */
+.notification-group-close-button,
+.clear-group-button,
+.group-header .clear-button,
+.notification-group .clear-all-button {
+  background: alpha(@urgent, 0.3);
+  border-radius: 8px;
+  padding: 4px 8px;
+  font-size: 12px;
+  min-width: 24px;
+  min-height: 24px;
+}
+
+.notification-group-close-button:hover,
+.clear-group-button:hover,
+.group-header .clear-button:hover,
+.notification-group .clear-all-button:hover {
+  background: alpha(@urgent, 0.6);
+  color: #ffffff;
+}
+
+.notification-group-close-button:active,
+.clear-group-button:active,
+.group-header .clear-button:active,
+.notification-group .clear-all-button:active {
+  background: @urgent;
+  color: #ffffff;
+}
+
+/* Group body styling */
+.notification-group-body {
+  margin-left: 8px;
+  padding-left: 8px;
+}
+
 /* Buttons menu */
 .widget-buttons-grid {
-  margin: 0 0 20px 0;
+  margin-bottom: 16px;
+}
+
+.widget-buttons-grid>flowbox,
+.widget-buttons-grid>flowbox>flowboxchild {
+  margin: 0px;
+  padding: 0px;
 }
 
 .widget-buttons-grid>flowbox>flowboxchild>button {
-  padding: 10px 50px;
   background: alpha(@text, 0.3);
-  color: #ffffff;
-  border-radius: 999px;
-  transition: all 0.15s ease;
-  margin: 0 5px 10px 5px;
+  border: none;
+  border-radius: 8px;
+  padding: 6px 40px;
+  margin: 0px 5px 10px 5px;
+  min-width: 30px;
+  min-height: 30px;
 }
 
 .widget-buttons-grid>flowbox>flowboxchild>button label {
@@ -186,6 +283,60 @@ trough {
   background: @selected;
 }
 
+/* Volume widget */
+.widget-volume {
+  min-height: 30px;
+  border-radius: 12px;
+  margin: 10px -10px 26px 6px;
+}
+
+.widget-volume label {
+  font-size: 24px;
+  min-width: 30px;
+}
+
+/* Collapse button */
+.widget-volume button {
+  background: alpha(@text, 0.3);
+  border: none;
+  border-radius: 8px;
+  padding: 6px 10px;
+  margin: 0px 10px;
+  font-size: 14px;
+  min-width: 30px;
+  min-height: 30px;
+}
+
+.per-app-volume {
+  margin: 10px 10px 0px 0px;
+}
+
+.widget-volume trough,
+.per-app-volume trough {
+  background: alpha(@text, 0.3);
+  border-radius: 8px;
+  margin: 0px 0px 0px 20px;
+}
+
+.per-app-volume trough {
+  margin: 0px 0px 10px 26px;
+}
+
+trough highlight {
+  background: @selected;
+  border: none;
+  border-radius: 8px;
+}
+
+trough slider {
+  background: transparent;
+  border: none;
+  border-radius: 8px;
+  min-width: 30px;
+  min-height: 30px;
+  padding: 6px 10px;
+}
+
 /* Music player */
 @define-color mpris-album-art-overlay rgba(0, 0, 0, 0.55);
 @define-color mpris-button-hover rgba(0, 0, 0, 0.50);
@@ -193,9 +344,9 @@ trough {
 .widget-mpris .widget-mpris-player {
   padding: 8px;
   padding: 16px;
-  margin: 16px 0px;
   background-color: @mpris-album-art-overlay;
   border-radius: 12px;
+  margin-bottom: 26px;
 }
 
 .widget-mpris .widget-mpris-player button:hover {
@@ -226,58 +377,37 @@ trough {
   background-color: alpha(@background, 0.2);
 }
 
-/* Volume widget */
-.widget-volume {
-  margin: 0 0 20px 0;
-}
-
-trough {
-  background: alpha(@text, 0.3);
-  margin-left: 20px;
-  margin-right: 10px;
-}
-
-trough highlight {
-  padding: 5px;
-  background: @selected;
-  border-radius: 20px;
-  transition: all 0.15s ease;
-}
-
-trough slider {
-  background: #ffffff;
-  background: #ffffff;
-  padding: 6px;
-  border-radius: 12px;
-}
-
 .widget-dnd {
-    padding: 20px 0px;
-    border-radius: 999px;
-    font-size: large;
+  padding: 20px 0px;
+  border-radius: 8px;
+  font-size: large;
+  border: none;
 }
 
 .widget-dnd>switch {
-    border-radius: 999px;
-    background: alpha(@text, 0.3);
-    border: 1px solid transparent;
-    padding: 2px;
+  border-radius: 8px;
+  background: alpha(@text, 0.3);
+  border: none;
+  padding: 2px;
+  min-width: 30px;
+  min-height: 30px;
 }
 
-.widget-dnd>switch:hover,
 .widget-dnd>switch:checked {
-    background: @selected;
-    border: 1px solid transparent;
+  background: @selected;
+  border: none;
 }
 
 .widget-dnd>switch slider {
-    background: @selected-alt;
-    border-radius: 999px;
+  background: alpha(#FFFFFF, 0.6);
+  border-radius: 6px;
+  border: none;
 }
 
 .widget-dnd>switch:checked slider {
-    background: #FFFFFF;
-    border-radius: 999px;
+  background: alpha(#FFFFFF, 0.6);
+  border-radius: 6px;
+  border: none;
 }
 
 /* HIDDEN SCROLLBARS ---------------------------------------------------------------- */

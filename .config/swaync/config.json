@@ -47,7 +47,10 @@
       "image-radius": 12
     },
     "volume": {
-      "label": "󰕾"
+      "label": "󰕾",
+      "show-per-app": true,
+      "expand-button-label": "󰘕",
+      "collapse-button-label": "󰘖"
     },
     "buttons-grid": {
       "actions": [
