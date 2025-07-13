@@ -6,7 +6,7 @@
 
 * {
   all: unset;
-  font-family: 'Noto Sans', monospace;
+  font-family: "SF Pro Display", "CaskaydiaCove Nerd Font Propo"; /* "Nerd Font Propo" is required. "Propo" means proportional and helps prevent incorrect icon rendering. */
   font-size: 18px;
 }
 

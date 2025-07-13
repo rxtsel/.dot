@@ -4,6 +4,7 @@
 * {
 	background-image: none;
 	box-shadow: none;
+  font-family: "SF Pro Display", "CaskaydiaCove Nerd Font Propo"; /* "Nerd Font Propo" is required. "Propo" means proportional and helps prevent incorrect icon rendering. */
 }
 
 window {
