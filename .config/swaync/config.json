@@ -71,11 +71,11 @@
         },
         {
           "label": "",
-          "command": "ghostty -e bluetui"
+          "command": "ghostty -e bluetui & swaync-client -t"
         },
         {
           "label": "󰝚",
-          "command": "~/AppImages/youtube-music.AppImage"
+          "command": "~/AppImages/youtube-music.AppImage & swaync-client -t"
         },
         {
           "label": "",
