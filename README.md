@@ -5,6 +5,7 @@ My setup for Arch Linux with Hyprland, Waybar, Ghostty, and other tools. This se
 ## Indice
 
 <!--toc:start-->
+
 - [Gallery](#gallery)
 - [Project Structure](#project-structure)
 - [Installation](#installation)
@@ -128,11 +129,11 @@ You have 2 options to install an AUR helper:
 3. **AUR packages**:
 
    ```bash
-   paru -S swww gammastep wlr-randr brave-bin ttf-twemoji-color wlogout
+   paru -S swww gammastep wlr-randr brave-bin ttf-twemoji-color wlogout otf-san-francisco
 
    # Or
 
-   yay -S swww gammastep wlr-randr brave-bin ttf-twemoji-color wlogout
+   yay -S swww gammastep wlr-randr brave-bin ttf-twemoji-color wlogout otf-san-francisco
    ```
 
 ## 3. Oh-my-zsh
@@ -254,7 +255,7 @@ mv ~/Downloads/macOS* ~/.icons/
 Darkman is a tool for automatically switching between light and dark modes on Linux. It works by calculating sunrise and sunset times based on your geographical location to automatically change system themes. Key features include:
 
 - Automatic light/dark mode switching based on time of day
-- Manual toggle support with `darkman toggle` command  
+- Manual toggle support with `darkman toggle` command
 - Integration with GTK themes and desktop portals
 - Configurable based on geographical coordinates
 
