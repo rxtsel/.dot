@@ -71,7 +71,7 @@
         },
         {
           "label": "",
-          "command": "ghostty -e bluetui & swaync-client -t"
+          "command": "ghostty --title=\"bluetui\" -e bluetui & swaync-client -t"
         },
         {
           "label": "󰝚",
