@@ -23,14 +23,16 @@ My setup for Arch Linux with Hyprland, Waybar, Ghostty, and other tools. This se
 
 ## Gallery
 
-![desktop1](./screenshots/1714592501_grim.png)
+![desktop1](./screenshots/2025-07-12_23-21-39.png)
+
+![desktop2](./screenshots/2025-07-12_23-41-34.png)
 
 <details>
   <summary>Click here for more photos</summary>
 
-|                                                           |                                                       |
-| --------------------------------------------------------- | ----------------------------------------------------- |
-| ![desktop screentshot](./screenshots/1714785616_grim.png) | ![nvim screenshot](./screenshots/1714786448_grim.png) |
+|                                                    |
+| -------------------------------------------------- |
+| ![desktop3](./screenshots/2025-07-12_23-29-15.png) |
 
 </details>
 
