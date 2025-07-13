@@ -71,7 +71,7 @@
   },
   "custom/aichat": {
     "format": "",
-    "on-click": "ghostty -e aichat",
+    "on-click": "ghostty --title=\"aichat\" -e aichat",
     "tooltip-format": "AIChat",
   },
     "custom/notification": {
