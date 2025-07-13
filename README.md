@@ -30,9 +30,9 @@ My setup for Arch Linux with Hyprland, Waybar, Ghostty, and other tools. This se
 <details>
   <summary>Click here for more photos</summary>
 
-|                                                    |
-| -------------------------------------------------- |
-| ![desktop3](./screenshots/2025-07-12_23-29-15.png) |
+![desktop3](./screenshots/2025-07-13_12-50-10.png)
+
+![desktop4](./screenshots/2025-07-13_12-46-30.png)
 
 </details>
 
