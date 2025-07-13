@@ -131,11 +131,11 @@ You have 2 options to install an AUR helper:
 3. **AUR packages**:
 
    ```bash
-   paru -S swww gammastep wlr-randr brave-bin ttf-twemoji-color wlogout otf-san-francisco
+   paru -S swww gammastep wlr-randr brave-bin ttf-twemoji-color wlogout otf-san-francisco opencode-ai-bin
 
    # Or
 
-   yay -S swww gammastep wlr-randr brave-bin ttf-twemoji-color wlogout otf-san-francisco
+   yay -S swww gammastep wlr-randr brave-bin ttf-twemoji-color wlogout otf-san-francisco opencode-ai-bin
    ```
 
 ## 3. Oh-my-zsh

@@ -122,6 +122,7 @@ install_aur_packages() {
   install_aur_package ttf-twemoji-color
   install_aur_package wlogout
   install_aur_packages otf-san-francisco
+  install_aur_packages opencode-ai-bin
 }
 
 install_aur_package() {
