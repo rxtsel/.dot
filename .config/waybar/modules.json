@@ -11,16 +11,11 @@
     }
   },
   "tray": {
-    "icon-size": 16,
-    "spacing": 14
+    "icon-size": 19,
+    "spacing": 11
   },
   "clock": {
     "format": "{:%a %d %B %H:%M}",
-    "tooltip": true,
-    "tooltip-format": "Click to open notification center",
-    "on-click": "swaync-client -t -sw",
-    "on-click-right": "swaync-client -d -sw",
-    "escape": true
   },
   "cpu": {
     "format": " CPU {usage}% ",
@@ -33,44 +28,41 @@
     "format": "DISK {percentage_used}% "
   },
   "network": {
-   "format-wifi": " ",
-    "format-ethernet": "󱘖 ",
-    "tooltip-format": "󰤪    {essid}",
-    "format-linked": "󱘖   {ifname} (No IP)",
-    "format-disconnected": "󰤭 ",
+   "format-wifi": "󰖩",
+    "format-ethernet": "󰌗",
+    "tooltip-format": "󰌗  {ifname}",
+    "format-linked": "󱚿 {essid} (No IP)",
+    "format-disconnected": "󰖪",
     "interval": 5,
     "tooltip": true,
-    "icon-size": 24
   },
   "pulseaudio": {
     "format": "{icon}",
-    "format-muted": "󰝟 ",
+    "format-muted": "󰝟",
     "on-click": "pavucontrol -t 3",
     "on-scroll-up": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 0.05+",
     "on-scroll-down": "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 0.05-",
     "tooltip-format": "{volume}%",
     "scroll-step": 5,
     "format-icons": {
-      "headphone": " ",
-      "hands-free": " ",
-      "headset": " ",
+      "headphone": "",
+      "hands-free": "",
+      "headset": "",
       "default": [
-        " ",
-        " ",
-        " "
+        "",
+        "",
+        ""
       ]
     },
-    "icon-size": 24
   },
   "bluetooth": {
     "format": "",
-    "format-disabled": "󰂲 ",
-    "format-connected": "󰂲 ",
+    "format-disabled": "󰂲",
+    "format-connected": "󰂲",
     "on-click": "ghostty -e bluetui",
     "tooltip-format": "{device_alias}",
     "tooltip-format-connected": "{device_enumerate}",
     "tooltip-format-enumerate-connected": "{device_alias}",
-    "icon-size": 24
   },
   "hyprland/language": {
     "format": "{}",
@@ -78,9 +70,28 @@
     "format-es": "SP",
   },
   "custom/aichat": {
-    "format": " ",
+    "format": "",
     "on-click": "ghostty -e aichat",
     "tooltip-format": "AIChat",
-    "icon-size": 24
+  },
+    "custom/notification": {
+    "tooltip": false,
+    "format": "{icon}",
+    "format-icons": {
+      "notification": "<span foreground='red'><sup></sup></span>",
+      "none": "",
+      "dnd-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-none": "",
+      "inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "inhibited-none": "",
+      "dnd-inhibited-notification": "<span foreground='red'><sup></sup></span>",
+      "dnd-inhibited-none": ""
+    },
+    "return-type": "json",
+    "exec-if": "which swaync-client",
+    "exec": "swaync-client -swb",
+    "on-click": "swaync-client -t -sw",
+    "on-click-right": "swaync-client -d -sw",
+    "escape": true
   },
 }

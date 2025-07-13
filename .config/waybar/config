@@ -23,7 +23,8 @@
     "custom/exit",
     "group/hardware",
     "hyprland/language",
-    "clock"
+    "clock",
+    "custom/notification"
   ],
   "group/quicklinks": {
     "orientation": "horizontal",

@@ -3,9 +3,7 @@
  * ----------------------------------------------------- */
 
 * {
-  font-family:
-    "SF Pro Display",
-    -apple-system;
+  font-family: "SF Pro Display", "CaskaydiaCove Nerd Font Propo"; /* "Nerd Font Propo" is required. "Propo" means proportional and helps prevent incorrect icon rendering. */
   border: none;
   border-radius: 0;
   font-size: 16px;
@@ -14,8 +12,6 @@
 
 window#waybar {
   border: none;
-  margin: 0;
-  padding: 0;
   background-color: transparent;
   transition-property: background-color;
   transition-duration: 0.5s;
@@ -29,20 +25,17 @@ window#waybar {
   background: transparent;
   transition: all 0.5s ease-in-out;
   border: none;
-  margin: 0;
-  padding: 0;
 }
 
 #workspaces button {
   background-color: transparent;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.150s ease-in-out;
   color: #cccccc;
   opacity: 0.4;
 }
 
 #workspaces button.active {
   opacity: 1;
-  min-width: 30px;
   color: #ffffff;
 }
 
@@ -61,23 +54,10 @@ window#waybar {
 tooltip {
   border-radius: 4px;
   background-color: #1d1d1d;
-  padding: 20px;
-  margin: 0;
 }
 
 tooltip label {
   color: #ffffff;
-}
-
-/* -----------------------------------------------------
- * Modules
- * ----------------------------------------------------- */
-.modules-left>widget:first-child>#workspaces {
-  margin-left: 0;
-}
-
-.modules-right>widget:last-child>#workspaces {
-  margin-right: 0;
 }
 
 /* -----------------------------------------------------
@@ -86,21 +66,16 @@ tooltip label {
 #memory,
 #cpu,
 #disk {
-  font-size: 14px;
-  font-weight: normal;
   color: #ffffff;
-  min-width: 24px;
+  font-weight: 600;
 }
 
 /* -----------------------------------------------------
  * Clock
  * ----------------------------------------------------- */
 #clock {
-  font-size: 14px;
   color: #ffffff;
-  font-weight: normal;
   transition: background-color 0.5s ease;
-  margin-right: 11px;
 }
 
 /* -----------------------------------------------------
@@ -109,7 +84,6 @@ tooltip label {
 #pulseaudio {
   background-color: transparent;
   color: #ffffff;
-  min-width: 24px;
 }
 
 #pulseaudio.muted {
@@ -123,7 +97,6 @@ tooltip label {
 #network {
   background-color: transparent;
   color: #ffffff;
-  min-width: 24px;
 }
 
 #network.ethernet {
@@ -142,15 +115,11 @@ tooltip label {
 #bluetooth.on,
 #bluetooth.connected {
   background-color: transparent;
-  font-size: 16px;
   color: #ffffff;
-  min-width: 24px;
 }
 
 #bluetooth.off {
   background-color: transparent;
-  padding: 0;
-  margin: 0;
 }
 
 /* -----------------------------------------------------
@@ -158,7 +127,6 @@ tooltip label {
  * ----------------------------------------------------- */
 #tray {
   background-color: transparent;
-  min-width: 24px;
 }
 
 #tray>.passive {
@@ -194,10 +162,7 @@ label:focus {
  * ----------------------------------------------------- */
 
 #language {
-  min-width: 24px;
   color: #ffffff;
-  margin-right: 4px;
-  font-size: 14px;
   font-weight: 600;
 }
 
@@ -205,7 +170,10 @@ label:focus {
  * Custom Quicklinks
  * ----------------------------------------------------- */
 #custom-aichat {
-  font-size: 14px;
   color: #ffffff;
-  font-weight: normal;
+}
+
+#custom-notification {
+  color: #ffffff;
+  margin-right: 14px;
 }
