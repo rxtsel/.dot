@@ -341,17 +341,30 @@ trough slider {
 @define-color mpris-album-art-overlay rgba(0, 0, 0, 0.55);
 @define-color mpris-button-hover rgba(0, 0, 0, 0.50);
 
+.widget-mpris {
+  background: transparent;
+  border-radius: 12px;
+}
+
 .widget-mpris .widget-mpris-player {
-  padding: 8px;
   padding: 16px;
   background-color: @mpris-album-art-overlay;
   border-radius: 12px;
-  margin-bottom: 26px;
+}
+
+.widget-mpris .widget-mpris-player button {
+  background: alpha(@text, 0.3);
 }
 
 .widget-mpris .widget-mpris-player button:hover {
-  /* The media player buttons (play, pause, next, etc...) */
-  background: @background;
+  background: @text;
+}
+
+/* Hidden next prev buttons */
+.control-center .widget-mpris .flat .horizontal {
+	min-height: 0px;
+	min-width: 0px;
+  margin: 0 -100px;
 }
 
 .widget-mpris .widget-mpris-player .widget-mpris-album-art {
