@@ -276,6 +276,22 @@ install_cz_cli() {
   fi
 }
 
+install_docker() {
+  prompt "Do you want to install Docker?" "Y/n"
+
+  read -r DOCKER
+
+  if [[ "$DOCKER" =~ ^[Yy]$ || -z "$DOCKER" ]]; then
+    info "Installing Docker..."
+    sudo pacman -S docker --noconfirm &&
+      sudo systemctl enable --now docker &&
+      success "Docker installed and started successfully."
+    log "You can now use Docker commands."
+  else
+    success "Skipping Docker installation."
+  fi
+}
+
 install_icons() {
   info "Installing icons and cursor theme..."
   install_mkos_icons
@@ -314,6 +330,7 @@ dev_utils() {
   install_python
   install_ni_package_manager
   install_cz_cli
+  install_docker
 }
 
 # RUN

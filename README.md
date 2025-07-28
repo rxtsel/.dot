@@ -252,6 +252,13 @@ mv ~/Downloads/macOS* ~/.icons/
    echo '{ "path": "cz-conventional-changelog" }' > ~/.czrc
    ```
 
+5. Install [Docker](https://docs.docker.com/engine/install/archlinux/) (optional):
+
+   ```bash
+   sudo pacman -S docker &&
+   sudo systemctl enable --now docker
+   ```
+
 ## 7. [Darkman](https://darkman.whynothugo.nl/) (optional)
 
 Darkman is a tool for automatically switching between light and dark modes on Linux. It works by calculating sunrise and sunset times based on your geographical location to automatically change system themes. Key features include:
