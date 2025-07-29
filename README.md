@@ -173,10 +173,11 @@ If a folder exists, it is deleted before create symlinks.
 [ -d ~/.config/wofi ] && rm -rf ~/.config/wofi
 [ -d ~/.config/yazi ] && rm -rf ~/.config/yazi
 [ -d ~/.config/zellij ] && rm -rf ~/.config/zellij
+[ -d ~/.config/uwsm ] && rm -rf ~/.config/uwsm
 
 ln -s ~/.dot/.zshrc ~/.zshrc &&
 ln -s ~/.dot/.zprofile ~/.zprofile &&
-ln -s ~/.dot/.config/{gammastep,ghostty,hypr,lazygit,swaync,waybar,wlogout,wofi,yazi,zellij} ~/.config
+ln -s ~/.dot/.config/{gammastep,ghostty,hypr,lazygit,swaync,waybar,wlogout,wofi,yazi,zellij,uwsm} ~/.config
 ```
 
 ## 5. Icons and Cursor Theme (optional)
@@ -212,11 +213,14 @@ mv ~/Downloads/macOS* ~/.icons/
 ```
 
 > [!NOTE]
-> The cursor theme environment variables are already configured in the Hyprland configuration (`~/.config/hypr/conf/environment.conf`):
+> The cursor theme environment variables are already configured in the UWSM configuration (`~/.config/uwsm/env`):
 >
 > ```conf
+> # `env-hyprland` file
 > env = HYPRCURSOR_THEME,macOS
 > env = HYPRCURSOR_SIZE,24
+>
+> # `env` file
 > env = XCURSOR_THEME,macOS
 > env = XCURSOR_SIZE,24
 > ```

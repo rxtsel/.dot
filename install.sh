@@ -166,12 +166,13 @@ delete_needed_dot_files() {
   safe_rm_dir "$HOME/.config/wofi"
   safe_rm_dir "$HOME/.config/yazi"
   safe_rm_dir "$HOME/.config/zellij"
+  safe_rm_dir "$HOME/.config/uwsm"
 }
 
 create_symlinks() {
   info "Creating symlinks for dotfiles..."
   ln -s "$HOME/.dot/.zshrc" "$HOME/.zshrc"
-  ln -s "$HOME/.dot/.config/"{gammastep,ghostty,hypr,lazygit,swaync,waybar,wlogout,wofi,yazi,zellij} "$HOME/.config"
+  ln -s "$HOME/.dot/.config/"{gammastep,ghostty,hypr,lazygit,swaync,waybar,wlogout,wofi,yazi,zellij,uwsm} "$HOME/.config"
 }
 
 zprofile_tty() {
