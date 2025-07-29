@@ -84,7 +84,7 @@ prompt() {
 install_base_packages() {
   info "Installing essential system packages..."
   sudo pacman -Syyu --noconfirm git neovim qt5-wayland qt6-wayland slurp wofi grim hyprland \
-    polkit-kde-agent swaync ghostty xdg-desktop-portal-hyprland chromium yazi fd \
+    polkit-gnome swaync ghostty xdg-desktop-portal-hyprland chromium yazi fd \
     mpv nautilus ark bluez bluez-utils ripgrep wl-clipboard pavucontrol unzip libnotify fuse2 \
     7zip zsh imagemagick feh bat exa fzf thunderbird bluetui wget tree btop macchina lazygit waybar \
     gst-plugin-pipewire libpipewire pipewire pipewire-alsa pipewire-audio pipewire-jack pipewire-pulse discord aichat \
@@ -174,16 +174,16 @@ create_symlinks() {
   ln -s "$HOME/.dot/.config/"{gammastep,ghostty,hypr,lazygit,swaync,waybar,wlogout,wofi,yazi,zellij} "$HOME/.config"
 }
 
-zlogin_tty() {
+zprofile_tty() {
   prompt "Do you want to start Hyprland automatically on TTY1 after login?" "Y/n"
   read -r TTY
   if [[ "$TTY" =~ ^[Yy]$ || -z "$TTY" ]]; then
-    info "Creating .zlogin file to start Hyprland on TTY1..."
-    [ -f "$HOME/.zlogin" ] && mv "$HOME/.zlogin" "$HOME/.zlogin.bk"
-    ln -s "$HOME/.dot/.zlogin" "$HOME/.zlogin"
-    success ".zlogin created successfully."
+    info "Creating .zprofile file to start Hyprland on TTY1..."
+    [ -f "$HOME/.zprofile" ] && mv "$HOME/.zprofile" "$HOME/.zprofile.bk"
+    ln -s "$HOME/.dot/.zprofile" "$HOME/.zprofile"
+    success ".zprofile created successfully."
   else
-    success "Skipping .zlogin creation."
+    success "Skipping .zprofile creation."
   fi
 }
 
@@ -341,7 +341,7 @@ install_base_packages &&
   oh_my_zsh_plugins &&
   delete_needed_dot_files &&
   create_symlinks &&
-  zlogin_tty &&
+  zprofile_tty &&
   install_emojis_support &&
   install_icons &&
   dev_utils

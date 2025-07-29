@@ -57,7 +57,7 @@ My setup for Arch Linux with Hyprland, Waybar, Ghostty, and other tools. This se
 │   └── zellij/
 ├── utils/
 ├── wallpapers/
-├── .zlogin
+├── .zprofile
 └── .zshrc
 ```
 
@@ -115,7 +115,7 @@ You have 2 options to install an AUR helper:
 
    ```bash
    sudo pacman -Syyu --noconfirm git neovim qt5-wayland qt6-wayland slurp wofi grim hyprland \
-     polkit-kde-agent swaync ghostty xdg-desktop-portal-hyprland chromium yazi fd \
+     polkit-gnome swaync ghostty xdg-desktop-portal-hyprland chromium yazi fd \
      mpv nautilus ark bluez bluez-utils ripgrep wl-clipboard pavucontrol unzip libnotify fuse2 \
      7zip zsh imagemagick feh bat exa fzf thunderbird bluetui wget tree btop macchina lazygit waybar \
      gst-plugin-pipewire libpipewire pipewire pipewire-alsa pipewire-audio pipewire-jack pipewire-pulse discord aichat \
@@ -162,6 +162,7 @@ If a folder exists, it is deleted before create symlinks.
 
 ```bash
 [ -f ~/.zshrc ] && rm -f ~/.zshrc
+[ -f ~/.zprofile ] && rm -f ~/.zprofile
 [ -d ~/.config/gammastep ] && rm -rf ~/.config/gammastep
 [ -d ~/.config/ghostty ] && rm -rf ~/.config/ghostty
 [ -d ~/.config/hypr ] && rm -rf ~/.config/hypr
@@ -174,6 +175,7 @@ If a folder exists, it is deleted before create symlinks.
 [ -d ~/.config/zellij ] && rm -rf ~/.config/zellij
 
 ln -s ~/.dot/.zshrc ~/.zshrc &&
+ln -s ~/.dot/.zprofile ~/.zprofile &&
 ln -s ~/.dot/.config/{gammastep,ghostty,hypr,lazygit,swaync,waybar,wlogout,wofi,yazi,zellij} ~/.config
 ```
 
@@ -256,7 +258,7 @@ mv ~/Downloads/macOS* ~/.icons/
 
    ```bash
    sudo pacman -S docker &&
-   sudo systemctl enable --now docker
+   systemctl --user enable docker
    ```
 
 ## 7. [Darkman](https://darkman.whynothugo.nl/) (optional)
