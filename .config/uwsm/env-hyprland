@@ -1,0 +1,13 @@
+# For HYPR* and AQ_* env vars
+export XDG_CURRENT_DESKTOP=Hyprland
+export XDG_SESSION_TYPE=wayland
+export XDG_SESSION_DESKTOP=Hyprland
+export HYPRCURSOR_THEME=macOS
+export HYPRCURSOR_SIZE=24
+export HYPRLAND_TRACE=1
+export HYPRLAND_NO_SD_NOTIFY=1
+export HYPRLAND_NO_RT=1
+export HYPRLAND_NO_SD_VARS=1
+export AQ_TRACE=1
+export AQ_MGPU_NO_EXPLICIT=1
+export AQ_NO_MODIFIERS=1
