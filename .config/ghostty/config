@@ -34,13 +34,12 @@ link-url = true
 
 # Custom keybindings
 keybind = alt+r=reload_config
-keybind = alt+i=inspector:toggle
 keybind = alt+f=toggle_fullscreen
 keybind = alt+left=previous_tab
 keybind = alt+right=next_tab
 
 # Zellij-like prefix controlled keybindings
-keybind = alt+t>n=new_tab
+keybind = alt+t>c=new_tab
 
 # Splits
 keybind = alt+p>r=new_split:right
