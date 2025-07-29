@@ -258,7 +258,8 @@ mv ~/Downloads/macOS* ~/.icons/
 
    ```bash
    sudo pacman -S docker &&
-   systemctl --user enable docker
+   sudo systemctl enable docker.service &&
+   sudo usermod -aG docker $(whoami) &&
    ```
 
 ## 7. [Darkman](https://darkman.whynothugo.nl/) (optional)

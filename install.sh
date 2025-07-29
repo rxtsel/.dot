@@ -283,8 +283,9 @@ install_docker() {
 
   if [[ "$DOCKER" =~ ^[Yy]$ || -z "$DOCKER" ]]; then
     info "Installing Docker..."
-    sudo pacman -S docker --noconfirm &&
-      sudo systemctl enable --now docker &&
+    sudo pacman -S docker &&
+      sudo systemctl enable docker.service &&
+      sudo usermod -aG docker $(whoami) &&
       success "Docker installed and started successfully."
     log "You can now use Docker commands."
   else
