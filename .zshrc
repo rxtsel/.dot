@@ -27,3 +27,6 @@ alias cat='bat --style=plain --paging=never'
 export BAT_THEME="Solarized (dark)"
 
 export SNACKS_GHOSTTY=true
+
+# Zoxide
+eval "$(zoxide init zsh)"
