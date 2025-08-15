@@ -132,7 +132,7 @@ You have 2 options to install an AUR helper:
 3. **AUR packages**:
 
    ```bash
-   paru -S swww gammastep wlr-randr brave-bin ttf-twemoji-color wlogout otf-san-francisco opencode-ai-bin
+   paru -S swww gammastep wlr-randr brave-bin ttf-twemoji-color wlogout otf-san-francisco opencode-ai-bin rust-analyzer-git
 
    # Or
 
