@@ -120,7 +120,7 @@ You have 2 options to install an AUR helper:
      7zip zsh imagemagick feh bat exa fzf thunderbird bluetui wget tree btop macchina lazygit waybar \
      gst-plugin-pipewire libpipewire pipewire pipewire-alsa pipewire-audio pipewire-jack pipewire-pulse discord aichat \
      darkman xdg-desktop-portal-gtk nwg-look gnome-keyring libsecret ntfs-3g \
-     hyprpicker zoxide
+     hyprpicker zoxide hyprlock
    ```
 
 2. **Fonts for emoji support**:
