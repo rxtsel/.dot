@@ -10,9 +10,8 @@
   "control-center-margin-right": 8,
   "control-center-margin-left": 0,
   "notification-window-width": 480,
-  "notification-icon-size": 96,
-  "notification-body-image-height": 96,
-  "notification-body-image-width": 96,
+  "notification-body-image-height": 100,
+  "notification-body-image-width": 200,
   "timeout": 10,
   "timeout-low": 2,
   "timeout-critical": 6,
@@ -44,13 +43,17 @@
     },
     "mpris": {
       "image-size": 96,
-      "image-radius": 12
+      "show-album-art": "when-available",
+      "loop-carousel": false
     },
     "volume": {
       "label": "󰕾",
       "show-per-app": true,
       "expand-button-label": "󰘕",
-      "collapse-button-label": "󰘖"
+      "collapse-button-label": "󰘖",
+      "icon-size": 24,
+      "show-per-app-icon": true,
+      "show-per-app-label": false
     },
     "buttons-grid": {
       "actions": [

@@ -7,6 +7,11 @@
 
 /* NOTIFICATIONS ------------------------------------------------------------------------ */
 
+:root {
+  --notification-icon-size: 96px;
+  --mpris-album-art-icon-size: 96px;
+}
+
 * {
   color: @text;
   all: unset;
@@ -285,7 +290,6 @@ trough {
 
 /* Volume widget */
 .widget-volume {
-  min-height: 30px;
   border-radius: 12px;
   margin: 10px -10px 26px 6px;
 }
@@ -297,18 +301,13 @@ trough {
 
 /* Collapse button */
 .widget-volume button {
-  background: alpha(@text, 0.3);
+  background: alpha(@text, 0.2);
   border: none;
   border-radius: 8px;
   padding: 6px 10px;
   margin: 0px 10px;
-  font-size: 14px;
-  min-width: 30px;
-  min-height: 30px;
-}
-
-.per-app-volume {
-  margin: 10px 10px 0px 0px;
+  min-width: 20px;
+  min-height: 20px;
 }
 
 .widget-volume trough,
@@ -318,10 +317,6 @@ trough {
   margin: 0px 0px 0px 20px;
 }
 
-.per-app-volume trough {
-  margin: 0px 0px 10px 26px;
-}
-
 trough highlight {
   background: @selected;
   border: none;
@@ -329,12 +324,18 @@ trough highlight {
 }
 
 trough slider {
-  background: transparent;
+  background: alpha(@text, 0.3);
   border: none;
   border-radius: 8px;
-  min-width: 30px;
-  min-height: 30px;
-  padding: 6px 10px;
+  min-height: 8px;
+}
+
+.per-app-volume {
+  margin: 10px 10px 0px 2px;
+}
+
+.per-app-volume trough {
+  margin: 0px 60px 10px 25px;
 }
 
 /* Music player */
@@ -353,11 +354,14 @@ trough slider {
 }
 
 .widget-mpris .widget-mpris-player button {
-  background: alpha(@text, 0.3);
+  background: alpha(@mpris-button-hover, 0.8);
+  min-width: 40px;
+  min-height: 40px;
+  border-radius: 8px;
 }
 
 .widget-mpris .widget-mpris-player button:hover {
-  background: @text;
+  background: alpha(@mpris-button-hover, 0.6);
 }
 
 /* Hidden next prev buttons */
@@ -402,7 +406,7 @@ trough slider {
   background: alpha(@text, 0.3);
   border: none;
   padding: 2px;
-  min-width: 30px;
+  min-width: 60px;
   min-height: 30px;
 }
 
