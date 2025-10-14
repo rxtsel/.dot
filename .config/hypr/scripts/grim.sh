@@ -14,5 +14,5 @@ if grim -g "$(slurp)" "$FILENAME"; then
   cat "$FILENAME" | wl-copy
 
   # Notify the user of success
-  notify-send "Screenshot" "Saved to: $FILENAME\n\n<b>Screenshot copied to clipboard</b>" -i "$FILENAME" -t 5000
+  notify-send -e -h string:x-canonical-private-synchronous:osd -t 3000 "Screenshot" "Saved to: $FILENAME\n\n<b>Screenshot copied to clipboard</b>" -i "$FILENAME"
 fi

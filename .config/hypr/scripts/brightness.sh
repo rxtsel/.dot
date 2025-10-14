@@ -38,13 +38,9 @@ get_cur() {
   [ -n "$cur" ] && echo "$cur" || echo "0"
 }
 
-notify_limit() {
+notify_osd() {
   val=$1
-  if [ "$val" -le 0 ]; then
-    notify-send "Brightness" "Already at minimum (0%)"
-  elif [ "$val" -ge 100 ]; then
-    notify-send "Brightness" "Already at maximum (100%)"
-  fi
+  notify-send -e -h string:x-canonical-private-synchronous:osd -t 1000 "Brightness" "Brightness: ${val}%"
 }
 
 # --- Argument parsing ---
@@ -80,8 +76,8 @@ for BUS in $BUSES; do
   if [ "$MODE" = "ABS" ]; then
     new="$ABS"
     ddcutil --bus="$BUS" setvcp "$VCP" -- "$new" >/dev/null
-    echo "BUS $BUS → brightness ${new}%"
-    notify_limit "$new"
+    echo "BUS $BUS → brightness ${new}"
+    notify_osd "$new"
   else
     cur="$(get_cur "$BUS")"
     sign="$(printf '%s' "$DELTA" | cut -c1)"
@@ -93,8 +89,8 @@ for BUS in $BUSES; do
     fi
     new="$(clamp_0_100 "$new")"
     ddcutil --bus="$BUS" setvcp "$VCP" -- "$new" >/dev/null
-    echo "BUS $BUS → $cur% → $new% (Δ $DELTA)"
-    notify_limit "$new"
+    echo "BUS $BUS → $cur → $new (Δ $DELTA)"
+    notify_osd "$new"
   fi
   sleep 0.05
 done
