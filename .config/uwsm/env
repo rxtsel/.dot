@@ -2,3 +2,9 @@
 export XCURSOR_THEME=macOS
 export XCURSOR_SIZE=24
 export QT_WAYLAND_DISABLE_WINDOWDECORATION=1
+
+# Font intl chars support
+GTK_IM_MODULE=fcitx
+QT_IM_MODULE=fcitx
+XMODIFIERS=@im=fcitx
+
