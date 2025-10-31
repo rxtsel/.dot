@@ -85,7 +85,7 @@ prompt() {
 # Flow
 install_base_packages() {
   info "Installing essential system packages..."
-  sudo pacman -Syyu --noconfirm git neovim qt5-wayland qt6-wayland slurp wofi grim hyprland \
+  sudo pacman -Syyu --noconfirm git neovim qt5-wayland qt6-wayland slurp grim hyprland \
     polkit-gnome swaync ghostty xdg-desktop-portal-hyprland chromium yazi fd \
     mpv nautilus ark bluez bluez-utils ripgrep wl-clipboard pavucontrol unzip libnotify fuse2 \
     7zip zsh imagemagick feh bat exa fzf thunderbird bluetui wget tree btop macchina lazygit waybar \
@@ -168,7 +168,6 @@ delete_needed_dot_files() {
   safe_rm_dir "$HOME/.config/swaync"
   safe_rm_dir "$HOME/.config/waybar"
   safe_rm_dir "$HOME/.config/wlogout"
-  safe_rm_dir "$HOME/.config/wofi"
   safe_rm_dir "$HOME/.config/yazi"
   safe_rm_dir "$HOME/.config/zellij"
   safe_rm_dir "$HOME/.config/uwsm"
@@ -177,7 +176,7 @@ delete_needed_dot_files() {
 create_symlinks() {
   info "Creating symlinks for dotfiles..."
   ln -s "$HOME/.dot/.zshrc" "$HOME/.zshrc"
-  ln -s "$HOME/.dot/.config/"{gammastep,ghostty,hypr,lazygit,swaync,waybar,wlogout,wofi,yazi,zellij,uwsm} "$HOME/.config"
+  ln -s "$HOME/.dot/.config/"{gammastep,ghostty,hypr,lazygit,swaync,waybar,wlogout,yazi,zellij,uwsm} "$HOME/.config"
 }
 
 zprofile_tty() {

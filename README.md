@@ -51,7 +51,6 @@ My setup for Arch Linux with Hyprland, Waybar, Ghostty, and other tools. This se
 │   ├── swaync/
 │   ├── waybar/
 │   ├── wlogout/
-│   ├── wofi/
 │   ├── yazi/
 │   ├── zed/
 │   └── zellij/
@@ -114,7 +113,7 @@ You have 2 options to install an AUR helper:
 1. **Pacman packages**:
 
    ```bash
-   sudo pacman -Syyu --noconfirm git neovim qt5-wayland qt6-wayland slurp wofi grim hyprland \
+   sudo pacman -Syyu --noconfirm git neovim qt5-wayland qt6-wayland slurp grim hyprland \
      polkit-gnome swaync ghostty xdg-desktop-portal-hyprland chromium yazi fd \
      mpv nautilus ark bluez bluez-utils ripgrep wl-clipboard pavucontrol unzip libnotify fuse2 \
      7zip zsh imagemagick feh bat exa fzf thunderbird bluetui wget tree btop macchina lazygit waybar \
@@ -171,14 +170,13 @@ If a folder exists, it is deleted before create symlinks.
 [ -d ~/.config/swaync ] && rm -rf ~/.config/swaync
 [ -d ~/.config/waybar ] && rm -rf ~/.config/waybar
 [ -d ~/.config/wlogout ] && rm -rf ~/.config/wlogout
-[ -d ~/.config/wofi ] && rm -rf ~/.config/wofi
 [ -d ~/.config/yazi ] && rm -rf ~/.config/yazi
 [ -d ~/.config/zellij ] && rm -rf ~/.config/zellij
 [ -d ~/.config/uwsm ] && rm -rf ~/.config/uwsm
 
 ln -s ~/.dot/.zshrc ~/.zshrc &&
 ln -s ~/.dot/.zprofile ~/.zprofile &&
-ln -s ~/.dot/.config/{gammastep,ghostty,hypr,lazygit,swaync,waybar,wlogout,wofi,yazi,zellij,uwsm} ~/.config
+ln -s ~/.dot/.config/{gammastep,ghostty,hypr,lazygit,swaync,waybar,wlogout,yazi,zellij,uwsm} ~/.config
 ```
 
 ## 5. Icons and Cursor Theme (optional)
