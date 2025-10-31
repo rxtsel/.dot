@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# TODO: add aur package install intance of paru
+
 INTERRUPTED=false
 EXIT_STATUS=0
 AUR_HELPER="paru"
@@ -125,6 +127,7 @@ install_aur_packages() {
   install_aur_packages otf-san-francisco
   install_aur_packages crush-bin
   install_aur_package rust-analyzer-git
+  install_aur_package vicinae-bin
 }
 
 install_aur_package() {
