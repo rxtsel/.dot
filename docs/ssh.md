@@ -12,17 +12,7 @@ ssh-keygen -t ed25519 -f ~/.ssh/github_ed25519 -C "github"
 ssh-add ~/.ssh/github_ed25519
 ```
 
-### Test SSH authentication with GitHub
-
-```bash
-ssh -T git@github.com
-```
-
----
-
-### Enable “Verified” commits on GitHub (SSH signing)
-
-Upload the **same public key** twice in GitHub:
+### Upload the **public key** twice in GitHub:
 
 ```bash
 cat ~/.ssh/github_ed25519.pub
