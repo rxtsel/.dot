@@ -128,29 +128,24 @@ This keeps user configuration clean and portable.
 
 ---
 
-## SSH & GitHub Signing
+## SSH
 
 SSH is configured **declaratively** via home-manager:
 
 * Dedicated SSH key for GitHub
 * Explicit `~/.ssh/config`
-* SSH-based Git commit signing (modern approach, no GPG)
 
-See full documentation in:
-
-```text
-docs/ssh.md
-```
+See full documentation in: [docs/ssh.md](./docs/ssh.md).
 
 ---
 
 ## Why This Structure
 
-- [ x ]: Scales to multiple machines
-- [ x ]: Clear separation of concerns
-- [ x ]: No duplicated configuration
-- [ x ]: Easy to extend with new roles or hosts
-- [ x ]: Works cleanly with flakes + home-manager
+- [x]: Scales to multiple machines
+- [x]: Clear separation of concerns
+- [x]: No duplicated configuration
+- [x]: Easy to extend with new roles or hosts
+- [x]: Works cleanly with flakes + home-manager
 
 ---
 
