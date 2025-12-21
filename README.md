@@ -141,11 +141,11 @@ See full documentation in: [docs/ssh.md](./docs/ssh.md).
 
 ## Why This Structure
 
-- [x]: Scales to multiple machines
-- [x]: Clear separation of concerns
-- [x]: No duplicated configuration
-- [x]: Easy to extend with new roles or hosts
-- [x]: Works cleanly with flakes + home-manager
+- [x] Scales to multiple machines
+- [x] Clear separation of concerns
+- [x] No duplicated configuration
+- [x] Easy to extend with new roles or hosts
+- [x] Works cleanly with flakes + home-manager
 
 ---
 
