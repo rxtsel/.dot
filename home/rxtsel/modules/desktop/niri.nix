@@ -99,10 +99,7 @@
 
 
     // AUTOSTART
-    spawn-at-startup "dbus-update-activation-environment" "--systemd" "DISPLAY WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=GNOME"
-    spawn-at-startup "swaybg" "-o" "DP-1" "-i" "/home/rxtsel/Pictures/wallpaper_1.png" "-m" "fill"
-    spawn-at-startup "swaybg" "-o" "DP-2" "-i" "/home/rxtsel/Pictures/wallpaper_0.png" "-m" "fill"
-    spawn-at-startup "waybar"
+    // spawn-at-startup "dbus-update-activation-environment" "--systemd" "DISPLAY WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=GNOME"
 
     hotkey-overlay {
       skip-at-startup
@@ -118,9 +115,6 @@
       QT_QPA_PLATFORM "wayland"
       QT_QPA_PLATFORMTHEME "qt6ct"
       QT_QPA_PLATFORMTHEME_QT6 "qt6ct"
-      GTK_IM_MODULE "fcitx"
-      QT_IM_MODULE "fcitx"
-      XMODIFIERS "@im=fcitx"
     }
 
 

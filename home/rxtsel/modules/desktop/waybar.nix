@@ -1,6 +1,26 @@
 { pkgs, ... }:
 
 {
+  # Start on init session
+  systemd.user.services.waybar = {
+    Unit = {
+      Description = "Waybar status bar";
+      PartOf = [ "graphical-session.target" ];
+      After = [ "graphical-session.target" ];
+      Requisite = [ "graphical-session.target" ];
+    };
+
+    Service = {
+      ExecStart = "${pkgs.waybar}/bin/waybar";
+      Restart = "on-failure";
+    };
+
+    Install = {
+      WantedBy = [ "graphical-session.target" ];
+    };
+  };
+
+  # Generate config file
   programs.waybar = {
     enable = true;
 

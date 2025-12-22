@@ -7,6 +7,7 @@
     ./dev/git-signing-ssh.nix
     ./desktop/waybar.nix
     ./desktop/niri.nix
+    ./desktop/swaybg.nix
     ./shells/fish.nix
   ];
 }
