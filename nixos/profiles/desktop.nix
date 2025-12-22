@@ -8,5 +8,6 @@
     ../modules/packages
     ../modules/hardware
     ../modules/security
+    ../modules/dev
   ];
 }
