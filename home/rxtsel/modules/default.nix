@@ -21,6 +21,7 @@
     ./desktop/thunderbird.nix
     ./desktop/bitwarden-cli.nix
     ./desktop/i2c.nix
+    ./desktop/wallust.nix
     ./shells/fish.nix
   ];
 }

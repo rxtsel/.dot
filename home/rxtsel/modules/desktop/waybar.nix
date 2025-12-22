@@ -160,29 +160,8 @@
     };
 
     style = ''
-      /* --- colors.css (inlined) --- */
-      @define-color cursor #DC322F;
-
-      @define-color background #002B36;
-      @define-color foreground #EEE8D5;
-
-      @define-color color0  #002B36;
-      @define-color color1  #DC322F;
-      @define-color color2  #859900;
-      @define-color color3  #B58900;
-      @define-color color4  #268BD2;
-      @define-color color5  #D33682;
-      @define-color color6  #2AA198;
-      @define-color color7  #EEE8D5;
-
-      @define-color color8  #586E75;
-      @define-color color9  #DC322F;
-      @define-color color10 #859900;
-      @define-color color11 #B58900;
-      @define-color color12 #268BD2;
-      @define-color color13 #D33682;
-      @define-color color14 #2AA198;
-      @define-color color15 #FDF6E3;
+      /* --- colors.css (wallust generate) --- */
+      @import url("colors.css");
 
 
       /* -----------------------------------------------------

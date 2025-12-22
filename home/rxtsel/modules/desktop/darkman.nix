@@ -23,6 +23,11 @@
       wallpaper = ''
         ${pkgs.systemd}/bin/systemctl --user restart swaybg.service || true
       '';
+      wallust = ''
+        wallust cs solarized-dark
+        systemctl --user restart waybar
+        swaync-client -R || true
+      '';
     };
 
     lightModeScripts = {
@@ -37,6 +42,11 @@
       '';
       wallpaper = ''
         ${pkgs.systemd}/bin/systemctl --user restart swaybg.service
+      '';
+      wallust = ''
+        wallust cs solarized-light
+        systemctl --user restart waybar
+        swaync-client -R || true
       '';
     };
   };
