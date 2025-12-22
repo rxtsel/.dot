@@ -7,6 +7,7 @@
     ../modules/desktop
     ../modules/packages
     ../modules/hardware
+    ../modules/security
   ];
 }
 

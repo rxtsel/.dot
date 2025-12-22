@@ -8,7 +8,5 @@
       pkgs.xdg-desktop-portal-gnome
     ];
   };
-
-  services.gnome.gnome-keyring.enable = true;
 }
 
