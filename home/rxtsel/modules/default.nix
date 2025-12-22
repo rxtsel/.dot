@@ -18,6 +18,7 @@
     ./desktop/gtk.nix
     ./desktop/darkman.nix
     ./desktop/vicinae.nix
+    ./desktop/thunderbird.nix
     ./shells/fish.nix
   ];
 }
