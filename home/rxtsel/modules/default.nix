@@ -13,6 +13,7 @@
     ./desktop/swaybg.nix
     ./desktop/notifications.nix
     ./desktop/polkit.nix
+    ./desktop/gammastep.nix
     ./shells/fish.nix
   ];
 }
