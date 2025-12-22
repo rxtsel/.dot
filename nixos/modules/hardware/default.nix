@@ -3,4 +3,3 @@
     ./bluetooth.nix
   ];
 }
-

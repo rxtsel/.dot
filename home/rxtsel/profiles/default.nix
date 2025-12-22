@@ -3,4 +3,3 @@
     ./desktop.nix
   ];
 }
-

@@ -7,7 +7,7 @@
     settings = {
       user = {
         name = vars.fullName;
-        email = vars.email;
+        inherit (vars) email;
       };
 
       init.defaultBranch = "main";
@@ -22,4 +22,3 @@
     };
   };
 }
-

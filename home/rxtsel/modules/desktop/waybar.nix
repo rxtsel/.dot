@@ -57,7 +57,7 @@
             code = "";
             browser = "";
             explorer = "";
-			      music = "";
+            music = "";
             social = "";
             email = "";
             default = "";
@@ -109,7 +109,11 @@
             headphone = "";
             hands-free = "";
             headset = "";
-            default = [ "" "" "" ];
+            default = [
+              ""
+              ""
+              ""
+            ];
           };
         };
 
@@ -352,4 +356,3 @@
     wireplumber
   ];
 }
-

@@ -1,4 +1,3 @@
 {
   security.polkit.enable = true;
 }
-

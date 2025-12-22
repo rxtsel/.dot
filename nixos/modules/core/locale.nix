@@ -10,4 +10,3 @@
     keyMap = "${vars.keyboard.consoleKeyMap}";
   };
 }
-

@@ -14,4 +14,3 @@
   # Disable PulseAudio to avoid conflicts
   services.pulseaudio.enable = false;
 }
-

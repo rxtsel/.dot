@@ -1,7 +1,10 @@
 { pkgs, ... }:
 
 {
-  home.packages = [ pkgs.swaynotificationcenter pkgs.libnotify ];
+  home.packages = [
+    pkgs.swaynotificationcenter
+    pkgs.libnotify
+  ];
 
   systemd.user.services.swaync = {
     Unit = {

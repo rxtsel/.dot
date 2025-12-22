@@ -13,4 +13,3 @@
     displayManager.lightdm.enable = false;
   };
 }
-

@@ -3,4 +3,3 @@
     ./apple-fonts.nix
   ];
 }
-

@@ -3,6 +3,14 @@
     enable = true;
 
     interactiveShellInit = ''
+      # Only for login shell
+      if status is-login
+          niri-session
+      end
+
+      # Disable greeting
+      set fish_greeting
+
       # theme (bobthefish / prompt vars)
       set -g theme_color_scheme terminal-dark
       set -g fish_prompt_pwd_dir_length 1
@@ -12,9 +20,9 @@
     '';
 
     shellAliases = {
-      ls  = "eza --group-directories-first";
-      la  = "eza -a --group-directories-first";
-      ll  = "eza -l --group-directories-first";
+      ls = "eza --group-directories-first";
+      la = "eza -a --group-directories-first";
+      ll = "eza -l --group-directories-first";
       lla = "eza -la --group-directories-first";
       vim = "nvim";
     };
@@ -26,4 +34,3 @@
     };
   };
 }
-
