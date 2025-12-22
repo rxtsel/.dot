@@ -166,12 +166,12 @@
     // Youtube music
     window-rule {
         match app-id=r#"^com\.github\.th_ch\.youtube_music$"#
-        open-on-workspace "social"
-        open-focused false
+        open-on-workspace "music"
+        open-focused true
         open-floating true
         default-window-height { proportion 0.5; }
         default-column-width { proportion 0.5; }
-        default-floating-position x=0 y=0 relative-to="bottom-left"
+        default-floating-position x=0 y=120 relative-to="top"
     }
     // ResponsivelyApp
     window-rule {

@@ -23,6 +23,7 @@
     ./desktop/i2c.nix
     ./desktop/wallust.nix
     ./desktop/swaync.nix
+    ./desktop/appimages.nix
     ./shells/fish.nix
   ];
 }
