@@ -17,9 +17,15 @@
     };
   };
 
-  outputs = inputs@{ self, nixpkgs, home-manager, ... }:
+  outputs =
+    inputs@{
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+    }:
     let
-      lib = nixpkgs.lib;
+      inherit (nixpkgs) lib;
 
       baseVars = import ./vars/default.nix;
 
@@ -30,14 +36,14 @@
       mkHost =
         hostKey: hostVars:
         let
-          resolvedHostVars =
-            hostVars
-            // { hostName = hostVars.hostName or hostKey; };
+          resolvedHostVars = hostVars // {
+            hostName = hostVars.hostName or hostKey;
+          };
 
           vars = baseVars // resolvedHostVars;
-          system = vars.system;
+          inherit (vars) system;
         in
-        nixpkgs.lib.nixosSystem {
+        lib.nixosSystem {
           inherit system;
 
           specialArgs = {
@@ -49,16 +55,17 @@
 
             home-manager.nixosModules.home-manager
             {
-              home-manager.useGlobalPkgs = true;
-              home-manager.useUserPackages = true;
-              home-manager.backupFileExtension = "backup";
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                backupFileExtension = "backup";
 
-              home-manager.extraSpecialArgs = {
-                inherit inputs vars;
+                extraSpecialArgs = {
+                  inherit inputs vars;
+                };
+
+                users.${vars.username} = import (./home + "/${vars.username}");
               };
-
-              home-manager.users.${vars.username} =
-                import (./home + "/${vars.username}");
             }
           ];
         };
