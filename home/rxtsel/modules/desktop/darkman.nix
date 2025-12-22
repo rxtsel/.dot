@@ -16,7 +16,12 @@
         ${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/color-scheme '"prefer-dark"'
       '';
       vicinae = ''
-        ${pkgs.vicinae}/bin/vicinae theme set "solarized-dark"
+        ${pkgs.vicinae}/bin/vicinae ping >/dev/null 2>&1 || ${pkgs.vicinae}/bin/vicinae server >/dev/null 2>&1 &
+        sleep 0.2
+        ${pkgs.vicinae}/bin/vicinae theme set "solarized-dark" || true
+      '';
+      wallpaper = ''
+        ${pkgs.systemd}/bin/systemctl --user restart swaybg.service || true
       '';
     };
 
@@ -26,7 +31,12 @@
         ${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/color-scheme '"default"'
       '';
       vicinae = ''
-        ${pkgs.vicinae}/bin/vicinae theme set "solarized-light"
+        ${pkgs.vicinae}/bin/vicinae ping >/dev/null 2>&1 || ${pkgs.vicinae}/bin/vicinae server >/dev/null 2>&1 &
+        sleep 0.2
+        ${pkgs.vicinae}/bin/vicinae theme set "solarized-light" || true
+      '';
+      wallpaper = ''
+        ${pkgs.systemd}/bin/systemctl --user restart swaybg.service
       '';
     };
   };
