@@ -5,7 +5,7 @@
 
     config = {
       global = {
-        log_format = "";
+        hide_env_diff = true;
       };
     };
   };

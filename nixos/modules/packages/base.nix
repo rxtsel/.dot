@@ -33,5 +33,12 @@
     nixfmt-rfc-style
     statix
     deadnix
+    gcc
+    gnumake
+    cargo
+    rust-analyzer
+    rustc
+    nodejs_24
+    nodePackages.pnpm
   ];
 }

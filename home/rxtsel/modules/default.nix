@@ -6,7 +6,7 @@
     ./dev/lazygit.nix
     ./dev/ssh.nix
     ./dev/git-signing-ssh.nix
-    ./dev/nvim.nix
+    ./dev/ni.nix
     ./core/direnv.nix
     ./desktop/waybar.nix
     ./desktop/niri.nix
