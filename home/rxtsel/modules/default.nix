@@ -22,6 +22,7 @@
     ./desktop/bitwarden-cli.nix
     ./desktop/i2c.nix
     ./desktop/wallust.nix
+    ./desktop/swaync.nix
     ./shells/fish.nix
   ];
 }
