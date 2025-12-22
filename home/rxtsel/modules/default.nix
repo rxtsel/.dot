@@ -19,6 +19,7 @@
     ./desktop/darkman.nix
     ./desktop/vicinae.nix
     ./desktop/thunderbird.nix
+    ./desktop/bitwarden-cli.nix
     ./shells/fish.nix
   ];
 }
