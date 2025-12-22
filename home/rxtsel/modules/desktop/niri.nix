@@ -146,7 +146,7 @@
     }
     // Thunderbird
     window-rule {
-        match app-id=r#"^org\.mozilla\.Thunderbird$"#
+        match app-id=r#"^thunderbird$"#
         open-on-workspace "email"
         open-maximized true
         open-focused false
