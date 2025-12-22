@@ -49,6 +49,7 @@ The goal is to keep the system:
         └── modules           # Home-manager modules (by domain)
             ├── terminal      # Terminal tools (ghostty, kitty, etc.)
             ├── browser       # Browsers (Zen, etc.)
+            ├── desktop       # Desktop tools (Niri, Waybar, etc.)
             └── dev           # Developer tooling (git, ssh, signing)
 ```
 

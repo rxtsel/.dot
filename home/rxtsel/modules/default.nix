@@ -5,6 +5,8 @@
     ./dev/git.nix
     ./dev/ssh.nix
     ./dev/git-signing-ssh.nix
+    ./desktop/waybar.nix
+    ./desktop/niri.nix
   ];
 }
 
