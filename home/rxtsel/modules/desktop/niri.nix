@@ -1,4 +1,4 @@
-{ ... }:
+{ vars, ... }:
 
 {
   # Write Niri config to: ~/.config/niri/config.kdl
@@ -30,9 +30,9 @@
       focus-follows-mouse
       keyboard {
         xkb {
-          layout "us"
-          variant "dvorak-intl"
-          options "lv3:ralt-switch"
+          layout "${vars.keyboard.xkb.layout}"
+          variant "${vars.keyboard.xkb.variant}"
+          options "${vars.keyboard.xkb.options}"
         }
       }
     }
@@ -104,10 +104,6 @@
     spawn-at-startup "swaybg" "-o" "DP-2" "-i" "/home/rxtsel/Pictures/wallpaper_0.png" "-m" "fill"
     spawn-at-startup "waybar"
 
-    // Force dvorak intl for x11 apps after a short delay
-    spawn-sh-at-startup "sleep 2 && setxkbmap us -variant dvorak-intl"
-
-
     hotkey-overlay {
       skip-at-startup
     }
@@ -122,6 +118,9 @@
       QT_QPA_PLATFORM "wayland"
       QT_QPA_PLATFORMTHEME "qt6ct"
       QT_QPA_PLATFORMTHEME_QT6 "qt6ct"
+      GTK_IM_MODULE "fcitx"
+      QT_IM_MODULE "fcitx"
+      XMODIFIERS "@im=fcitx"
     }
 
 
