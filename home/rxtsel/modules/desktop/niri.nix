@@ -215,6 +215,8 @@
         // Brightness key mappings for brightnessctl.
         XF86MonBrightnessUp allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "+10%"; }
         XF86MonBrightnessDown allow-when-locked=true { spawn "brightnessctl" "--class=backlight" "set" "10%-"; }
+        Mod+XF86AudioRaiseVolume allow-when-locked=true { spawn "brightness" "10+"; }
+        Mod+XF86AudioLowerVolume allow-when-locked=true { spawn "brightness" "10-"; }
 
         // Open/close the Overview: a zoomed-out view of workspaces and windows.
         Mod+O repeat=false { toggle-overview; }

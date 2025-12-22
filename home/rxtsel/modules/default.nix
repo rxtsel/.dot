@@ -20,6 +20,7 @@
     ./desktop/vicinae.nix
     ./desktop/thunderbird.nix
     ./desktop/bitwarden-cli.nix
+    ./desktop/i2c.nix
     ./shells/fish.nix
   ];
 }
