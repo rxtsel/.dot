@@ -8,6 +8,8 @@
     ./desktop/waybar.nix
     ./desktop/niri.nix
     ./desktop/swaybg.nix
+    ./desktop/notifications.nix
+    ./desktop/polkit.nix
     ./shells/fish.nix
   ];
 }
