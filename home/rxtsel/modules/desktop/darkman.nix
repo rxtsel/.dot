@@ -10,14 +10,24 @@
       usegeoclue = false;
     };
 
-    darkModeScripts.gtk = ''
-      ${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/gtk-theme '"Adwaita-Dark"'
-      ${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/color-scheme '"prefer-dark"'
-    '';
+    darkModeScripts = {
+      gtk = ''
+        ${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/gtk-theme '"Adwaita-Dark"'
+        ${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/color-scheme '"prefer-dark"'
+      '';
+      vicinae = ''
+        ${pkgs.vicinae}/bin/vicinae theme set "solarized-dark"
+      '';
+    };
 
-    lightModeScripts.gtk = ''
-      ${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/gtk-theme '"Adwaita"'
-      ${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/color-scheme '"default"'
-    '';
+    lightModeScripts = {
+      gtk = ''
+        ${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/gtk-theme '"Adwaita"'
+        ${pkgs.dconf}/bin/dconf write /org/gnome/desktop/interface/color-scheme '"default"'
+      '';
+      vicinae = ''
+        ${pkgs.vicinae}/bin/vicinae theme set "solarized-light"
+      '';
+    };
   };
 }

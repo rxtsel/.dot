@@ -193,7 +193,7 @@
         Mod+Shift+Slash { show-hotkey-overlay; }
 
         Mod+T hotkey-overlay-title="Open a Terminal: Ghostty" { spawn "ghostty"; }
-        // Mod+Space hotkey-overlay-title="Run an Application: vicinae" { spawn "vicinae" "toggle"; }
+        Mod+Space hotkey-overlay-title="Run an Application: vicinae" { spawn "vicinae" "toggle"; }
         Super+E hotkey-overlay-title="Open a file explorer: Yazi" { spawn-sh "ghostty -e yazi"; }
         Super+Alt+L hotkey-overlay-title="Lock the Screen: swaylock" { spawn "swaylock"; }
         Mod+B hotkey-overlay-title="Open Browser" { spawn "zen"; }

@@ -17,6 +17,7 @@
     ./desktop/icons.nix
     ./desktop/gtk.nix
     ./desktop/darkman.nix
+    ./desktop/vicinae.nix
     ./shells/fish.nix
   ];
 }
