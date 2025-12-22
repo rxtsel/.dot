@@ -4,6 +4,7 @@
     enableZshIntegration = true;
 
     settings = {
+      theme = "dark:iTerm2 Solarized Dark, light:iTerm2 Solarized Light";
       background-opacity = 0.65;
       background-blur = true;
       font-family = "CaskaydiaCove Nerd Font";
@@ -17,7 +18,7 @@
 
       # Window controls
       confirm-close-surface = true;
-      window-theme = "dark";
+      window-theme = "system";
       window-decoration = true;
       window-padding-balance = true;
       window-save-state = "always";
