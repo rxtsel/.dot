@@ -1,4 +1,4 @@
-{ pkgs, ... }:
+{ vars, pkgs, ... }:
 
 {
   home.packages = [ pkgs.gammastep ];
@@ -6,8 +6,8 @@
   services.gammastep = {
     enable = true;
 
-    latitude = 4.7110;
-    longitude = -74.0721;
+    inherit (vars) latitude;
+    inherit (vars) longitude;
 
     temperature = {
       day = 6500;

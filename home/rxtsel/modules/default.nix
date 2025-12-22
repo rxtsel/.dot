@@ -14,6 +14,9 @@
     ./desktop/notifications.nix
     ./desktop/polkit.nix
     ./desktop/gammastep.nix
+    ./desktop/icons.nix
+    ./desktop/gtk.nix
+    ./desktop/darkman.nix
     ./shells/fish.nix
   ];
 }

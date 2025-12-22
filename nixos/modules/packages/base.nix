@@ -40,5 +40,6 @@
     rustc
     nodejs_24
     nodePackages.pnpm
+    nautilus
   ];
 }

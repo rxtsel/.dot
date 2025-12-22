@@ -6,6 +6,8 @@
 
   # Locale defaults
   timeZone = "America/Bogota";
+  latitude = 4.7110;
+  longitude = -74.0721;
   defaultLocale = "en_US.UTF-8";
 
   # Default platform (Can override)

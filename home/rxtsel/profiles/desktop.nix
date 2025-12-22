@@ -7,6 +7,12 @@
 
     sessionVariables = {
       EDITOR = "nvim";
+
+      XCURSOR_THEME = "macOS";
+      XCURSOR_SIZE = "24";
+
+      HYPRCURSOR_THEME = "macOS";
+      HYPRCURSOR_SIZE = "24";
     };
 
     # Custom cursor theme
