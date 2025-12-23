@@ -12,16 +12,16 @@
       username = {
         style_user = "green bold";
         style_root = "red bold";
-        format = "[$user]($style) ";
-        disabled = false;
+        format = "[$user]($style)";
+        disabled = true;
         show_always = true;
       };
 
       hostname = {
         ssh_only = false;
-        format = "on [$hostname](bold yellow) ";
+        format = "@[$hostname](bold yellow) ";
         trim_at = ".";
-        disabled = false;
+        disabled = true;
       };
 
       character = {
@@ -77,7 +77,7 @@
       terraform.symbol = "󰘏 ";
 
       nodejs = {
-        format = "via [ Node.js $version](bold green) ";
+        format = "via [ $version](bold green) ";
         detect_files = [
           "package.json"
           ".node-version"
