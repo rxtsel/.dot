@@ -349,9 +349,5 @@
         // Powers off the monitors. To turn them back on, do any input like
         Mod+Shift+P { power-off-monitors; }
     }
-
-    xwayland-satellite {
-        path "xwayland-satellite"
-    }
   '';
 }

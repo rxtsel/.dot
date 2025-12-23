@@ -26,7 +26,7 @@
     ./desktop/swaync.nix
     ./desktop/appimages.nix
     ./desktop/discord.nix
-    # ./desktop/xwayland-satellite.nix
+    ./desktop/obs.nix
     ./shells/fish.nix
   ];
 }
