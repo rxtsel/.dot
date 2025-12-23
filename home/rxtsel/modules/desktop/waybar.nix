@@ -11,7 +11,7 @@
     };
 
     Service = {
-      ExecStart = "${pkgs.waybar}/bin/waybar";
+      ExecStart = "${pkgs.waybar}/bin/waybar -c /home/rxtsel/.config/waybar/config -s /home/rxtsel/.config/waybar/style.css";
       Restart = "on-failure";
     };
 
@@ -32,7 +32,6 @@
         margin-bottom = 0;
         height = 32;
         exclusive = true;
-        mode = "dock";
         spacing = 11;
 
         modules-left = [
