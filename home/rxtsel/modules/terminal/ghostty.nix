@@ -4,7 +4,7 @@
     enableZshIntegration = true;
 
     settings = {
-      theme = "dark:iTerm2 Solarized Dark, light:iTerm2 Solarized Light";
+      theme = "solarized";
       background-opacity = 0.65;
       background-blur = true;
       font-family = "CaskaydiaCove Nerd Font";
@@ -14,14 +14,14 @@
       cursor-invert-fg-bg = true;
       mouse-hide-while-typing = true;
       gtk-tabs-location = "bottom";
-      title = " ";
+      title = "\" \"";
 
       # Window controls
       confirm-close-surface = true;
       window-theme = "system";
       window-decoration = true;
-      window-padding-balance = true;
-      window-save-state = "always";
+      window-padding-balance = false;
+      window-save-state = "never";
 
       # Auto update settings
       auto-update = "download";
@@ -34,10 +34,6 @@
 
       keybind = [
         "alt+r=reload_config"
-        "alt+i=inspector:toggle"
-        "alt+f=toggle_fullscreen"
-        "alt+left=previous_tab"
-        "alt+right=next_tab"
         "alt+t>n=new_tab"
         "alt+p>r=new_split:right"
         "alt+p>d=new_split:down"
@@ -47,14 +43,6 @@
         "alt+p>j=goto_split:bottom"
         "alt+p>k=goto_split:top"
         "alt+p>l=goto_split:right"
-        "alt+p>left=goto_split:left"
-        "alt+p>down=goto_split:bottom"
-        "alt+p>up=goto_split:top"
-        "alt+p>right=goto_split:right"
-        "alt+h=goto_split:left"
-        "alt+j=goto_split:bottom"
-        "alt+k=goto_split:top"
-        "alt+l=goto_split:right"
         "alt+t>l=next_tab"
         "alt+t>h=previous_tab"
       ];

@@ -145,6 +145,9 @@ in
 
         swaync.template = 'swaync.css'
         swaync.target = '~/.config/swaync/colors.css'
+
+        ghostty.template = 'ghostty.conf'
+        ghostty.target = '~/.config/ghostty/themes/solarized'
       '';
 
       "wallust/templates/ghostty.conf".text = ghosttyTemplate;
