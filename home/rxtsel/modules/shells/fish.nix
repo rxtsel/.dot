@@ -20,10 +20,10 @@
     '';
 
     shellAliases = {
-      ls = "eza --group-directories-first";
-      la = "eza -a --group-directories-first";
-      ll = "eza -l --group-directories-first";
-      lla = "eza -la --group-directories-first";
+      ls = "eza --group-directories-first --icons";
+      la = "eza -a --group-directories-first --icons";
+      ll = "eza -l --group-directories-first --icons";
+      lla = "eza -la --group-directories-first --icons";
       vim = "nvim";
     };
 
