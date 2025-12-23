@@ -28,6 +28,13 @@
         systemctl --user restart waybar
         swaync-client -R || true
       '';
+      neovim = ''
+        for socket in /run/user/$(id -u)/nvim.*.0; do
+          if [ -S "$socket" ]; then
+            ${pkgs.neovim}/bin/nvim --server "$socket" --remote-send ':lua vim.o.background="dark"<CR>' 2>/dev/null || true
+          fi
+        done
+      '';
     };
 
     lightModeScripts = {
@@ -47,6 +54,13 @@
         wallust cs solarized-light
         systemctl --user restart waybar
         swaync-client -R || true
+      '';
+      neovim = ''
+        for socket in /run/user/$(id -u)/nvim.*.0; do
+          if [ -S "$socket" ]; then
+            ${pkgs.neovim}/bin/nvim --server "$socket" --remote-send ':lua vim.o.background="light"<CR>' 2>/dev/null || true
+          fi
+        done
       '';
     };
   };
