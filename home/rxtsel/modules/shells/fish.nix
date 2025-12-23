@@ -8,6 +8,9 @@
           niri-session
       end
 
+      # Start starship
+      starship init fish | source
+
       # Disable greeting
       set fish_greeting
 

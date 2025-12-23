@@ -1,6 +1,7 @@
 {
   imports = [
     ./terminal/ghostty.nix
+    ./terminal/starship.nix
     ./browser/zen.nix
     ./dev/git.nix
     ./dev/lazygit.nix
@@ -24,6 +25,8 @@
     ./desktop/wallust.nix
     ./desktop/swaync.nix
     ./desktop/appimages.nix
+    ./desktop/discord.nix
+    # ./desktop/xwayland-satellite.nix
     ./shells/fish.nix
   ];
 }
