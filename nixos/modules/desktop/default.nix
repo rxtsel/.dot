@@ -6,5 +6,6 @@
     ./x11.nix
     ./ime.nix
     ./i2c.nix
+    ./udisk.nix
   ];
 }
