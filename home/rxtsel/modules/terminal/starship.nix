@@ -13,7 +13,7 @@
         style_user = "green bold";
         style_root = "red bold";
         format = "[$user]($style)";
-        disabled = true;
+        disabled = false;
         show_always = true;
       };
 
@@ -21,7 +21,7 @@
         ssh_only = false;
         format = "@[$hostname](bold yellow) ";
         trim_at = ".";
-        disabled = true;
+        disabled = false;
       };
 
       character = {
@@ -45,7 +45,7 @@
       cmd_duration = {
         min_time = 4;
         show_milliseconds = false;
-        disabled = false;
+        disabled = true;
         style = "bold italic red";
       };
 
