@@ -13,13 +13,6 @@
 
       # Disable greeting
       set fish_greeting
-
-      # theme (bobthefish / prompt vars)
-      set -g theme_color_scheme terminal-dark
-      set -g fish_prompt_pwd_dir_length 1
-      set -g theme_display_user yes
-      set -g theme_hide_hostname no
-      set -g theme_hostname always
     '';
 
     shellAliases = {
@@ -34,6 +27,19 @@
       nixrs = "sudo nixos-rebuild switch --flake ~/.dot/#blackout";
       nixgc = "sudo nix-collect-garbage -d && sudo nix-store --optimise";
       nixboot = "sudo bootctl cleanup";
+    };
+
+    functions = {
+      o = {
+        description = "Open current directory (or a given path) with the default file manager via gio";
+        body = ''
+          if test (count $argv) -eq 0
+            gio open .
+          else
+            gio open $argv[1]
+          end
+        '';
+      };
     };
   };
 }
