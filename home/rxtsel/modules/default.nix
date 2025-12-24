@@ -29,6 +29,7 @@
     ./desktop/obs.nix
     ./desktop/xwayland-satellite.nix
     ./desktop/discord.nix
+    ./desktop/xdg.nix
     ./shells/fish.nix
   ];
 }
