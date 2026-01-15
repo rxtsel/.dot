@@ -6,7 +6,6 @@
     ghostty
     yazi
     zoxide
-    neovim
     chromium
     swaybg
     imagemagick
@@ -28,16 +27,8 @@
     zip
     gzip
     wl-clipboard
-    tree-sitter
-    nil
-    nixfmt-rfc-style
-    statix
-    deadnix
     gcc
     gnumake
-    cargo
-    rust-analyzer
-    rustc
     nodejs_24
     nodePackages.pnpm
     nautilus

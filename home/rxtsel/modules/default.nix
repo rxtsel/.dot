@@ -30,6 +30,8 @@
     ./desktop/xwayland-satellite.nix
     ./desktop/discord.nix
     ./desktop/xdg.nix
+    ./desktop/showmethekey.nix
+    ./desktop/neovim.nix
     ./shells/fish.nix
   ];
 }

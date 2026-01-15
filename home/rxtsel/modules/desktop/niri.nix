@@ -100,6 +100,7 @@
 
     // AUTOSTART
     // spawn-at-startup "dbus-update-activation-environment" "--systemd" "DISPLAY WAYLAND_DISPLAY" "XDG_CURRENT_DESKTOP=GNOME"
+    spawn-at-startup "discord"
 
     hotkey-overlay {
       skip-at-startup
@@ -178,6 +179,14 @@
       match app-id=r#"ResponsivelyApp$"#
       open-fullscreen true
       open-on-workspace "browser"
+    }
+    // Clockify
+    window-rule {
+      match app-id=r#"Clockify$"#
+      open-fullscreen false
+      open-on-workspace "social"
+      open-floating true
+      default-floating-position x=0 y=0 relative-to="bottom-right"
     }
 
 
