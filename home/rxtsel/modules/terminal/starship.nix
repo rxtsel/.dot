@@ -26,7 +26,7 @@
 
       character = {
         success_symbol = "[➜](bold green)";
-        error_symbol = "[✗](bold red)";
+        error_symbol = "[✘](bold red)";
 
         # normal / visual / replace / replace_one (fish)
         vimcmd_symbol = "[➜](bold blue)";
