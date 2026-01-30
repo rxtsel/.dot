@@ -19,64 +19,59 @@
     # Neovim
     nvf = {
       url = "github:NotAShelf/nvf";
-      inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
-  outputs =
-    inputs@{
-      self,
-      nixpkgs,
-      home-manager,
-      ...
-    }:
-    let
-      inherit (nixpkgs) lib;
+  outputs = inputs @ {
+    nixpkgs,
+    home-manager,
+    ...
+  }: let
+    inherit (nixpkgs) lib;
 
-      baseVars = import ./vars/default.nix;
+    baseVars = import ./vars/default.nix;
 
-      hosts = {
-        blackout = import ./vars/hosts/blackout.nix;
-      };
-
-      mkHost =
-        hostKey: hostVars:
-        let
-          resolvedHostVars = hostVars // {
-            hostName = hostVars.hostName or hostKey;
-          };
-
-          vars = baseVars // resolvedHostVars;
-          inherit (vars) system;
-        in
-        lib.nixosSystem {
-          inherit system;
-
-          specialArgs = {
-            inherit inputs vars;
-          };
-
-          modules = [
-            (./hosts + "/${vars.hostName}")
-
-            home-manager.nixosModules.home-manager
-            {
-              home-manager = {
-                useGlobalPkgs = true;
-                useUserPackages = true;
-                backupFileExtension = "backup";
-
-                extraSpecialArgs = {
-                  inherit inputs vars;
-                };
-
-                users.${vars.username} = import (./home + "/${vars.username}");
-              };
-            }
-          ];
-        };
-    in
-    {
-      nixosConfigurations = lib.mapAttrs mkHost hosts;
+    hosts = {
+      blackout = import ./vars/hosts/blackout.nix;
     };
+
+    mkHost = hostKey: hostVars: let
+      resolvedHostVars =
+        hostVars
+        // {
+          hostName = hostVars.hostName or hostKey;
+        };
+
+      vars = baseVars // resolvedHostVars;
+      inherit (vars) system;
+    in
+      lib.nixosSystem {
+        inherit system;
+
+        specialArgs = {
+          inherit inputs vars;
+        };
+
+        modules = [
+          (./hosts + "/${vars.hostName}")
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager = {
+              useGlobalPkgs = true;
+              useUserPackages = true;
+              backupFileExtension = "backup";
+
+              extraSpecialArgs = {
+                inherit inputs vars;
+              };
+
+              users.${vars.username} = import (./home + "/${vars.username}");
+            };
+          }
+        ];
+      };
+  in {
+    nixosConfigurations = lib.mapAttrs mkHost hosts;
+  };
 }

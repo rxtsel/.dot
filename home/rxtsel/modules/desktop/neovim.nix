@@ -1,8 +1,11 @@
-{ inputs, pkgs, ... }:
-
 {
+  inputs,
+  pkgs,
+  lib,
+  ...
+}: {
   # Import NVF Home Manager defaults
-  imports = [ inputs.nvf.homeManagerModules.default ];
+  imports = [inputs.nvf.homeManagerModules.default];
 
   programs.nvf = {
     enable = true;
@@ -32,11 +35,14 @@
       };
 
       # Treesitter configuration
+      syntaxHighlighting = true;
       treesitter = {
         enable = true;
+        fold = false;
         highlight.enable = true;
+        indent.enable = true;
         addDefaultGrammars = true;
-        fold = true;
+        autotagHtml = true;
       };
 
       # Clipboard settings
@@ -104,6 +110,7 @@
       presence.neocord.enable = true;
       notify.nvim-notify.enable = true;
       ui.colorizer.enable = true;
+      formatter.conform-nvim.enable = true;
 
       # Editor options
       options = {
@@ -141,49 +148,59 @@
 
       # Language-specific settings
       languages = {
-        rust = {
-          enable = true;
-          treesitter.enable = true;
-        };
+        enableFormat = true;
+        enableExtraDiagnostics = true;
+        enableDAP = true;
+        enableTreesitter = true;
+
+        rust.enable = true;
         nix.enable = true;
-        astro = {
-          enable = true;
-          treesitter.enable = true;
-        };
+        astro.enable = true;
         lua.enable = true;
-        css = {
-          enable = true;
-          treesitter.enable = true;
-        };
-        svelte = {
-          enable = true;
-          treesitter.enable = true;
-        };
+        css.enable = true;
+        svelte.enable = true;
         tailwind.enable = true;
         ts = {
           enable = true;
-          treesitter.enable = true;
           extensions.ts-error-translator.enable = true;
         };
         markdown = {
           enable = true;
           extensions.markview-nvim.enable = true;
-          extensions.render-markdown-nvim.enable = true;
         };
       };
-
-      # Utilities and Mini plugins
-      utility.oil-nvim = {
-        enable = true;
-        gitStatus.enable = true;
+      mini = {
+        # Utilities and Mini plugins
+        pick.enable = true;
+        pairs.enable = true;
+        surround.enable = true;
       };
-      mini.pick.enable = true;
-      mini.pairs.enable = true;
-      mini.surround.enable = true;
       statusline.lualine.enable = true;
       binds.whichKey = {
         enable = true;
         setupOpts.preset = "helix";
+      };
+      filetree.neo-tree = {
+        enable = true;
+        setupOpts = {
+          auto_clean_after_session = true;
+          enable_git_status = true;
+
+          window = {
+            position = "right";
+          };
+
+          event_handlers = [
+            {
+              event = "file_open_requested";
+              handler = lib.mkLuaInline ''
+                function()
+                  require("neo-tree.command").execute({ action = "close" })
+                end
+              '';
+            }
+          ];
+        };
       };
 
       # Global settings
@@ -209,16 +226,22 @@
         {
           mode = "n";
           key = "<leader>q";
-          action = "<CMD>q<CR>";
+          action = "<CMD>qq<CR>";
           desc = "Quit";
+        }
+        {
+          mode = "n";
+          key = "<leader>q";
+          action = "<CMD>bdelete<CR>";
+          desc = "Delete buffer";
         }
 
         # Explorer / pickers
         {
           mode = "n";
           key = "<leader>e";
-          action = "<CMD>Oil<CR>";
-          desc = "Open Oil";
+          action = "<CMD>Neotree toggle<CR>";
+          desc = "Open Neotree";
         }
         {
           mode = "n";
@@ -268,14 +291,14 @@
         }
         {
           mode = "n";
-          key = "<Tab>";
-          action = "<CMD>tabnext<CR>";
+          key = "<S-l>";
+          action = "<CMD>bnext<CR>";
           desc = "Next tab";
         }
         {
           mode = "n";
-          key = "<S-Tab>";
-          action = "<CMD>tabprev<CR>";
+          key = "<S-h>";
+          action = "<CMD>bprevious<CR>";
           desc = "Previous tab";
         }
 
