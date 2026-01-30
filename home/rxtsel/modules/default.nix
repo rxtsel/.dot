@@ -32,6 +32,7 @@
     ./desktop/xdg.nix
     ./desktop/showmethekey.nix
     ./desktop/neovim.nix
+    ./desktop/rustdesk.nix
     ./shells/fish.nix
   ];
 }
