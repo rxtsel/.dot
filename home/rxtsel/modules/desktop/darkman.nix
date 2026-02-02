@@ -28,6 +28,9 @@
         systemctl --user restart waybar
         swaync-client -R || true
       '';
+      ghostty = ''
+        ${pkgs.systemd}/bin/busctl --user call com.mitchellh.ghostty /com/mitchellh/ghostty org.gtk.Actions Activate "sava{sv}" "reload-config" 0 0 || true
+      '';
       neovim = ''
         for socket in /run/user/$(id -u)/nvim.*.0; do
           if [ -S "$socket" ]; then
@@ -54,6 +57,9 @@
         wallust cs solarized-light
         systemctl --user restart waybar
         swaync-client -R || true
+      '';
+      ghostty = ''
+        ${pkgs.systemd}/bin/busctl --user call com.mitchellh.ghostty /com/mitchellh/ghostty org.gtk.Actions Activate "sava{sv}" "reload-config" 0 0 || true
       '';
       neovim = ''
         for socket in /run/user/$(id -u)/nvim.*.0; do
