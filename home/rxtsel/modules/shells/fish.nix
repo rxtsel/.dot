@@ -1,6 +1,7 @@
 {
   programs.fish = {
     enable = true;
+		generateCompletions = true;
 
     interactiveShellInit = ''
       # Only for login shell
@@ -12,7 +13,7 @@
       starship init fish | source
 
       # Disable greeting
-      set fish_greeting
+      set -g fish_greeting
     '';
 
     shellAliases = {
@@ -21,6 +22,7 @@
       ll = "eza -l --group-directories-first --icons";
       lla = "eza -la --group-directories-first --icons";
       vim = "nvim";
+      lz = "lazygit";
     };
 
     shellAbbrs = {

@@ -31,8 +31,10 @@
     ./desktop/discord.nix
     ./desktop/xdg.nix
     ./desktop/showmethekey.nix
+    # ./desktop/nvf.nix
     ./desktop/neovim.nix
     ./desktop/rustdesk.nix
+    # ./desktop/tmux.nix
     ./shells/fish.nix
   ];
 }

@@ -1,393 +1,66 @@
 {
   inputs,
   pkgs,
-  lib,
   ...
-}: {
-  # Import NVF Home Manager defaults
-  imports = [inputs.nvf.homeManagerModules.default];
-
-  programs.nvf = {
+}:
+{
+  programs.neovim = {
     enable = true;
+    withNodeJs = true;
+    vimAlias = true;
+    viAlias = true;
+    waylandSupport = true;
+    defaultEditor = true;
 
-    settings.vim = {
-      # Override plugins
-      pluginOverrides = {
-        solarized-osaka = pkgs.fetchFromGitHub {
-          owner = "craftzdog";
-          repo = "solarized-osaka.nvim";
-          rev = "main";
-          hash = "sha256-bEHBXw7ufHOrqw/frbBSaLv7Kr8F6BK2B7E83dKAsHk=";
-        };
-      };
+    # Replace with nightly for v12
+    package = inputs.neovim-nightly-overlay.packages.${pkgs.system}.default;
 
-      # General Vim settings
-      vimAlias = true;
-      viAlias = true;
-      withNodeJs = true;
-      searchCase = "ignore";
+    # Treesitter grammars as plugin of nvim-treesitter
+    plugins = with pkgs.vimPlugins; [
+      (nvim-treesitter.withPlugins (p: [
+        p.lua
+        p.nix
+        p.rust
+        p.toml
+        p.yaml
+        p.markdown
+        p.svelte
+        p.typescript
+        p.css
+        p.http
+        p.json5
+        p.javascript
+        p.tsx
+        p.html
+      ]))
+    ];
 
-      # LSP
-      lsp = {
-        enable = true;
-        formatOnSave = true;
-        lspkind.enable = true;
-      };
+    extraPackages = with pkgs; [
+      # LSPs
+      astro-language-server
+      lua-language-server
+      nixd
+      svelte-language-server
+      vtsls
+      copilot-language-server
 
-      # Treesitter configuration
-      syntaxHighlighting = true;
-      treesitter = {
-        enable = true;
-        fold = false;
-        highlight.enable = true;
-        indent.enable = true;
-        addDefaultGrammars = true;
-        autotagHtml = true;
-      };
+      # Formatters
+      nixfmt
+      stylua
+      rustfmt
+      biome
+      prettierd
 
-      # Clipboard settings
-      clipboard = {
-        enable = true;
-        providers.wl-copy.enable = true;
-        registers = "unnamedplus";
-      };
-
-      # Color theme
-      theme = {
-        enable = true;
-        name = "solarized-osaka";
-        transparent = true;
-      };
-
-      # AI
-      assistant.copilot = {
-        enable = true;
-
-        setupOpts = {
-          suggestion = {
-            enabled = true;
-            auto_trigger = true;
-          };
-
-          panel = {
-            enabled = true;
-            layout.position = "right";
-          };
-        };
-
-        mappings.suggestion = {
-          accept = "<A-l>";
-          next = "<C-n>";
-          prev = "<C-p>";
-          dismiss = "<C-e>";
-        };
-
-        mappings.panel = {
-          open = "<leader>cp";
-          accept = "<CR>";
-          jumpNext = "]]";
-          jumpPrev = "[[";
-          refresh = "gr";
-        };
-      };
-
-      # Autocompletion plugin key mappings
-      autocomplete.blink-cmp = {
-        enable = true;
-        mappings = {
-          confirm = "<CR>";
-          next = "<C-n>";
-          previous = "<C-p>";
-          close = "<C-e>";
-          scrollDocsUp = "<C-u>";
-          scrollDocsDown = "<C-d>";
-        };
-      };
-
-      # Plugins
-      git.enable = true;
-      notes.todo-comments.enable = true;
-      presence.neocord.enable = true;
-      notify.nvim-notify.enable = true;
-      ui.colorizer.enable = true;
-      formatter.conform-nvim.enable = true;
-
-      # Editor options
-      options = {
-        signcolumn = "yes";
-        tabstop = 2;
-        shiftwidth = 2;
-        number = true;
-        relativenumber = true;
-        wrap = false;
-        swapfile = false;
-        autoindent = true;
-        smartindent = true;
-        hlsearch = true;
-        backup = false;
-        showcmd = false;
-        cmdheight = 1;
-        laststatus = 3;
-        expandtab = true;
-        scrolloff = 10;
-        inccommand = "split";
-        ignorecase = true;
-        smarttab = true;
-        breakindent = true;
-        splitbelow = true;
-        splitright = true;
-        splitkeep = "cursor";
-        mouse = "nvc";
-        conceallevel = 0;
-        foldcolumn = "1";
-        foldlevel = 99;
-        foldlevelstart = 99;
-        foldenable = true;
-        cursorline = true;
-      };
-
-      # Language-specific settings
-      languages = {
-        enableFormat = true;
-        enableExtraDiagnostics = true;
-        enableDAP = true;
-        enableTreesitter = true;
-
-        rust.enable = true;
-        nix.enable = true;
-        astro.enable = true;
-        lua.enable = true;
-        css.enable = true;
-        svelte.enable = true;
-        tailwind.enable = true;
-        ts = {
-          enable = true;
-          extensions.ts-error-translator.enable = true;
-        };
-        markdown = {
-          enable = true;
-          extensions.markview-nvim.enable = true;
-        };
-      };
-      mini = {
-        # Utilities and Mini plugins
-        pick.enable = true;
-        pairs.enable = true;
-        surround.enable = true;
-      };
-      statusline.lualine.enable = true;
-      binds.whichKey = {
-        enable = true;
-        setupOpts.preset = "helix";
-      };
-      filetree.neo-tree = {
-        enable = true;
-        setupOpts = {
-          auto_clean_after_session = true;
-          enable_git_status = true;
-
-          window = {
-            position = "right";
-          };
-
-          event_handlers = [
-            {
-              event = "file_open_requested";
-              handler = lib.mkLuaInline ''
-                function()
-                  require("neo-tree.command").execute({ action = "close" })
-                end
-              '';
-            }
-          ];
-        };
-      };
-
-      # Global settings
-      globals.mapleader = " ";
-
-      # Terminal integration
-      terminal.toggleterm = {
-        enable = true;
-        lazygit = {
-          enable = true;
-        };
-      };
-
-      # Key mappings
-      keymaps = [
-        # Save / quit
-        {
-          mode = "n";
-          key = "<C-s>";
-          action = "<CMD>w<CR>";
-          desc = "Save file";
-        }
-        {
-          mode = "n";
-          key = "<leader>q";
-          action = "<CMD>qq<CR>";
-          desc = "Quit";
-        }
-        {
-          mode = "n";
-          key = "<leader>q";
-          action = "<CMD>bdelete<CR>";
-          desc = "Delete buffer";
-        }
-
-        # Explorer / pickers
-        {
-          mode = "n";
-          key = "<leader>e";
-          action = "<CMD>Neotree toggle<CR>";
-          desc = "Open Neotree";
-        }
-        {
-          mode = "n";
-          key = ";f";
-          action = "<CMD>Pick files<CR>";
-          desc = "Pick files";
-        }
-        {
-          mode = "n";
-          key = ";r";
-          action = "<CMD>Pick grep_live<CR>";
-          desc = "Pick grep";
-        }
-        {
-          mode = "n";
-          key = "\\\\";
-          action = "<CMD>Pick buffers<CR>";
-          desc = "Pick buffers";
-        }
-        {
-          mode = "n";
-          key = ";h";
-          action = "<CMD>Pick help<CR>";
-          desc = "Pick help";
-        }
-
-        # Increment / decrement
-        {
-          mode = "n";
-          key = "+";
-          action = "<C-a>";
-          desc = "Increment";
-        }
-        {
-          mode = "n";
-          key = "-";
-          action = "<C-x>";
-          desc = "Decrement";
-        }
-
-        # Tabs
-        {
-          mode = "n";
-          key = "te";
-          action = "<CMD>tabedit<CR>";
-          desc = "New tab";
-        }
-        {
-          mode = "n";
-          key = "<S-l>";
-          action = "<CMD>bnext<CR>";
-          desc = "Next tab";
-        }
-        {
-          mode = "n";
-          key = "<S-h>";
-          action = "<CMD>bprevious<CR>";
-          desc = "Previous tab";
-        }
-
-        # Splits
-        {
-          mode = "n";
-          key = "ss";
-          action = "<CMD>split<CR>";
-          desc = "Horizontal split";
-        }
-        {
-          mode = "n";
-          key = "sv";
-          action = "<CMD>vsplit<CR>";
-          desc = "Vertical split";
-        }
-
-        # Move focus
-        {
-          mode = "n";
-          key = "sh";
-          action = "<C-w>h";
-          desc = "Move left";
-        }
-        {
-          mode = "n";
-          key = "sk";
-          action = "<C-w>k";
-          desc = "Move up";
-        }
-        {
-          mode = "n";
-          key = "sj";
-          action = "<C-w>j";
-          desc = "Move down";
-        }
-        {
-          mode = "n";
-          key = "sl";
-          action = "<C-w>l";
-          desc = "Move right";
-        }
-
-        # Resize splits
-        {
-          mode = "n";
-          key = "<C-w><left>";
-          action = "<C-w><";
-          desc = "Resize left";
-        }
-        {
-          mode = "n";
-          key = "<C-w><right>";
-          action = "<C-w>>";
-          desc = "Resize right";
-        }
-        {
-          mode = "n";
-          key = "<C-w><up>";
-          action = "<C-w>+";
-          desc = "Resize up";
-        }
-        {
-          mode = "n";
-          key = "<C-w><down>";
-          action = "<C-w>-";
-          desc = "Resize down";
-        }
-
-        # Visual indent (stay selected)
-        {
-          mode = "v";
-          key = "<";
-          action = "<gv";
-          desc = "Indent left";
-        }
-        {
-          mode = "v";
-          key = ">";
-          action = ">gv";
-          desc = "Indent right";
-        }
-        {
-          mode = "n";
-          key = "<Esc>";
-          action = "<CMD>nohlsearch<CR>";
-          desc = "Clear search highlight";
-        }
-      ];
-    };
+      # Neovim deps needed
+      tree-sitter
+      imagemagick
+      curl
+      jq
+      ripgrep
+      fd
+      wl-clipboard
+      gcc
+      lsof
+    ];
   };
 }
