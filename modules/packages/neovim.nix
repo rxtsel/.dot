@@ -1,0 +1,51 @@
+{ self, inputs, ... }:
+{
+
+  flake.nixosModules.neovim =
+    { pkgs, ... }:
+    {
+      programs.neovim = {
+        enable = true;
+        package = self.packages.${pkgs.stdenv.hostPlatform.system}.neovim;
+      };
+    };
+
+  perSystem =
+    { pkgs, ... }:
+    {
+
+      packages.neovim = inputs.wrapper-modules.wrappers.neovim.wrap {
+        config.pkgs = pkgs;
+        config.package = inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.neovim;
+        config.extraPackages = with pkgs; [
+          # LSPs
+          astro-language-server
+          lua-language-server
+          nixd
+          svelte-language-server
+          vtsls
+          # copilot-language-server
+
+          # Formatters
+          nixfmt
+          stylua
+          rustfmt
+          biome
+          prettierd
+
+          # Neovim deps
+          tree-sitter
+          imagemagick
+          curl
+          jq
+          ripgrep
+          fd
+          wl-clipboard
+          gcc
+          lsof
+        ];
+      };
+
+    };
+
+}
