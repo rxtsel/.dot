@@ -1,5 +1,0 @@
-{
-  imports = [
-    ./apple-fonts.nix
-  ];
-}
