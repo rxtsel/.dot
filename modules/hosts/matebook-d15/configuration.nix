@@ -17,6 +17,9 @@
         self.nixosModules.starship
         self.nixosModules.fish
         self.nixosModules.lazygit
+        # self.nixosModules.vicinae
+        self.nixosModules.swaybg
+        self.nixosModules.cursorTheme
       ];
 
       # Use the systemd-boot EFI boot loader.
@@ -62,14 +65,12 @@
       nixpkgs.config.allowUnfree = true;
 
       environment.systemPackages = with pkgs; [
-        brave
         zoxide
         yazi
         brightnessctl
         tree
         opencode
         eza
-        swaybg
       ];
 
       system.stateVersion = "25.11";
