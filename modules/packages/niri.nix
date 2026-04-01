@@ -128,7 +128,7 @@
             "Ctrl+Alt+Delete".quit = { };
             # Powers off the monitors. To turn them back on, do any input like
             "Mod+Shift+P".power-off-monitors = { };
-            "Mod+N".spawn = "swaync-client -t";
+            "Mod+N".spawn-sh = "swaync-client -t";
 
             # Volume keys mappings for PipeWire & WirePlumber.
             "XF86AudioRaiseVolume".spawn-sh = "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 0.1+";
