@@ -1,4 +1,8 @@
-{ self, inputs, ... }:
+{
+  self,
+  inputs,
+  ...
+}:
 {
 
   flake.nixosModules.neovim =
@@ -13,7 +17,6 @@
   perSystem =
     { pkgs, ... }:
     {
-
       packages.neovim = inputs.wrapper-modules.wrappers.neovim.wrap {
         config.pkgs = pkgs;
         config.package = inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.neovim;
@@ -24,7 +27,7 @@
           nixd
           svelte-language-server
           vtsls
-          # copilot-language-server
+          copilot-language-server
 
           # Formatters
           nixfmt
