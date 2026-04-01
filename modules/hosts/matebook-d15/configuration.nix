@@ -17,7 +17,7 @@
         self.nixosModules.starship
         self.nixosModules.fish
         self.nixosModules.lazygit
-        # self.nixosModules.vicinae
+        self.nixosModules.vicinae
         self.nixosModules.swaybg
         self.nixosModules.cursorTheme
         self.nixosModules.direnv

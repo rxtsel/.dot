@@ -22,7 +22,9 @@
 
         settings = {
           spawn-at-startup = [
-            "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=GNOME"
+            "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=niri"
+            "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+            "systemctl --user start graphical-session.target"
           ];
 
           environment = {
@@ -94,10 +96,10 @@
           };
 
           binds = {
-            "Mod+T".spawn-sh = lib.getExe pkgs.ghostty;
-            "Mod+B".spawn-sh = lib.getExe pkgs.brave;
-            "Mod+E".spawn-sh = "ghostty -e yazi";
-            "Mod+Space".spawn = lib.getExe pkgs.vicinae;
+            "Mod+T".spawn = lib.getExe pkgs.ghostty;
+            "Mod+B".spawn = lib.getExe pkgs.brave;
+            "Mod+E".spawn-sh = "${lib.getExe pkgs.ghostty} -e yazi";
+            "Mod+Space".spawn-sh = "${lib.getExe pkgs.vicinae} toggle";
             "Super+Alt+L".spawn = lib.getExe pkgs.swaylock;
             "Super+Alt+S".spawn-sh = "pkill orca || exec orca";
             "Mod+Q".close-window = { };
@@ -126,7 +128,7 @@
             "Ctrl+Alt+Delete".quit = { };
             # Powers off the monitors. To turn them back on, do any input like
             "Mod+Shift+P".power-off-monitors = { };
-            "Mod+N".spawn-sh = "swaync-client  -t";
+            "Mod+N".spawn = "swaync-client -t";
 
             # Volume keys mappings for PipeWire & WirePlumber.
             "XF86AudioRaiseVolume".spawn-sh = "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 0.1+";
