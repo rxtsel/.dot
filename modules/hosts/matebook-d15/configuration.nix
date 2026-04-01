@@ -20,6 +20,7 @@
         # self.nixosModules.vicinae
         self.nixosModules.swaybg
         self.nixosModules.cursorTheme
+        self.nixosModules.direnv
       ];
 
       # Use the systemd-boot EFI boot loader.
