@@ -19,7 +19,6 @@
     {
       packages.neovim = inputs.wrapper-modules.wrappers.neovim.wrap {
         config.pkgs = pkgs;
-        config.package = inputs.neovim-nightly-overlay.packages.${pkgs.stdenv.hostPlatform.system}.neovim;
         config.extraPackages = with pkgs; [
           # LSPs
           astro-language-server
