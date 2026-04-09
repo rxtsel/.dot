@@ -48,12 +48,12 @@
           "niri/workspaces" = {
             format = "{icon}";
             format-icons = {
-              code = "";
-              browser = "";
-              explorer = "";
-              music = "";
-              social = "";
-              email = "";
+              "1:code" = "";
+              "2:browser" = "";
+              "3:explorer" = "";
+              "4:music" = "";
+              "5:social" = "";
+              "6:email" = "";
               default = "";
               urgent = "";
             };

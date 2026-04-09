@@ -216,46 +216,34 @@
             "Mod+Ctrl+Shift+WheelScrollDown".move-column-right = { };
             "Mod+Ctrl+Shift+WheelScrollUp".move-column-left = { };
 
-            "Mod+1".focus-workspace = "code";
-            "Mod+2".focus-workspace = "browser";
-            "Mod+3".focus-workspace = "explorer";
-            "Mod+4".focus-workspace = "music";
-            "Mod+5".focus-workspace = "social";
-            "Mod+6".focus-workspace = "email";
+            "Mod+1".focus-workspace = "1:code";
+            "Mod+2".focus-workspace = "2:browser";
+            "Mod+3".focus-workspace = "3:explorer";
+            "Mod+4".focus-workspace = "4:music";
+            "Mod+5".focus-workspace = "5:social";
+            "Mod+6".focus-workspace = "6:email";
             "Mod+7".focus-workspace = 7;
             "Mod+8".focus-workspace = 8;
             "Mod+9".focus-workspace = 9;
 
-            "Mod+Ctrl+1".move-column-to-workspace = "code";
-            "Mod+Ctrl+2".move-column-to-workspace = "browser";
-            "Mod+Ctrl+3".move-column-to-workspace = "explorer";
-            "Mod+Ctrl+4".move-column-to-workspace = "music";
-            "Mod+Ctrl+5".move-column-to-workspace = "social";
-            "Mod+Ctrl+6".move-column-to-workspace = "email";
+            "Mod+Ctrl+1".move-column-to-workspace = "1:code";
+            "Mod+Ctrl+2".move-column-to-workspace = "2:browser";
+            "Mod+Ctrl+3".move-column-to-workspace = "3:explorer";
+            "Mod+Ctrl+4".move-column-to-workspace = "4:music";
+            "Mod+Ctrl+5".move-column-to-workspace = "5:social";
+            "Mod+Ctrl+6".move-column-to-workspace = "6:email";
             "Mod+Ctrl+7".move-column-to-workspace = 7;
             "Mod+Ctrl+8".move-column-to-workspace = 8;
             "Mod+Ctrl+9".move-column-to-workspace = 9;
           };
 
           workspaces = {
-            code = {
-              open-on-output = "eDP-1";
-            };
-            browser = {
-              open-on-output = "eDP-1";
-            };
-            explorer = {
-              open-on-output = "eDP-1";
-            };
-            music = {
-              open-on-output = "eDP-1";
-            };
-            social = {
-              open-on-output = "eDP-1";
-            };
-            email = {
-              open-on-output = "eDP-1";
-            };
+            "1:code" = { };
+            "2:browser" = { };
+            "3:explorer" = { };
+            "4:music" = { };
+            "5:social" = { };
+            "6:email" = { };
           };
         };
       };
