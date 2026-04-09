@@ -21,6 +21,7 @@
         self.nixosModules.swaybg
         self.nixosModules.cursorTheme
         self.nixosModules.direnv
+        self.nixosModules.gammastep
       ];
 
       boot.loader.systemd-boot.enable = true;
