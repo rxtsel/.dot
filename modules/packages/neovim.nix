@@ -27,6 +27,8 @@
           svelte-language-server
           vtsls
           copilot-language-server
+          tailwindcss-language-server
+          vscode-css-languageserver
 
           # Formatters
           nixfmt
