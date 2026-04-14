@@ -2,7 +2,7 @@
   flake.nixosModules.swaybg =
     { pkgs, ... }:
     let
-      wallpaper = ../../wallpapers/1920x1080/solarized-dark-1.jpg;
+      wallpaper = ../../assets/wallpapers/1920x1080/solarized-dark-1.jpg;
     in
     {
       environment.systemPackages = [ pkgs.swaybg ];
