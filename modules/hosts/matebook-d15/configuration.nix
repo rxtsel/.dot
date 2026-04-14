@@ -20,7 +20,12 @@
       my.host = {
         role = "laptop";
         features.ddcci = false;
-        wallpaper = ../../../assets/wallpapers/1920x1080/solarized-dark-1.jpg;
+        wallpaper = {
+          pack = "solarized";
+          mode = "dark";
+          layoutPreference = "auto";
+          fallbackPolicy = "repeat-single";
+        };
         monitors = [
           {
             name = "eDP-1";
