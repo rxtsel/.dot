@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.notifications =
+  flake.nixosModules.notificationsSwaync =
     {
       pkgs,
       lib,

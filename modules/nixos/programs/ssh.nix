@@ -2,14 +2,14 @@
 {
 
   flake.nixosModules.ssh =
-    { ... }:
+    { config, ... }:
     {
       programs.ssh = {
         extraConfig = ''
           Host github.com
             HostName github.com
             User git
-            IdentityFile ~/.ssh/github_ed25519
+            IdentityFile ${config.preferences.user.sshIdentityFile}
             IdentitiesOnly yes
             AddKeysToAgent yes
 

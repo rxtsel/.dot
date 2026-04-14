@@ -5,19 +5,36 @@
 }:
 {
   flake.nixosModules.niri =
-    { pkgs, ... }:
     {
+      pkgs,
+      lib,
+      config,
+      ...
+    }:
+    let
+      packageName =
+        if config.my.host.features.ddcci then
+          "niriDdcci"
+        else if config.my.host.role == "desktop" then
+          "niriDesktop"
+        else
+          "niriLaptop";
+    in
+    {
+      environment.systemPackages = lib.optionals config.my.host.features.ddcci [ pkgs.ddcutil ];
+
       programs.niri = {
         enable = true;
-        package = self.packages.${pkgs.stdenv.hostPlatform.system}.niriLaptop;
+        package = self.packages.${pkgs.stdenv.hostPlatform.system}.${packageName};
       };
     };
 
   perSystem =
     { pkgs, lib, ... }:
-    {
-
-      packages.niriLaptop = inputs.wrapper-modules.wrappers.niri.wrap {
+    let
+      mkNiriPackage =
+        enableDdcci:
+        inputs.wrapper-modules.wrappers.niri.wrap {
         inherit pkgs;
 
         settings = {
@@ -235,6 +252,9 @@
             "Mod+Ctrl+7".move-column-to-workspace = 7;
             "Mod+Ctrl+8".move-column-to-workspace = 8;
             "Mod+Ctrl+9".move-column-to-workspace = 9;
+          } // lib.optionalAttrs enableDdcci {
+            "XF86MonBrightnessUp".spawn-sh = "ddcutil setvcp 10 + 10";
+            "XF86MonBrightnessDown".spawn-sh = "ddcutil setvcp 10 - 10";
           };
 
           workspaces = {
@@ -247,5 +267,10 @@
           };
         };
       };
+    in
+    {
+      packages.niriLaptop = mkNiriPackage false;
+      packages.niriDesktop = mkNiriPackage false;
+      packages.niriDdcci = mkNiriPackage true;
     };
 }

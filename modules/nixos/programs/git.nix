@@ -2,11 +2,18 @@
 {
 
   flake.nixosModules.git =
-    { pkgs, ... }:
+    { pkgs, config, ... }:
     {
       programs.git = {
         enable = true;
         package = self.packages.${pkgs.stdenv.hostPlatform.system}.git;
+        config = {
+          user = {
+            name = config.preferences.user.fullName;
+            email = config.preferences.user.email;
+            signingkey = config.preferences.user.gitSigningKeyPath;
+          };
+        };
       };
     };
 
@@ -18,12 +25,6 @@
         inherit pkgs;
 
         settings = {
-          user = {
-            name = "Cristhian Melo";
-            email = "rxtsel@outlook.com";
-            signingkey = "~/.ssh/github_ed25519.pub";
-          };
-
           init.defaultBranch = "main";
           pull.rebase = false;
           push.autoSetupRemote = true;

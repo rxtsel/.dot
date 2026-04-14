@@ -2,10 +2,10 @@
 {
 
   flake.nixosModules.fish =
-    { pkgs, ... }:
+    { pkgs, config, ... }:
     {
 
-      users.users.rxtsel = {
+      users.users.${config.preferences.user.name} = {
         shell = pkgs.fish;
       };
 
@@ -29,7 +29,7 @@
         };
 
         shellAbbrs = {
-          nixrs = "sudo nixos-rebuild switch --flake ~/.dot/#matebook-d15";
+          nixrs = "sudo nixos-rebuild switch --flake ~/.dot/#(hostnamectl --static)";
           nixgc = "sudo nix-collect-garbage -d && sudo nix-store --optimise";
           nixboot = "sudo bootctl cleanup";
           nixcleanall = "sudo nix-collect-garbage -d; and nix-collect-garbage -d; and sudo /run/current-system/bin/switch-to-configuration boot";
