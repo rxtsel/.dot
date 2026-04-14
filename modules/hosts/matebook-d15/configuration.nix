@@ -5,6 +5,7 @@
     {
       imports = [
         self.nixosModules.matebookD15Hardware
+        self.nixosModules.nix
         self.nixosModules.fonts
         self.nixosModules.bluetooth
         self.nixosModules.notifications
@@ -20,7 +21,6 @@
         self.nixosModules.vicinae
         self.nixosModules.swaybg
         self.nixosModules.cursorTheme
-        self.nixosModules.direnv
         self.nixosModules.gammastep
       ];
 
@@ -54,13 +54,6 @@
         alsa.support32Bit = true;
         pulse.enable = true;
       };
-
-      nix.settings.experimental-features = [
-        "nix-command"
-        "flakes"
-      ];
-
-      nixpkgs.config.allowUnfree = true;
 
       environment.systemPackages = with pkgs; [
         zoxide
