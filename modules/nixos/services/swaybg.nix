@@ -7,7 +7,7 @@
       ...
     }:
     let
-      wallpaperRegistry = import ../../../assets/wallpapers/registry.nix;
+      wallpaperRegistry = import ../../../assets/wallpapers/registry.nix { inherit config; };
 
       oppositeMode = if config.my.host.wallpaper.mode == "dark" then "light" else "dark";
 
@@ -66,19 +66,15 @@
 
       selectedLayoutWallpaper = pickBest layoutCandidates targetWidth targetHeight;
 
-      primaryMonitor =
-        builtins.foldl'
-          (
-            acc: m:
-            if acc != null then
-              acc
-            else if m.primary then
-              m
-            else
-              null
-          )
+      primaryMonitor = builtins.foldl' (
+        acc: m:
+        if acc != null then
+          acc
+        else if m.primary then
+          m
+        else
           null
-          monitors;
+      ) null monitors;
 
       singleTargetWidth = if primaryMonitor != null then primaryMonitor.width else targetWidth;
       singleTargetHeight = if primaryMonitor != null then primaryMonitor.height else targetHeight;
@@ -89,20 +85,21 @@
           config.my.host.wallpaper.path
         else if selectedLayoutWallpaper != null then
           selectedLayoutWallpaper.path
-        else if config.my.host.wallpaper.fallbackPolicy == "repeat-single" && selectedSingleWallpaper != null then
+        else if
+          config.my.host.wallpaper.fallbackPolicy == "repeat-single" && selectedSingleWallpaper != null
+        then
           selectedSingleWallpaper.path
         else
           throw "No wallpaper found for pack='${config.my.host.wallpaper.pack}' mode='${config.my.host.wallpaper.mode}' layout='${targetLayout}'";
 
-      monitorFlags =
-        lib.concatMapStringsSep " "
-          (m:
-            let
-              monitorWallpaper = m.wallpaper or null;
-              wallpaperPath = if monitorWallpaper != null then monitorWallpaper else selectedWallpaper;
-            in
-            "-o ${m.name} -i ${toString wallpaperPath}")
-          monitors;
+      monitorFlags = lib.concatMapStringsSep " " (
+        m:
+        let
+          monitorWallpaper = m.wallpaper or null;
+          wallpaperPath = if monitorWallpaper != null then monitorWallpaper else selectedWallpaper;
+        in
+        "-o ${m.name} -i ${toString wallpaperPath}"
+      ) monitors;
 
       swaybgArgs = if monitors == [ ] then "-i ${toString selectedWallpaper}" else monitorFlags;
     in
