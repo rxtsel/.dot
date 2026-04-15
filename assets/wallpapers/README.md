@@ -3,6 +3,8 @@
 Wallpapers are kept in this repo and selected through `registry.nix`.
 The service uses repo paths directly (for example `~/.dotfiles/assets/wallpapers/...`) instead of re-saving wallpapers to the Nix store on each change.
 
+Appearance/theming notes: `assets/docs/appearance.md`.
+
 ## Directory layout
 
 ```text

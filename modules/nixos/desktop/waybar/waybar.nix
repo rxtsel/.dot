@@ -1,7 +1,38 @@
 { self, inputs, ... }:
 {
   flake.nixosModules.waybar =
-    { pkgs, ... }:
+    {
+      pkgs,
+      config,
+      ...
+    }:
+    let
+      username = config.preferences.user.name;
+      homeDir = config.users.users.${username}.home;
+
+      wallustFallbackColors = pkgs.writeText "wallust-fallback-colors.css" ''
+        @define-color cursor #dc322f;
+        @define-color background #073642;
+        @define-color foreground #fdf6e3;
+        @define-color color0  #073642;
+        @define-color color1  #dc322f;
+        @define-color color2  #859900;
+        @define-color color3  #b58900;
+        @define-color color4  #268bd2;
+        @define-color color5  #d33682;
+        @define-color color6  #2aa198;
+        @define-color color7  #eee8d5;
+        @define-color color8  #6c7c80;
+        @define-color color9  #dc322f;
+        @define-color color10 #859900;
+        @define-color color11 #b58900;
+        @define-color color12 #268bd2;
+        @define-color color13 #d33682;
+        @define-color color14 #2aa198;
+        @define-color color15 #eee8d5;
+      '';
+
+    in
     {
       systemd.user.services.waybar = {
         description = "Waybar";
@@ -11,7 +42,17 @@
         partOf = [ "graphical-session.target" ];
 
         serviceConfig = {
-          ExecStart = "${self.packages.${pkgs.stdenv.hostPlatform.system}.waybar}/bin/waybar";
+          ExecStartPre = pkgs.writeShellScript "waybar-prepare-style" ''
+            set -eu
+
+            install -Dm644 ${./style.css} "$HOME/.config/waybar/style.css"
+
+            if [ ! -f "$HOME/.config/waybar/colors.css" ]; then
+              install -Dm644 ${wallustFallbackColors} "$HOME/.config/waybar/colors.css"
+            fi
+          '';
+
+          ExecStart = "${pkgs.waybar}/bin/waybar --config ${self.packages.${pkgs.stdenv.hostPlatform.system}.waybar}/waybar-config.json --style ${homeDir}/.config/waybar/style.css";
           Restart = "on-failure";
         };
       };
@@ -186,7 +227,6 @@
           };
         };
 
-        "style.css".path = ./style.css;
       };
     };
 }

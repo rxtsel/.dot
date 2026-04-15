@@ -9,7 +9,7 @@
         enableFishIntegration = true;
 
         settings = {
-          theme = "Solarized Dark Patched";
+          theme = "solarized";
           background-opacity = 0.65;
           background-blur = true;
           font-family = "CaskaydiaCove Nerd Font";

@@ -7,6 +7,7 @@
       self.nixosModules.notifications
       self.nixosModules.vicinae
       self.nixosModules.swaybg
+      self.nixosModules.wallust
       self.nixosModules.cursorTheme
       self.nixosModules.gammastep
     ];
