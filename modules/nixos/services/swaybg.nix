@@ -11,6 +11,19 @@
 
       oppositeMode = if config.my.host.wallpaper.mode == "dark" then "light" else "dark";
 
+      wallpaperModeConfig =
+        packConfig:
+        let
+          requestedModeConfig = packConfig.${config.my.host.wallpaper.mode} or null;
+          fallbackModeConfig = packConfig.${oppositeMode} or null;
+        in
+        if requestedModeConfig != null then
+          requestedModeConfig
+        else if fallbackModeConfig != null then
+          fallbackModeConfig
+        else
+          throw "Wallpaper pack '${config.my.host.wallpaper.pack}' has no '${config.my.host.wallpaper.mode}' or '${oppositeMode}' mode";
+
       monitors = config.my.host.monitors;
       monitorCount = builtins.length monitors;
 
@@ -33,21 +46,31 @@
           builtins.foldl' (acc: m: if m.primary then m.height else acc) 0 monitors;
 
       packConfig = wallpaperRegistry.packs.${config.my.host.wallpaper.pack};
-      requestedModeConfig = packConfig.${config.my.host.wallpaper.mode} or null;
-      fallbackModeConfig = packConfig.${oppositeMode} or null;
+      modeConfig = wallpaperModeConfig packConfig;
 
-      modeConfig =
-        if requestedModeConfig != null then
-          requestedModeConfig
-        else if fallbackModeConfig != null then
-          fallbackModeConfig
+      allCandidates =
+        if modeConfig ? wallpapers then
+          modeConfig.wallpapers
         else
-          throw "Wallpaper pack '${config.my.host.wallpaper.pack}' has no '${config.my.host.wallpaper.mode}' or '${oppositeMode}' mode";
+          let
+            packModeLayouts = modeConfig.layouts or { };
+          in
+          (packModeLayouts.${targetLayout} or [ ])
+          ++ (packModeLayouts.single or [ ]);
 
-      packModeLayouts = modeConfig.layouts or { };
+      candidateName = wallpaper: builtins.baseNameOf wallpaper.path;
 
-      layoutCandidates = packModeLayouts.${targetLayout} or [ ];
-      singleCandidates = packModeLayouts.single or [ ];
+      namedWallpaper =
+        if config.my.host.wallpaper.name == null then
+          null
+        else
+          let
+            matches = builtins.filter (w: candidateName w == config.my.host.wallpaper.name) allCandidates;
+          in
+          if matches == [ ] then
+            throw "Wallpaper '${config.my.host.wallpaper.name}' not found in pack='${config.my.host.wallpaper.pack}' mode='${config.my.host.wallpaper.mode}'"
+          else
+            builtins.head matches;
 
       byAreaThenPriority =
         a: b:
@@ -64,7 +87,7 @@
         in
         if valid == [ ] then null else builtins.head (builtins.sort byAreaThenPriority valid);
 
-      selectedLayoutWallpaper = pickBest layoutCandidates targetWidth targetHeight;
+      selectedLayoutWallpaper = pickBest allCandidates targetWidth targetHeight;
 
       primaryMonitor = builtins.foldl' (
         acc: m:
@@ -78,11 +101,11 @@
 
       singleTargetWidth = if primaryMonitor != null then primaryMonitor.width else targetWidth;
       singleTargetHeight = if primaryMonitor != null then primaryMonitor.height else targetHeight;
-      selectedSingleWallpaper = pickBest singleCandidates singleTargetWidth singleTargetHeight;
+      selectedSingleWallpaper = pickBest allCandidates singleTargetWidth singleTargetHeight;
 
       selectedWallpaper =
-        if config.my.host.wallpaper.path != null then
-          config.my.host.wallpaper.path
+        if namedWallpaper != null then
+          namedWallpaper.path
         else if selectedLayoutWallpaper != null then
           selectedLayoutWallpaper.path
         else if

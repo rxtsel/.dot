@@ -41,11 +41,6 @@
           };
 
           wallpaper = {
-            path = lib.mkOption {
-              type = lib.types.nullOr lib.types.path;
-              default = null;
-            };
-
             pack = lib.mkOption {
               type = lib.types.str;
               default = "solarized";
@@ -57,6 +52,11 @@
                 "light"
               ];
               default = "dark";
+            };
+
+            name = lib.mkOption {
+              type = lib.types.nullOr lib.types.str;
+              default = null;
             };
 
             layoutPreference = lib.mkOption {

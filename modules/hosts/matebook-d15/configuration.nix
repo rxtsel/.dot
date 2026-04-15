@@ -23,6 +23,7 @@
         wallpaper = {
           pack = "solarized";
           mode = "dark";
+          name = "pacman-1920x1080.png";
           layoutPreference = "auto";
           fallbackPolicy = "repeat-single";
         };

@@ -18,6 +18,7 @@
         wallpaper = {
           pack = "solarized";
           mode = "dark";
+          name = "palettes-7680x4320.jpg";
           layoutPreference = "auto";
           fallbackPolicy = "repeat-single";
         };
