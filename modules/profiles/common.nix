@@ -13,6 +13,7 @@
       self.nixosModules.neovim
       self.nixosModules.starship
       self.nixosModules.fish
+      self.nixosModules.zoxide
       self.nixosModules.git
       self.nixosModules.ssh
       self.nixosModules.lazygit

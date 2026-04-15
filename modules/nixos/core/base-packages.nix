@@ -4,7 +4,6 @@
     { pkgs, ... }:
     {
       environment.systemPackages = with pkgs; [
-        zoxide
         yazi
         brightnessctl
         tree

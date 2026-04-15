@@ -1,10 +1,7 @@
-{ ... }:
 {
-
   flake.nixosModules.fish =
     { pkgs, config, ... }:
     {
-
       users.users.${config.preferences.user.name} = {
         shell = pkgs.fish;
       };
@@ -34,14 +31,6 @@
           nixboot = "sudo bootctl cleanup";
           nixcleanall = "sudo nix-collect-garbage -d; and nix-collect-garbage -d; and sudo /run/current-system/bin/switch-to-configuration boot";
         };
-
       };
-
-      programs.zoxide = {
-        enable = true;
-        enableFishIntegration = true;
-      };
-
     };
-
 }
