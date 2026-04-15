@@ -6,12 +6,12 @@
     {
       programs.ghostty = {
         enable = true;
-        enableZshIntegration = true;
+        enableFishIntegration = true;
 
         settings = {
           theme = "Solarized Dark Patched";
-          # background-opacity = 0.65;
-          # background-blur = true;
+          background-opacity = 0.65;
+          background-blur = true;
           font-family = "CaskaydiaCove Nerd Font";
           font-size = 18;
 
@@ -39,21 +39,21 @@
           focus-follows-mouse = true;
           link-url = true;
 
-          # Keybinds (descomenta si quieres activarlos)
-          # keybind = [
-          #   "alt+r=reload_config"
-          #   "alt+t>n=new_tab"
-          #   "alt+p>r=new_split:right"
-          #   "alt+p>d=new_split:down"
-          #   "alt+p>e=equalize_splits"
-          #   "alt+p>z=toggle_split_zoom"
-          #   "alt+p>h=goto_split:left"
-          #   "alt+p>j=goto_split:bottom"
-          #   "alt+p>k=goto_split:top"
-          #   "alt+p>l=goto_split:right"
-          #   "alt+t>l=next_tab"
-          #   "alt+t>h=previous_tab"
-          # ];
+          # Keybinds
+          keybind = [
+            "alt+r=reload_config"
+            "alt+t>n=new_tab"
+            "alt+p>r=new_split:right"
+            "alt+p>d=new_split:down"
+            "alt+p>e=equalize_splits"
+            "alt+p>z=toggle_split_zoom"
+            "alt+p>h=goto_split:left"
+            "alt+p>j=goto_split:bottom"
+            "alt+p>k=goto_split:top"
+            "alt+p>l=goto_split:right"
+            "alt+t>l=next_tab"
+            "alt+t>h=previous_tab"
+          ];
         };
       };
     };
