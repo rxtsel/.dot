@@ -63,11 +63,11 @@
           };
 
           network = {
-            format-wifi = "󰖩";
+            format-wifi = "";
             format-ethernet = "󰌗";
             tooltip-format = "󰌗  {ifname}";
-            format-linked = "󱚿 {essid} (No IP)";
-            format-disconnected = "󰖪";
+            format-linked = " {essid} (No IP)";
+            format-disconnected = "";
             interval = 5;
             tooltip = true;
           };
@@ -135,6 +135,9 @@
           battery = {
             bat = "BAT1";
             interval = 60;
+            states = {
+              critical = 10;
+            };
             format = "{icon}  {capacity}%";
             format-icons = {
               default = [
@@ -259,7 +262,8 @@
 
         #pulseaudio.muted {
           background-color: transparent;
-          color: @foreground;
+          color: @color1;
+          opacity: 0.4;
         }
 
         /* -----------------------------------------------------
@@ -278,6 +282,13 @@
         #network.wifi {
           background-color: transparent;
           color: @foreground;
+        }
+
+        #network.disabled,
+        #network.disconnected {
+          background-color: transparent;
+          color: @foreground;
+          opacity: 0.4;
         }
 
         /* -----------------------------------------------------
@@ -306,7 +317,8 @@
 
         #tray > .needs-attention {
           -gtk-icon-effect: highlight;
-          background-color: @color1;
+          background-color: transparent;
+          color: @color1;
         }
 
         /* -----------------------------------------------------
@@ -314,10 +326,6 @@
          * ----------------------------------------------------- */
         label:focus {
           background-color: @color0;
-        }
-
-        #backlight {
-          background-color: @color2;
         }
 
         #network.disconnected {
@@ -338,6 +346,18 @@
         #battery {
           color: @foreground;
           transition: background-color 0.5s ease;
+        }
+        #battery.charging {
+          background-color: transparent;
+          color: @color2;
+        }
+        #battery.warning {
+          background-color: transparent;
+          color: @color4;
+        }
+        #battery.critical {
+          background-color: transparent;
+          color: @color1;
         }
       '';
     };
