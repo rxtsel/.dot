@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   flake.modules.nixos.coreCommon = {
     networking.networkmanager.enable = true;
     programs.fish.enable = true;

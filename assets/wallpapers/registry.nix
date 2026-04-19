@@ -1,18 +1,12 @@
-{ config, ... }:
-
-let
+{config, ...}: let
   username = config.preferences.user.name;
   homeDir = config.users.users.${username}.home;
 
-  wp =
-    mode: file: width: height: priority:
-    {
-      path = "${homeDir}/.dotfiles/assets/wallpapers/packs/solarized/${mode}/${file}";
-      inherit width height priority;
-    };
-in
-
-{
+  wp = mode: file: width: height: priority: {
+    path = "${homeDir}/.dotfiles/assets/wallpapers/packs/solarized/${mode}/${file}";
+    inherit width height priority;
+  };
+in {
   defaultPack = "solarized";
   defaultMode = "dark";
   defaultLayoutPreference = "auto";

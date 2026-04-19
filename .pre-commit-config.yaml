@@ -1,0 +1,9 @@
+repos:
+  - repo: local
+    hooks:
+      - id: treefmt
+        name: treefmt
+        entry: nix run path:.#formatter.x86_64-linux --
+        language: system
+        pass_filenames: false
+        types_or: [nix]

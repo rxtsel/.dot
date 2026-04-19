@@ -1,5 +1,4 @@
-{ inputs, ... }:
-{
+{inputs, ...}: {
   flake.modules.homeManager.profileCommon = {
     imports = with inputs.self.modules.homeManager; [
       base

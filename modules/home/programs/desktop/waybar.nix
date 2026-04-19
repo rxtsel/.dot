@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   flake.modules.homeManager.waybar = {
     programs.waybar = {
       enable = true;
@@ -15,7 +14,7 @@
           exclusive = true;
           spacing = 11;
 
-          modules-left = [ "niri/workspaces" ];
+          modules-left = ["niri/workspaces"];
 
           modules-right = [
             "tray"
@@ -171,30 +170,30 @@
     };
 
     home.activation.waybarEnsureColors = ''
-      if [ ! -f "$HOME/.config/waybar/colors.css" ]; then
-        mkdir -p "$HOME/.config/waybar"
-        cat > "$HOME/.config/waybar/colors.css" <<'EOF'
-@define-color cursor #dc322f;
-@define-color background #073642;
-@define-color foreground #fdf6e3;
-@define-color color0  #073642;
-@define-color color1  #dc322f;
-@define-color color2  #859900;
-@define-color color3  #b58900;
-@define-color color4  #268bd2;
-@define-color color5  #d33682;
-@define-color color6  #2aa198;
-@define-color color7  #eee8d5;
-@define-color color8  #6c7c80;
-@define-color color9  #dc322f;
-@define-color color10 #859900;
-@define-color color11 #b58900;
-@define-color color12 #268bd2;
-@define-color color13 #d33682;
-@define-color color14 #2aa198;
-@define-color color15 #eee8d5;
-EOF
-      fi
+            if [ ! -f "$HOME/.config/waybar/colors.css" ]; then
+              mkdir -p "$HOME/.config/waybar"
+              cat > "$HOME/.config/waybar/colors.css" <<'EOF'
+      @define-color cursor #dc322f;
+      @define-color background #073642;
+      @define-color foreground #fdf6e3;
+      @define-color color0  #073642;
+      @define-color color1  #dc322f;
+      @define-color color2  #859900;
+      @define-color color3  #b58900;
+      @define-color color4  #268bd2;
+      @define-color color5  #d33682;
+      @define-color color6  #2aa198;
+      @define-color color7  #eee8d5;
+      @define-color color8  #6c7c80;
+      @define-color color9  #dc322f;
+      @define-color color10 #859900;
+      @define-color color11 #b58900;
+      @define-color color12 #268bd2;
+      @define-color color13 #d33682;
+      @define-color color14 #2aa198;
+      @define-color color15 #eee8d5;
+      EOF
+            fi
     '';
   };
 }

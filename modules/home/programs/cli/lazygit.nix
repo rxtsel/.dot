@@ -12,19 +12,19 @@
               "#c94c16"
               "bold"
             ];
-            inactiveBorderColor = [ "#664c00" ];
+            inactiveBorderColor = ["#664c00"];
             searchingActiveBorderColor = [
               "#c94c16"
               "bold"
             ];
-            optionsTextColor = [ "#268bd3" ];
-            selectedLineBgColor = [ "#1a6397" ];
-            cherryPickedCommitFgColor = [ "#268bd3" ];
-            cherryPickedCommitBgColor = [ "#d23681" ];
-            markedBaseCommitFgColor = [ "#268bd3" ];
-            markedBaseCommitBgColor = [ "#b28500" ];
-            unstagedChangesColor = [ "#f55350" ];
-            defaultFgColor = [ "#839395" ];
+            optionsTextColor = ["#268bd3"];
+            selectedLineBgColor = ["#1a6397"];
+            cherryPickedCommitFgColor = ["#268bd3"];
+            cherryPickedCommitBgColor = ["#d23681"];
+            markedBaseCommitFgColor = ["#268bd3"];
+            markedBaseCommitBgColor = ["#b28500"];
+            unstagedChangesColor = ["#f55350"];
+            defaultFgColor = ["#839395"];
           };
         };
 

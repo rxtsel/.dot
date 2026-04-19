@@ -1,0 +1,11 @@
+[global]
+excludes = [
+  ".git/*",
+  ".direnv/*",
+  "result",
+  "result-*",
+]
+
+[formatter.alejandra]
+command = "alejandra"
+includes = ["**/*.nix"]

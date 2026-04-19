@@ -1,5 +1,4 @@
-{ inputs, ... }:
-{
+{inputs, ...}: {
   flake.nixosConfigurations.matebook-d15 = inputs.nixpkgs.lib.nixosSystem {
     modules = with inputs.self.modules.nixos; [
       matebookD15Hardware
@@ -17,11 +16,9 @@
       swaybg
       cursorTheme
       (
-        { config, ... }:
-        let
+        {config, ...}: let
           user = config.preferences.user.name;
-        in
-        {
+        in {
           preferences.user = {
             name = "rxtsel";
             fullName = "Cristhian Melo";

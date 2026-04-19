@@ -1,5 +1,4 @@
-{ ... }:
-{
+{...}: {
   flake.modules.homeManager.starship = {
     programs.starship = {
       enable = true;
@@ -57,7 +56,7 @@
             "package.json"
             ".node-version"
           ];
-          detect_folders = [ "node_modules" ];
+          detect_folders = ["node_modules"];
         };
 
         docker_context = {
