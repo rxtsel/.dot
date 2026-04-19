@@ -17,6 +17,8 @@
         la = "eza -a --group-directories-first --icons";
         ll = "eza -l --group-directories-first --icons";
         lla = "eza -la --group-directories-first --icons";
+        op = "opencode";
+        lz = "lazygit";
       };
 
       shellAbbrs = {
