@@ -23,6 +23,7 @@
             "battery"
             "group/hardware"
             "clock"
+            "custom/notification"
           ];
 
           "niri/workspaces" = {
@@ -246,8 +247,6 @@
         #clock {
           color: @foreground;
           transition: background-color 0.5s ease;
-          /* In laptop hidde custom/notification module */
-          margin-right: 14px;
         }
 
         /* -----------------------------------------------------
