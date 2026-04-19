@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.cursorTheme =
+  flake.modules.nixos.cursorTheme =
     { pkgs, lib, ... }:
 
     {

@@ -1,7 +1,7 @@
 { ... }:
 
 {
-  flake.nixosModules.ghostty =
+  flake.modules.nixos.ghostty =
     { ... }:
     {
       programs.ghostty = {

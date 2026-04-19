@@ -1,6 +1,6 @@
 { lib, ... }:
 {
-  flake.nixosModules.coreOptions =
+  flake.modules.nixos.coreOptions =
     { ... }:
     {
       options = {

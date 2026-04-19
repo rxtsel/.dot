@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.swaybg =
+  flake.modules.nixos.swaybg =
     {
       pkgs,
       lib,

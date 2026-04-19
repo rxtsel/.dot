@@ -1,19 +1,11 @@
+{ lib, ... }:
 {
-  flake.nixosModules.wallust =
-    {
-      pkgs,
-      lib,
-      config,
-      ...
-    }:
+  flake.modules.homeManager.wallust =
+    { pkgs, osConfig, ... }:
     let
-      username = config.preferences.user.name;
-      homeDir = config.users.users.${username}.home;
-      mode = config.my.host.wallpaper.mode;
+      mode = osConfig.my.host.wallpaper.mode;
 
       wallust = lib.getExe pkgs.wallust;
-      wallustConfigDir = "/etc/xdg/wallust";
-      systemctl = "${pkgs.systemd}/bin/systemctl";
       swayncClient = "${pkgs.swaynotificationcenter}/bin/swaync-client";
 
       ghosttyTemplate = ''
@@ -127,64 +119,76 @@
       '';
     in
     {
-      environment.systemPackages = [
-        pkgs.wallust
+      programs.wallust = {
+        enable = true;
+        package = pkgs.wallust;
+        settings = {
+          backend = "fastresize";
+          color_space = "lch";
+          palette = "dark";
+
+          templates = {
+            waybar = {
+              template = "waybar.css";
+              target = "~/.config/waybar/colors.css";
+            };
+
+            hypr = {
+              template = "hyprland.conf";
+              target = "~/.config/hypr/themes/wallust.conf";
+            };
+
+            swaync = {
+              template = "swaync.css";
+              target = "~/.config/swaync/colors.css";
+            };
+
+            ghostty = {
+              template = "ghostty.conf";
+              target = "~/.config/ghostty/themes/solarized";
+            };
+          };
+        };
+      };
+
+      home.packages = [
         (pkgs.writeShellScriptBin "theme-solarized-dark" ''
-          ${wallust} -d ${wallustConfigDir} cs solarized-dark
-          ${systemctl} --user restart waybar.service || true
+          ${wallust} cs solarized-dark
           ${swayncClient} -R || true
         '')
         (pkgs.writeShellScriptBin "theme-solarized-light" ''
-          ${wallust} -d ${wallustConfigDir} cs solarized-light
-          ${systemctl} --user restart waybar.service || true
+          ${wallust} cs solarized-light
           ${swayncClient} -R || true
         '')
       ];
 
-      environment.etc = {
-        "xdg/wallust/wallust.toml".text = ''
-          backend = "fastresize"
-          color_space = "lch"
-          palette = "dark"
-
-          [templates]
-          waybar.template = 'waybar.css'
-          waybar.target = '~/.config/waybar/colors.css'
-
-          hypr.template = 'hyprland.conf'
-          hypr.target = '~/.config/hypr/themes/wallust.conf'
-
-          swaync.template = 'swaync.css'
-          swaync.target = '~/.config/swaync/colors.css'
-
-          ghostty.template = 'ghostty.conf'
-          ghostty.target = '~/.config/ghostty/themes/solarized'
-        '';
-
-        "xdg/wallust/templates/ghostty.conf".text = ghosttyTemplate;
-        "xdg/wallust/templates/hyprland.conf".text = hyprTemplate;
-        "xdg/wallust/templates/waybar.css".text = waybarTemplate;
-        "xdg/wallust/templates/swaync.css".text = waybarTemplate;
-
-        "xdg/wallust/colorschemes/solarized-dark.json".text = solarizedDark;
-        "xdg/wallust/colorschemes/solarized-light.json".text = solarizedLight;
+      xdg.configFile = {
+        "wallust/templates/ghostty.conf".text = ghosttyTemplate;
+        "wallust/templates/hyprland.conf".text = hyprTemplate;
+        "wallust/templates/waybar.css".text = waybarTemplate;
+        "wallust/templates/swaync.css".text = waybarTemplate;
+        "wallust/colorschemes/solarized-dark.json".text = solarizedDark;
+        "wallust/colorschemes/solarized-light.json".text = solarizedLight;
       };
 
       systemd.user.services.wallust-apply = {
-        description = "Apply wallust colorscheme";
-        wantedBy = [ "graphical-session.target" ];
-        after = [ "graphical-session.target" ];
-        partOf = [ "graphical-session.target" ];
+        Unit = {
+          Description = "Apply wallust colorscheme";
+          After = [ "graphical-session.target" ];
+          PartOf = [ "graphical-session.target" ];
+        };
 
-        serviceConfig = {
+        Service = {
           Type = "oneshot";
           ExecStart = pkgs.writeShellScript "wallust-apply" ''
             set -e
-            export HOME="${homeDir}"
-            ${wallust} -d ${wallustConfigDir} cs solarized-${mode}
-            ${systemctl} --user try-restart waybar.service || true
+            ${wallust} cs solarized-${mode}
             ${swayncClient} -R || true
           '';
+        };
+
+        Install = {
+          WantedBy = [ "graphical-session.target" ];
         };
       };
     };

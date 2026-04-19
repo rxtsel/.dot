@@ -1,11 +1,7 @@
+{ lib, ... }:
 {
-  flake.nixosModules.gammastep =
-    {
-      pkgs,
-      lib,
-      config,
-      ...
-    }:
+  flake.modules.homeManager.gammastep =
+    { pkgs, config, ... }:
     let
       vars =
         config._module.args.vars or {
@@ -15,21 +11,19 @@
       cfg = config.services.gammastep-custom;
     in
     {
-      options.services.gammastep-custom = {
-        enable = lib.mkEnableOption "Gammastep service";
-      };
+      options.services.gammastep-custom.enable = lib.mkEnableOption "Gammastep service";
 
       config = lib.mkIf cfg.enable {
-        environment.systemPackages = [ pkgs.gammastep ];
+        home.packages = [ pkgs.gammastep ];
 
         systemd.user.services.gammastep = {
-          description = "Gammastep daemon";
+          Unit = {
+            Description = "Gammastep daemon";
+            After = [ "graphical-session.target" ];
+            PartOf = [ "graphical-session.target" ];
+          };
 
-          wantedBy = [ "graphical-session.target" ];
-          partOf = [ "graphical-session.target" ];
-          after = [ "graphical-session.target" ];
-
-          serviceConfig = {
+          Service = {
             ExecStart = ''
               ${lib.getExe pkgs.gammastep} \
                 -m wayland \
@@ -39,6 +33,10 @@
             '';
             Restart = "always";
             RestartSec = 3;
+          };
+
+          Install = {
+            WantedBy = [ "graphical-session.target" ];
           };
         };
       };

@@ -1,5 +1,5 @@
 {
-  flake.nixosModules.matebookD15Hardware =
+  flake.modules.nixos.matebookD15Hardware =
     {
       config,
       lib,

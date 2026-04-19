@@ -1,16 +1,12 @@
-{
-  self,
-  inputs,
-  ...
-}:
+{ inputs, ... }:
 {
 
-  flake.nixosModules.neovim =
+  flake.modules.nixos.neovim =
     { pkgs, ... }:
     {
       programs.neovim = {
         enable = true;
-        package = self.packages.${pkgs.stdenv.hostPlatform.system}.neovim;
+        package = inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.neovim;
       };
     };
 

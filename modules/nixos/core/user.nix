@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.nixosModules.coreUser =
+  flake.modules.nixos.coreUser =
     { config, ... }:
     {
       users.users.${config.preferences.user.name} = {

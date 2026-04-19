@@ -1,6 +1,6 @@
 { inputs, ... }:
 {
-  flake.nixosModules.nix =
+  flake.modules.nixos.nix =
     { ... }:
     {
       programs.direnv = {

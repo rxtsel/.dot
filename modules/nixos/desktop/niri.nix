@@ -1,7 +1,7 @@
-{ self, inputs, ... }:
+{ inputs, ... }:
 
 {
-  flake.nixosModules.niri =
+  flake.modules.nixos.niri =
     {
       pkgs,
       lib,
@@ -24,7 +24,7 @@
 
       programs.niri = {
         enable = true;
-        package = self.packages.${pkgs.stdenv.hostPlatform.system}.${packageName};
+        package = inputs.self.packages.${pkgs.stdenv.hostPlatform.system}.${packageName};
       };
     };
 

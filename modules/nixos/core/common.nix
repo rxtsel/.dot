@@ -1,6 +1,6 @@
 { ... }:
 {
-  flake.nixosModules.coreCommon = {
+  flake.modules.nixos.coreCommon = {
     networking.networkmanager.enable = true;
 
     time.timeZone = "America/Bogota";
