@@ -124,29 +124,33 @@
           };
 
           window-rules = [
-            # Add blur effect to ghostty windows
-            {
-              matches = [{app-id = "^com\\.mitchellh\\.ghostty$";}];
-              background-effect = {
-                blur = true;
-              };
-            }
-
             # Add rounded corners to all windows
             {
               geometry-corner-radius = 8;
               clip-to-geometry = true;
             }
 
+            # Code workspace
+            {
+              matches = [
+                {app-id = "^com\\.mitchellh\\.ghostty$";}
+              ];
+              background-effect = {
+                blur = true;
+              };
+              open-on-workspace = "1:code";
+              open-focused = true;
+            }
+
             # Browser workspace
             {
-              matches = [{app-id = "brave-browser";} {app-id = "^ResponsivelyApp$";} {app-id = "^Clockify$";}];
+              matches = [{app-id = "brave-browser";} {app-id = "^ResponsivelyApp$";}];
               open-on-workspace = "2:browser";
             }
 
             # Brave
             {
-              matches = [{app-id = "brave-browser";}];
+              matches = [{app-id = "brave-browser$";}];
               open-focused = true;
               open-maximized = true;
             }
@@ -157,16 +161,9 @@
               open-fullscreen = true;
             }
 
-            # Clockify
-            {
-              matches = [{app-id = "^Clockify$";}];
-              open-fullscreen = false;
-              open-floating = true;
-            }
-
             # Explorer workspace
             {
-              matches = [{title = "^Yazi$";} {app-id = "^com\\.mitchellh\\.ghostty$";}];
+              matches = [{title = "^Yazi$";}];
               open-maximized = true;
               open-on-workspace = "3:explorer";
             }
@@ -202,6 +199,14 @@
               default-column-width = {
                 proportion = 0.5;
               };
+            }
+
+            # Clockify
+            {
+              matches = [{app-id = "^Clockify$";}];
+              open-fullscreen = false;
+              open-floating = true;
+              open-on-workspace = "5:social";
             }
 
             # Email workspace
