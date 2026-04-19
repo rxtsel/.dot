@@ -32,11 +32,15 @@
         package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri;
 
         settings = {
-          spawn-at-startup = [
-            "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=niri"
-            "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
-            "systemctl --user start graphical-session.target"
-          ];
+          extraConfig = ''
+            include optional=true "~/.config/niri/wallust.kdl"
+          '';
+
+          # spawn-at-startup = [
+          #   "dbus-update-activation-environment --systemd DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=niri"
+          #   "systemctl --user import-environment DISPLAY WAYLAND_DISPLAY XDG_CURRENT_DESKTOP"
+          #   "systemctl --user start graphical-session.target"
+          # ];
 
           environment = {
             QT_QPA_PLATFORM = "wayland";
@@ -70,19 +74,21 @@
 
             background-color = "transparent";
 
-            preset-column-widths = {
-              proportion = 0.5;
-            };
+            preset-column-widths = [
+              {proportion = 0.5;}
+              {proportion = 0.666667;}
+            ];
 
-            preset-window-heights = {
-              proportion = 0.5;
-            };
+            preset-window-heights = [
+              {proportion = 0.5;}
+              {proportion = 0.1;}
+            ];
 
             focus-ring = {
               width = 1.5;
-              active-color = "#268bd3";
+              active-color = "#729fcf";
               inactive-color = "#586e75";
-              urgent-color = "#f55350";
+              urgent-color = "#ef2929";
             };
 
             border = {
@@ -103,6 +109,7 @@
             };
           };
 
+          # Hidde window decarations
           prefer-no-csd = {};
 
           hotkey-overlay = {
@@ -113,15 +120,99 @@
             passes = 3;
             offset = 3.0;
             noise = 0.02;
-            saturation = 1.5;
+            saturation = 0.9;
           };
 
           window-rules = [
+            # Add blur effect to ghostty windows
             {
               matches = [{app-id = "^com\\.mitchellh\\.ghostty$";}];
               background-effect = {
                 blur = true;
               };
+            }
+
+            # Add rounded corners to all windows
+            {
+              geometry-corner-radius = 8;
+              clip-to-geometry = true;
+            }
+
+            # Browser workspace
+            {
+              matches = [{app-id = "brave-browser";} {app-id = "^ResponsivelyApp$";} {app-id = "^Clockify$";}];
+              open-on-workspace = "2:browser";
+            }
+
+            # Brave
+            {
+              matches = [{app-id = "brave-browser";}];
+              open-focused = true;
+              open-maximized = true;
+            }
+
+            # ResponsivelyApp
+            {
+              matches = [{app-id = "^ResponsivelyApp$";}];
+              open-fullscreen = true;
+            }
+
+            # Clockify
+            {
+              matches = [{app-id = "^Clockify$";}];
+              open-fullscreen = false;
+              open-floating = true;
+            }
+
+            # Explorer workspace
+            {
+              matches = [{title = "^Yazi$";} {app-id = "^com\\.mitchellh\\.ghostty$";}];
+              open-maximized = true;
+              open-on-workspace = "3:explorer";
+            }
+
+            # Music workspace
+            {
+              matches = [
+                {app-id = "^com\\.github\\.th_ch\\.youtube_music$";}
+                {title = "^YouTube Music$";}
+              ];
+              open-on-workspace = "4:music";
+              open-focused = true;
+              open-floating = true;
+              default-window-height = {
+                proportion = 0.5;
+              };
+              default-column-width = {
+                proportion = 0.5;
+              };
+            }
+
+            # Social workspace
+            {
+              matches = [
+                {app-id = "^com\\.discord$";}
+              ];
+              open-on-workspace = "5:social";
+              open-focused = true;
+              open-floating = true;
+              default-window-height = {
+                proportion = 0.5;
+              };
+              default-column-width = {
+                proportion = 0.5;
+              };
+            }
+
+            # Email workspace
+            {
+              matches = [
+                {app-id = "^com\\.thunderbird$";}
+              ];
+              open-on-workspace = "6:email";
+              open-maximized = true;
+              open-focused = false;
+              block-out-from = "screencast";
             }
           ];
 
