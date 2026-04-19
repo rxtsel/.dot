@@ -1,5 +1,5 @@
 {...}: {
-  flake.modules.nixos.ghostty = {...}: {
+  flake.modules.homeManager.ghostty = {
     programs.ghostty = {
       enable = true;
       enableFishIntegration = true;
@@ -19,23 +19,19 @@
         gtk-tabs-location = "bottom";
         title = "\" \"";
 
-        # Window
         confirm-close-surface = true;
         window-theme = "system";
         window-decoration = true;
         window-padding-balance = false;
         window-save-state = "never";
 
-        # Updates
         auto-update = "download";
         auto-update-channel = "stable";
 
-        # Extras
         shell-integration-features = true;
         focus-follows-mouse = true;
         link-url = true;
 
-        # Keybinds
         keybind = [
           "alt+r=reload_config"
           "alt+t>n=new_tab"
