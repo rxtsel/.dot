@@ -27,6 +27,7 @@
           ];
 
           "niri/workspaces" = {
+            hide-empty = true;
             format = "{icon}";
             format-icons = {
               "1:code" = "";
@@ -206,11 +207,12 @@
           background-color: transparent;
           transition: all 0.15s ease-in-out;
           color: @foreground;
-          opacity: 0.4;
+          opacity: 0.3;
         }
 
+        #workspaces button.empty,
         #workspaces button.active {
-          opacity: 1;
+          opacity: 0.3;
           color: @foreground;
         }
 
@@ -219,7 +221,16 @@
           box-shadow: inherit;
           text-shadow: inherit;
           background: none;
-          border: none;
+        }
+
+        #workspaces button.focused {
+          opacity: 1;
+          color: @foreground;
+        }
+
+        #workspaces button:not(.empty):not(.focused):not(.active) {
+          opacity: 0.6;
+          color: @foreground;
         }
 
         /* -----------------------------------------------------
