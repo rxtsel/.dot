@@ -5,6 +5,137 @@
     ...
   }: let
     mode = osConfig.my.host.wallpaper.mode;
+    wallpaperRegistry = import ../../../../assets/wallpapers/registry.nix {config = osConfig;};
+
+    oppositeMode =
+      if mode == "dark"
+      then "light"
+      else "dark";
+
+    wallpaperModeConfig = packConfig: let
+      requestedModeConfig = packConfig.${mode} or null;
+      fallbackModeConfig = packConfig.${oppositeMode} or null;
+    in
+      if requestedModeConfig != null
+      then requestedModeConfig
+      else if fallbackModeConfig != null
+      then fallbackModeConfig
+      else throw "Wallpaper pack '${osConfig.my.host.wallpaper.pack}' has no '${mode}' or '${oppositeMode}' mode";
+
+    monitors = osConfig.my.host.monitors;
+    monitorCount = builtins.length monitors;
+
+    targetLayout =
+      if osConfig.my.host.wallpaper.layoutPreference == "auto"
+      then
+        if monitorCount > 1
+        then "dual-span"
+        else "single"
+      else osConfig.my.host.wallpaper.layoutPreference;
+
+    targetWidth =
+      if targetLayout == "dual-span"
+      then builtins.foldl' (acc: m: acc + m.width) 0 monitors
+      else
+        builtins.foldl' (acc: m:
+          if m.primary
+          then m.width
+          else acc)
+        0
+        monitors;
+
+    targetHeight =
+      if targetLayout == "dual-span"
+      then
+        builtins.foldl' (acc: m:
+          if m.height > acc
+          then m.height
+          else acc)
+        0
+        monitors
+      else
+        builtins.foldl' (acc: m:
+          if m.primary
+          then m.height
+          else acc)
+        0
+        monitors;
+
+    packConfig = wallpaperRegistry.packs.${osConfig.my.host.wallpaper.pack};
+    modeConfig = wallpaperModeConfig packConfig;
+
+    allCandidates =
+      if modeConfig ? wallpapers
+      then modeConfig.wallpapers
+      else let
+        packModeLayouts = modeConfig.layouts or {};
+      in
+        (packModeLayouts.${targetLayout} or []) ++ (packModeLayouts.single or []);
+
+    candidateName = wallpaper: baseNameOf wallpaper.path;
+
+    namedWallpaper =
+      if osConfig.my.host.wallpaper.name == null
+      then null
+      else let
+        matches = builtins.filter (w: candidateName w == osConfig.my.host.wallpaper.name) allCandidates;
+      in
+        if matches == []
+        then throw "Wallpaper '${osConfig.my.host.wallpaper.name}' not found in pack='${osConfig.my.host.wallpaper.pack}' mode='${mode}'"
+        else builtins.head matches;
+
+    byAreaThenPriority = a: b: let
+      aArea = a.width * a.height;
+      bArea = b.width * b.height;
+    in
+      if aArea == bArea
+      then (a.priority or 0) > (b.priority or 0)
+      else aArea < bArea;
+
+    pickBest = candidates: reqWidth: reqHeight: let
+      valid = builtins.filter (w: w.width >= reqWidth && w.height >= reqHeight) candidates;
+    in
+      if valid == []
+      then null
+      else builtins.head (builtins.sort byAreaThenPriority valid);
+
+    selectedLayoutWallpaper = pickBest allCandidates targetWidth targetHeight;
+
+    primaryMonitor =
+      builtins.foldl' (
+        acc: m:
+          if acc != null
+          then acc
+          else if m.primary
+          then m
+          else null
+      )
+      null
+      monitors;
+
+    singleTargetWidth =
+      if primaryMonitor != null
+      then primaryMonitor.width
+      else targetWidth;
+    singleTargetHeight =
+      if primaryMonitor != null
+      then primaryMonitor.height
+      else targetHeight;
+    selectedSingleWallpaper = pickBest allCandidates singleTargetWidth singleTargetHeight;
+
+    selectedWallpaper =
+      if namedWallpaper != null
+      then namedWallpaper.path
+      else if selectedLayoutWallpaper != null
+      then selectedLayoutWallpaper.path
+      else if osConfig.my.host.wallpaper.fallbackPolicy == "repeat-single" && selectedSingleWallpaper != null
+      then selectedSingleWallpaper.path
+      else throw "No wallpaper found for pack='${osConfig.my.host.wallpaper.pack}' mode='${mode}' layout='${targetLayout}'";
+
+    paletteForMode = currentMode:
+      if currentMode == "dark"
+      then "harddark"
+      else "softlight";
 
     wallust = lib.getExe pkgs.wallust;
     swayncClient = "${pkgs.swaynotificationcenter}/bin/swaync-client";
@@ -63,59 +194,13 @@
       @define-color color15 {{color15}};
     '';
 
-    solarizedDark = ''
-      {
-        "colors": {
-          "color0": "#073642",
-          "color1": "#dc322f",
-          "color10": "#859900",
-          "color11": "#b58900",
-          "color12": "#268bd2",
-          "color13": "#d33682",
-          "color14": "#2aa198",
-          "color15": "#eee8d5",
-          "color2": "#859900",
-          "color3": "#b58900",
-          "color4": "#268bd2",
-          "color5": "#d33682",
-          "color6": "#2aa198",
-          "color7": "#eee8d5",
-          "color8": "#6c7c80",
-          "color9": "#dc322f"
-        },
-        "special": {
-          "background": "#073642",
-          "cursor": "#dc322f",
-          "foreground": "#fdf6e3"
-        }
-      }
-    '';
-
-    solarizedLight = ''
-      {
-        "colors": {
-          "color0": "#eee8d5",
-          "color1": "#dc322f",
-          "color10": "#859900",
-          "color11": "#b58900",
-          "color12": "#268bd2",
-          "color13": "#d33682",
-          "color14": "#2aa198",
-          "color15": "#073642",
-          "color2": "#859900",
-          "color3": "#b58900",
-          "color4": "#268bd2",
-          "color5": "#d33682",
-          "color6": "#2aa198",
-          "color7": "#073642",
-          "color8": "#6c7c80",
-          "color9": "#dc322f"
-        },
-        "special": {
-          "background": "#eee8d5",
-          "cursor": "#dc322f",
-          "foreground": "#002b36"
-        }
+    niriTemplate = ''
+      layout {
+          focus-ring {
+              active-color "{{color4}}"
+              inactive-color "{{color8}}"
+              urgent-color "{{color1}}"
+          }
       }
     '';
   in {
@@ -123,9 +208,10 @@
       enable = true;
       package = pkgs.wallust;
       settings = {
-        backend = "fastresize";
+        backend = "full";
         color_space = "lch";
-        palette = "dark";
+        fallback_generator = "complementary";
+        palette = paletteForMode mode;
 
         templates = {
           waybar = {
@@ -147,17 +233,28 @@
             template = "ghostty.conf";
             target = "~/.config/ghostty/themes/solarized";
           };
+
+          niri = {
+            template = "niri.kdl";
+            target = "~/.config/niri/wallust.kdl";
+          };
         };
       };
     };
 
     home.packages = [
-      (pkgs.writeShellScriptBin "theme-solarized-dark" ''
-        ${wallust} cs solarized-dark
+      (pkgs.writeShellScriptBin "theme-from-wallpaper-dark" ''
+        ${wallust} run --palette harddark ${lib.escapeShellArg (toString selectedWallpaper)}
+        if command -v niri >/dev/null 2>&1; then
+          niri msg action load-config-file || true
+        fi
         ${swayncClient} -R || true
       '')
-      (pkgs.writeShellScriptBin "theme-solarized-light" ''
-        ${wallust} cs solarized-light
+      (pkgs.writeShellScriptBin "theme-from-wallpaper-light" ''
+        ${wallust} run --palette softlight ${lib.escapeShellArg (toString selectedWallpaper)}
+        if command -v niri >/dev/null 2>&1; then
+          niri msg action load-config-file || true
+        fi
         ${swayncClient} -R || true
       '')
     ];
@@ -165,10 +262,18 @@
     xdg.configFile = {
       "wallust/templates/ghostty.conf".text = ghosttyTemplate;
       "wallust/templates/hyprland.conf".text = hyprTemplate;
+      "wallust/templates/niri.kdl".text = niriTemplate;
       "wallust/templates/waybar.css".text = waybarTemplate;
       "wallust/templates/swaync.css".text = waybarTemplate;
-      "wallust/colorschemes/solarized-dark.json".text = solarizedDark;
-      "wallust/colorschemes/solarized-light.json".text = solarizedLight;
+      "niri/wallust.kdl".text = ''
+        layout {
+            focus-ring {
+                active-color "#729fcf"
+                inactive-color "#586e75"
+                urgent-color "#ef2929"
+            }
+        }
+      '';
     };
 
     systemd.user.services.wallust-apply = {
@@ -182,7 +287,10 @@
         Type = "oneshot";
         ExecStart = pkgs.writeShellScript "wallust-apply" ''
           set -e
-          ${wallust} cs solarized-${mode}
+          ${wallust} run --palette ${paletteForMode mode} ${lib.escapeShellArg (toString selectedWallpaper)}
+          if command -v niri >/dev/null 2>&1; then
+            niri msg action reload-config || true
+          fi
           ${swayncClient} -R || true
         '';
       };
