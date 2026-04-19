@@ -123,3 +123,7 @@ Home Manager is adopted now, embedded in NixOS first.
 - Keep `default.nix` as an aggregator only where useful.
 - Keep host layouts symmetrical for maintainability.
 - Prefer profile names by capability (e.g. `common`, `dev`, `gui`) instead of device labels (e.g. `laptop`, `desktop`).
+
+## Related docs
+
+- Formatting and hook workflow: `docs/code-style.md`
