@@ -10,13 +10,13 @@
 #### Commands
 
 ```bash
-wallust -d /etc/xdg/wallust cs solarized-dark
+theme-from-wallpaper-dark
 systemctl --user restart waybar.service
 swaync-client -R
 ```
 
 ```bash
-wallust -d /etc/xdg/wallust cs solarized-light
+theme-from-wallpaper-light
 systemctl --user restart waybar.service
 swaync-client -R
 ```
@@ -37,3 +37,14 @@ swaync-client -R
 - Ghostty reads colors from `~/.config/ghostty/themes/solarized`.
 - Waybar reads colors from `~/.config/waybar/colors.css`.
 - Swaync reads colors from `~/.config/swaync/colors.css`.
+
+#### Current behavior
+
+- Wallust derives colors from the selected wallpaper via `wallust run --palette ... <wallpaper>`.
+- `wallust-apply` runs automatically on login and uses host wallpaper selection logic.
+
+### Awww backdrop
+
+- Niri places the active `awww-daemon` background layer within the overview backdrop via a layer rule.
+- The wallpaper remains visible in overview and between workspace transitions.
+- No extra blur generation/cache pipeline is used.

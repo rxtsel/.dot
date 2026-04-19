@@ -125,6 +125,19 @@
             }
           ];
 
+          layer-rules = [
+            {
+              matches = [{namespace = "^awww-daemon$";}];
+              place-within-backdrop = true;
+            }
+          ];
+
+          overview = {
+            workspace-shadow = {
+              off = {};
+            };
+          };
+
           binds =
             {
               "Mod+T".spawn = lib.getExe pkgs.ghostty;
