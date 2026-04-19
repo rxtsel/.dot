@@ -1,37 +1,37 @@
-{
-  flake.modules.nixos.swaybg = {
+{...}: {
+  flake.modules.homeManager.awww = {
     pkgs,
     lib,
-    config,
+    osConfig,
     ...
   }: let
-    wallpaperRegistry = import ../../../assets/wallpapers/registry.nix {inherit config;};
+    wallpaperRegistry = import ../../../../assets/wallpapers/registry.nix {config = osConfig;};
 
     oppositeMode =
-      if config.my.host.wallpaper.mode == "dark"
+      if osConfig.my.host.wallpaper.mode == "dark"
       then "light"
       else "dark";
 
     wallpaperModeConfig = packConfig: let
-      requestedModeConfig = packConfig.${config.my.host.wallpaper.mode} or null;
+      requestedModeConfig = packConfig.${osConfig.my.host.wallpaper.mode} or null;
       fallbackModeConfig = packConfig.${oppositeMode} or null;
     in
       if requestedModeConfig != null
       then requestedModeConfig
       else if fallbackModeConfig != null
       then fallbackModeConfig
-      else throw "Wallpaper pack '${config.my.host.wallpaper.pack}' has no '${config.my.host.wallpaper.mode}' or '${oppositeMode}' mode";
+      else throw "Wallpaper pack '${osConfig.my.host.wallpaper.pack}' has no '${osConfig.my.host.wallpaper.mode}' or '${oppositeMode}' mode";
 
-    monitors = config.my.host.monitors;
+    monitors = osConfig.my.host.monitors;
     monitorCount = builtins.length monitors;
 
     targetLayout =
-      if config.my.host.wallpaper.layoutPreference == "auto"
+      if osConfig.my.host.wallpaper.layoutPreference == "auto"
       then
         if monitorCount > 1
         then "dual-span"
         else "single"
-      else config.my.host.wallpaper.layoutPreference;
+      else osConfig.my.host.wallpaper.layoutPreference;
 
     targetWidth =
       if targetLayout == "dual-span"
@@ -61,7 +61,7 @@
         0
         monitors;
 
-    packConfig = wallpaperRegistry.packs.${config.my.host.wallpaper.pack};
+    packConfig = wallpaperRegistry.packs.${osConfig.my.host.wallpaper.pack};
     modeConfig = wallpaperModeConfig packConfig;
 
     allCandidates =
@@ -72,16 +72,16 @@
       in
         (packModeLayouts.${targetLayout} or []) ++ (packModeLayouts.single or []);
 
-    candidateName = wallpaper: builtins.baseNameOf wallpaper.path;
+    candidateName = wallpaper: baseNameOf wallpaper.path;
 
     namedWallpaper =
-      if config.my.host.wallpaper.name == null
+      if osConfig.my.host.wallpaper.name == null
       then null
       else let
-        matches = builtins.filter (w: candidateName w == config.my.host.wallpaper.name) allCandidates;
+        matches = builtins.filter (w: candidateName w == osConfig.my.host.wallpaper.name) allCandidates;
       in
         if matches == []
-        then throw "Wallpaper '${config.my.host.wallpaper.name}' not found in pack='${config.my.host.wallpaper.pack}' mode='${config.my.host.wallpaper.mode}'"
+        then throw "Wallpaper '${osConfig.my.host.wallpaper.name}' not found in pack='${osConfig.my.host.wallpaper.pack}' mode='${osConfig.my.host.wallpaper.mode}'"
         else builtins.head matches;
 
     byAreaThenPriority = a: b: let
@@ -128,41 +128,62 @@
       then namedWallpaper.path
       else if selectedLayoutWallpaper != null
       then selectedLayoutWallpaper.path
-      else if config.my.host.wallpaper.fallbackPolicy == "repeat-single" && selectedSingleWallpaper != null
+      else if osConfig.my.host.wallpaper.fallbackPolicy == "repeat-single" && selectedSingleWallpaper != null
       then selectedSingleWallpaper.path
-      else throw "No wallpaper found for pack='${config.my.host.wallpaper.pack}' mode='${config.my.host.wallpaper.mode}' layout='${targetLayout}'";
+      else throw "No wallpaper found for pack='${osConfig.my.host.wallpaper.pack}' mode='${osConfig.my.host.wallpaper.mode}' layout='${targetLayout}'";
 
-    monitorFlags =
-      lib.concatMapStringsSep " " (
-        m: let
-          monitorWallpaper = m.wallpaper or null;
-          wallpaperPath =
-            if monitorWallpaper != null
-            then monitorWallpaper
-            else selectedWallpaper;
-        in "-o ${m.name} -i ${toString wallpaperPath}"
-      )
-      monitors;
+    awww = lib.getExe pkgs.awww;
+    resizeMode = "fit";
 
-    swaybgArgs =
+    applyMonitorArgs = m: let
+      monitorWallpaper = m.wallpaper or null;
+      wallpaperPath =
+        if monitorWallpaper != null
+        then monitorWallpaper
+        else selectedWallpaper;
+    in ''
+      ${awww} img --outputs ${lib.escapeShellArg m.name} --resize ${resizeMode} --transition-type none ${lib.escapeShellArg (toString wallpaperPath)}
+    '';
+
+    applyWallpaperScript =
       if monitors == []
-      then "-i ${toString selectedWallpaper}"
-      else monitorFlags;
+      then ''
+        ${awww} img --resize ${resizeMode} --transition-type none ${lib.escapeShellArg (toString selectedWallpaper)}
+      ''
+      else lib.concatMapStringsSep "\n" applyMonitorArgs monitors;
   in {
-    environment.systemPackages = [pkgs.swaybg];
+    services.awww.enable = true;
 
-    systemd.user.services.swaybg = {
-      description = "Swaybg Wallpaper Daemon";
-      after = ["graphical-session.target"];
-      wantedBy = ["graphical-session.target"];
-      partOf = ["graphical-session.target"];
-
-      serviceConfig = {
-        ExecStart = "${pkgs.swaybg}/bin/swaybg ${swaybgArgs} -m fill";
-        Restart = "on-failure";
+    systemd.user.services.awww-apply = {
+      Unit = {
+        Description = "Apply awww wallpapers";
+        After = [
+          "graphical-session.target"
+          "awww.service"
+        ];
+        Wants = ["awww.service"];
+        PartOf = ["graphical-session.target"];
       };
 
-      enable = true;
+      Service = {
+        Type = "oneshot";
+        ExecStart = pkgs.writeShellScript "awww-apply" ''
+          set -eu
+
+          for _ in $(seq 1 20); do
+            if ${awww} query >/dev/null 2>&1; then
+              break
+            fi
+            sleep 0.2
+          done
+
+          ${applyWallpaperScript}
+        '';
+      };
+
+      Install = {
+        WantedBy = ["graphical-session.target"];
+      };
     };
   };
 }

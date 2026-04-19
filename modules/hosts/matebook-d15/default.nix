@@ -13,7 +13,6 @@
       fcitx5
       neovim
       niri
-      swaybg
       cursorTheme
       (
         {config, ...}: let
