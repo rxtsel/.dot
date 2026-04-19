@@ -1,0 +1,18 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+repo_root="$(git rev-parse --show-toplevel)"
+cd "$repo_root"
+
+if ! command -v nix >/dev/null 2>&1; then
+  printf 'error: nix is required to run pre-commit hooks\n' >&2
+  exit 1
+fi
+
+mapfile -t staged_files < <(git diff --cached --name-only --diff-filter=ACMR)
+
+if [ ${#staged_files[@]} -eq 0 ]; then
+  exit 0
+fi
+
+exec nix develop -c pre-commit run --config .pre-commit-config.yaml --hook-stage pre-commit --files "${staged_files[@]}"

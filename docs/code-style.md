@@ -35,20 +35,29 @@ nix develop -c pre-commit run --all-files
 
 ## Pre-commit Setup
 
-Install hooks for this clone:
+Set the repository hooks path for this clone:
 
 ```bash
-nix develop -c pre-commit install --install-hooks
+git config core.hooksPath .githooks
 ```
 
-After installation, every `git commit` runs `treefmt` automatically.
+The pre-commit hook is versioned in this repo and runs through the flake dev shell, so it does not depend on ephemeral `/nix/store` hook paths.
+
+If you need to refresh the Python pre-commit environments:
+
+```bash
+nix develop -c pre-commit install-hooks
+```
+
+After setup, every `git commit` runs the repo hook and applies `treefmt` checks automatically.
 
 ## New Machine Bootstrap
 
 After cloning on a new machine:
 
 ```bash
-nix develop -c pre-commit install --install-hooks
+git config core.hooksPath .githooks
+nix develop -c pre-commit install-hooks
 nix run path:.#formatter.x86_64-linux --
 ```
 
