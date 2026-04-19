@@ -30,7 +30,7 @@
             format = "{icon}";
             format-icons = {
               "1:code" = "";
-              "2:browser" = "";
+              "2:browser" = "";
               "3:explorer" = "";
               "4:music" = "";
               "5:social" = "";
