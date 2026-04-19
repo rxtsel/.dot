@@ -3,34 +3,30 @@
     programs.ghostty = {
       enable = true;
       enableFishIntegration = true;
+      installVimSyntax = true;
 
       settings = {
         theme = "solarized";
-        background-opacity = 0.65;
-        background-blur = true;
+        background-opacity = 0.35;
         font-family = "CaskaydiaCove Nerd Font";
         font-size = 18;
 
-        cursor-style = "block";
-        cursor-style-blink = false;
         cursor-invert-fg-bg = true;
-
         mouse-hide-while-typing = true;
-        gtk-tabs-location = "bottom";
-        title = "\" \"";
+        focus-follows-mouse = true;
 
-        confirm-close-surface = true;
-        window-theme = "system";
+        gtk-tabs-location = "bottom";
+        gtk-wide-tabs = true;
+
+        window-theme = "ghostty";
         window-decoration = true;
         window-padding-balance = false;
         window-save-state = "never";
 
-        auto-update = "download";
-        auto-update-channel = "stable";
-
+        confirm-close-surface = true;
         shell-integration-features = true;
-        focus-follows-mouse = true;
         link-url = true;
+        scrollbar = "never";
 
         keybind = [
           "alt+r=reload_config"
@@ -45,6 +41,7 @@
           "alt+p>l=goto_split:right"
           "alt+t>l=next_tab"
           "alt+t>h=previous_tab"
+          "alt+t>o=toggle_tab_overview"
         ];
       };
     };
