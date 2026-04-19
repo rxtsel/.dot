@@ -347,17 +347,18 @@
           color: @foreground;
           transition: background-color 0.5s ease;
         }
-        #battery.charging {
+
+        #battery.discharging.critical {
           background-color: transparent;
           color: @color2;
         }
-        #battery.warning {
+
+        #battery.charging,
+        #battery.plugged,
+        #battery.charging.critical,
+        #battery.plugged.critical {
           background-color: transparent;
-          color: @color4;
-        }
-        #battery.critical {
-          background-color: transparent;
-          color: @color1;
+          color: @color6;
         }
       '';
     };
