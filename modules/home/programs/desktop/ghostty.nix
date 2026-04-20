@@ -7,7 +7,7 @@
 
       settings = {
         theme = "solarized";
-        background-opacity = 0.35;
+        background-opacity = 0.5;
         font-family = "CaskaydiaCove Nerd Font";
         font-size = 18;
 
