@@ -186,12 +186,13 @@
         themes = {
           solarized-dark = {
             meta = {
+              version = 1;
               name = "Solarized Dark";
               description = "Low-contrast theme designed to reduce eye strain";
               variant = "dark";
               inherits = "vicinae-dark";
-              icon = "icons/solarized.png";
             };
+
             colors = {
               core = {
                 background = "#002B36";
@@ -199,15 +200,8 @@
                 secondary_background = "#073642";
                 border = "#586E75";
                 accent = "#268BD2";
-                accent_foreground = "#ffffff";
               };
-              main_window = {
-                border = "#586E75";
-                footer.background = "colors.core.secondary_background";
-              };
-              settings_window = {
-                border = "#586E75";
-              };
+
               accents = {
                 blue = "#268BD2";
                 green = "#859900";
@@ -218,71 +212,29 @@
                 yellow = "#B58900";
                 cyan = "#2AA198";
               };
-              shortcut = {
-                border = "colors.core.border";
-              };
-              text = {
-                default = "colors.core.foreground";
-                muted = "#93A1A1";
-                danger = "#DC322F";
-                success = "#859900";
-                placeholder = "#586E75";
-                selection = {
-                  background = "#268BD2";
-                  foreground = "#ffffff";
-                };
-                links = {
-                  default = "#268BD2";
-                  visited = "#6C71C4";
-                };
-              };
-              input = {
-                border = "#586E75";
-                border_focus = "#268BD2";
-                border_error = "#DC322F";
-              };
-              button.primary = {
-                background = "#073642";
-                foreground = "#839496";
-                hover.background = "#0A4757";
-                focus.outline = "colors.core.accent";
-              };
+
               list.item = {
+                selection = {
+                  background = "#073642";
+                  secondary_background = "#586E75";
+                };
+
                 hover = {
                   background = "#073642";
-                  foreground = "#839496";
-                  secondary_foreground = "#93A1A1";
                 };
-                selection = {
-                  background = "#073642";
-                  foreground = "#839496";
-                  secondary_background = "#586E75";
-                  secondary_foreground = "#EEE8D5";
-                };
-              };
-              grid.item = {
-                background = "#073642";
-                hover.outline = "#839496";
-                selection.outline = "#268BD2";
-              };
-              scrollbars = {
-                background = "#586E75";
-              };
-              loading = {
-                bar = "#839496";
-                spinner = "#839496";
               };
             };
           };
 
           solarized-light = {
             meta = {
+              version = 1;
               name = "Solarized Light";
               description = "Light variant of the popular Solarized theme";
               variant = "light";
               inherits = "vicinae-light";
-              icon = "icons/solarized.png";
             };
+
             colors = {
               core = {
                 background = "#FDF6E3";
@@ -290,15 +242,8 @@
                 secondary_background = "#EEE8D5";
                 border = "#839496";
                 accent = "#268BD2";
-                accent_foreground = "#ffffff";
               };
-              main_window = {
-                border = "#839496";
-                footer.background = "colors.core.secondary_background";
-              };
-              settings_window = {
-                border = "#839496";
-              };
+
               accents = {
                 blue = "#268BD2";
                 green = "#859900";
@@ -309,59 +254,16 @@
                 yellow = "#B58900";
                 cyan = "#2AA198";
               };
-              shortcut = {
-                border = "colors.core.border";
-              };
-              text = {
-                default = "colors.core.foreground";
-                muted = "#93A1A1";
-                danger = "#DC322F";
-                success = "#859900";
-                placeholder = "#93A1A1";
-                selection = {
-                  background = "#268BD2";
-                  foreground = "#ffffff";
-                };
-                links = {
-                  default = "#268BD2";
-                  visited = "#6C71C4";
-                };
-              };
-              input = {
-                border = "#839496";
-                border_focus = "#268BD2";
-                border_error = "#DC322F";
-              };
-              button.primary = {
-                background = "#EEE8D5";
-                foreground = "#657B83";
-                hover.background = "#F6F0DC";
-                focus.outline = "colors.core.accent";
-              };
+
               list.item = {
-                hover = {
-                  background = "#F7F2E5";
-                  foreground = "#657B83";
-                  secondary_foreground = "#586E75";
-                };
                 selection = {
                   background = "#EEE8D5";
-                  foreground = "#657B83";
                   secondary_background = "#F6F0DC";
-                  secondary_foreground = "#586E75";
                 };
-              };
-              grid.item = {
-                background = "#EEE8D5";
-                hover.outline = "#657B83";
-                selection.outline = "#268BD2";
-              };
-              scrollbars = {
-                background = "#839496";
-              };
-              loading = {
-                bar = "#657B83";
-                spinner = "#657B83";
+
+                hover = {
+                  background = "#F7F2E5";
+                };
               };
             };
           };
