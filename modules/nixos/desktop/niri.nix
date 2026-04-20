@@ -90,6 +90,7 @@
         };
 
         input = {
+          focus-follows-mouse = {};
           workspace-auto-back-and-forth = {};
           keyboard = {
             xkb = {
@@ -126,7 +127,10 @@
     # ── binds ────────────────────────────────────────────────────────────────
     baseBinds = {
       "Mod+T".spawn = lib.getExe pkgs.ghostty;
-      "Mod+B".spawn = lib.getExe pkgs.brave;
+      "Mod+B".spawn =
+        if (config.my.host.role == "desktop")
+        then "zen-twilight"
+        else lib.getExe pkgs.brave;
       "Mod+E".spawn-sh = "${lib.getExe pkgs.ghostty} -e yazi";
       "Mod+Space".spawn-sh = "${lib.getExe pkgs.vicinae} toggle";
       "Super+Alt+L".spawn = lib.getExe pkgs.swaylock;
@@ -322,11 +326,11 @@
           open-focused = true;
         }
         {
-          matches = [{app-id = "brave-browser";} {app-id = "^ResponsivelyApp$";}];
+          matches = [{app-id = "brave-browser";} {app-id = "^ResponsivelyApp$";} {app-id = "zen-twilight$";}];
           open-on-workspace = "2:browser";
         }
         {
-          matches = [{app-id = "brave-browser$";}];
+          matches = [{app-id = "brave-browser$";} {app-id = "zen-twilight$";}];
           open-focused = true;
           open-maximized = true;
         }
@@ -365,7 +369,7 @@
           open-on-workspace = "5:social";
         }
         {
-          matches = [{app-id = "^com\\.thunderbird$";}];
+          matches = [{app-id = "^thunderbird$";}];
           open-on-workspace = "6:email";
           open-maximized = true;
           open-focused = false;
