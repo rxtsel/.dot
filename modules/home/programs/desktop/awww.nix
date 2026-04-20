@@ -102,7 +102,8 @@
     selectedLayoutWallpaper = pickBest allCandidates targetWidth targetHeight;
 
     primaryMonitor =
-      builtins.foldl' (
+      builtins.foldl'
+      (
         acc: m:
           if acc != null
           then acc
@@ -133,7 +134,41 @@
       else throw "No wallpaper found for pack='${osConfig.my.host.wallpaper.pack}' mode='${osConfig.my.host.wallpaper.mode}' layout='${targetLayout}'";
 
     awww = lib.getExe pkgs.awww;
+    magick = lib.getExe pkgs.imagemagick;
     resizeMode = "fit";
+
+    sortedMonitors = monitors;
+
+    spanCommands = let
+      mkCommand = acc: m: let
+        index = acc.index;
+        offsetX = acc.offsetX;
+        file = "/tmp/awww-span-${toString index}.png";
+        cmd = ''
+          ${magick} ${lib.escapeShellArg (toString selectedWallpaper)} \
+            -resize '${toString targetWidth}x${toString targetHeight}^' \
+            -gravity center \
+            -extent '${toString targetWidth}x${toString targetHeight}' \
+            -crop '${toString m.width}x${toString m.height}+${toString offsetX}+0' +repage \
+            ${lib.escapeShellArg file}
+
+          ${awww} img --outputs ${lib.escapeShellArg m.name} --transition-type none ${lib.escapeShellArg file}
+        '';
+      in {
+        index = index + 1;
+        offsetX = offsetX + m.width;
+        commands = acc.commands ++ [cmd];
+      };
+
+      result =
+        builtins.foldl' mkCommand {
+          index = 0;
+          offsetX = 0;
+          commands = [];
+        }
+        sortedMonitors;
+    in
+      lib.concatStringsSep "\n" result.commands;
 
     applyMonitorArgs = m: let
       monitorWallpaper = m.wallpaper or null;
@@ -150,8 +185,12 @@
       then ''
         ${awww} img --resize ${resizeMode} --transition-type none ${lib.escapeShellArg (toString selectedWallpaper)}
       ''
+      else if targetLayout == "dual-span" && monitorCount > 1
+      then spanCommands
       else lib.concatMapStringsSep "\n" applyMonitorArgs monitors;
   in {
+    home.packages = [pkgs.imagemagick];
+
     services.awww.enable = true;
 
     systemd.user.services.awww-apply = {
