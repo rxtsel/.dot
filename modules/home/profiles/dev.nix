@@ -3,6 +3,7 @@
     imports = with inputs.self.modules.homeManager; [
       git
       lazygit
+      podman
     ];
   };
 }
