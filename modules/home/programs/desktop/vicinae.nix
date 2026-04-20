@@ -42,11 +42,7 @@
           };
 
           launcher_window = {
-            opacity = 0.55;
-            blur = {
-              enabled = true;
-            };
-            dim_around = true;
+            opacity = 1;
             client_side_decorations = {
               enabled = true;
               rounding = 16;
@@ -54,6 +50,11 @@
             };
             compact_mode = {
               enabled = true;
+            };
+            layer_shell = {
+              enabled = true;
+              keyboard_interactivity = "on_demand";
+              layer = "top";
             };
           };
 
@@ -106,7 +107,7 @@
                 transitionFPS = "60";
                 transitionStep = "90";
                 transitionType = "random";
-                wallpaperPath = "~/.dotfiles/assets/wallpapers/packs/solarized";
+                wallpaperPath = "~/.dotfiles/assets/wallpapers";
                 leftMonitor = "DP-2";
                 rightMonitor = "DP-1";
               };
@@ -174,6 +175,16 @@
               sleep.enabled = false;
               soft-reboot.enabled = false;
               suspend.enabled = false;
+              logout = {
+                enabled = true;
+                preferences = {
+                  confirm = true;
+                  customProgram = ''
+                    systemctl --user stop niri.service || true
+                    loginctl terminate-session "$XDG_SESSION_ID"
+                  '';
+                };
+              };
             };
 
             scripts.enabled = false;
