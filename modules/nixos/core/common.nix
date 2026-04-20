@@ -20,5 +20,6 @@
       alsa.support32Bit = true;
       pulse.enable = true;
     };
+    environment.variables.EDITOR = "nvim";
   };
 }
