@@ -10,6 +10,7 @@
       gammastep
       thunderbird
       zen-browser
+      discord
     ];
   };
 }
