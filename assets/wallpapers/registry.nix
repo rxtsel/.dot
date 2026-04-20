@@ -46,6 +46,9 @@ in {
           (wp "dark" "wall2-2560x1440.png" 2560 1440 80)
           (wp "dark" "wall3-2560x1440.png" 2560 1440 80)
           (wp "dark" "waves-1920x1080.png" 1920 1080 75)
+          (wp "dark" "grayscale-forest-5120x1440.png" 5120 1440 75)
+          (wp "dark" "green-flowers-5120x1440.png" 5120 1440 10)
+          (wp "dark" "green-flowers2-5120x1440.png" 5120 1440 10)
         ];
       };
 
