@@ -8,6 +8,7 @@
       eza
       bat
       imagemagick
+      btop
     ];
   };
 }
