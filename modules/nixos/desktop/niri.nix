@@ -81,6 +81,10 @@
           include optional=true "~/.config/niri/wallust.kdl"
           ${dynamicOutputsConfig}
           ${dynamicWorkspacesConfig}
+
+          xwayland-satellite {
+            path "xwayland-satellite"
+          }
         '';
 
         environment = {
@@ -385,7 +389,7 @@
       ];
     };
   in {
-    environment.systemPackages = lib.optionals cfg.features.ddcci [pkgs.ddcutil];
+    environment.systemPackages = lib.optionals cfg.features.ddcci [pkgs.ddcutil pkgs.xwayland-satellite];
 
     programs.niri = {
       enable = true;
