@@ -7,6 +7,7 @@
       opencode
       eza
       bat
+      imagemagick
     ];
   };
 }
