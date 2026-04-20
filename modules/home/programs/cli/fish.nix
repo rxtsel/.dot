@@ -3,6 +3,9 @@
     programs.fish = {
       enable = true;
       interactiveShellInit = ''
+        # Enable vim mode
+        fish_vi_key_bindings
+
         # Only for login shell on TTY1
         if status is-login; and test (tty) = /dev/tty1
           exec niri-session
