@@ -30,7 +30,7 @@
             wallpaper = {
               pack = "solarized";
               mode = "dark";
-              name = "darkness-4579x2616.jpg";
+              name = "green-flowers2-5120x1440.png";
               layoutPreference = "auto";
               fallbackPolicy = "repeat-single";
             };
