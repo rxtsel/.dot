@@ -8,6 +8,8 @@
       swaync
       vicinae
       gammastep
+      thunderbird
+      zen-browser
     ];
   };
 }
