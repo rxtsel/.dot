@@ -359,7 +359,7 @@
           default-column-width.proportion = 0.5;
         }
         {
-          matches = [{app-id = "^com\\.discord$";}];
+          matches = [{app-id = "^discord$";}];
           open-on-workspace = "5:social";
           open-focused = true;
           open-floating = true;
