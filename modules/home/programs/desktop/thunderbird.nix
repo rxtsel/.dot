@@ -33,14 +33,22 @@
           "privacy.donottrackheader.enabled" = true;
           # Force DNS-over-HTTPS only
           "network.trr.mode" = 3;
-          # Cloudflare DoH endpoint
           "network.trr.uri" = "https://cloudflare-dns.com/dns-query";
-          # Skip confirmation DNS check
           "network.trr.confirmationNS" = "skip";
           # Enable inline spell checking while typing
           "mail.spellcheck.inline" = true;
-          # Check spelling before sending emails
           "mail.compose.spellcheck.before_send" = true;
+          # Disable global search/indexer
+          "mailnews.database.global.indexer.enabled" = false;
+          # Reduce some UI/background overhead
+          "mail.biff.show_alert" = false;
+          "mail.biff.play_sound" = false;
+          "mail.shell.checkDefaultClient" = false;
+          # Conservative disk cache tuning
+          "browser.cache.disk.enable" = true;
+          "browser.cache.memory.enable" = true;
+          # Conversation-related features can feel heavier in some setups
+          "mail.threadpane.use_correspondents" = false;
         };
 
         profiles.default = {
