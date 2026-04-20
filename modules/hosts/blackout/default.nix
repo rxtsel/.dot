@@ -31,23 +31,23 @@
               pack = "solarized";
               mode = "dark";
               name = "green-flowers2-5120x1440.png";
-              layoutPreference = "auto";
+              layoutPreference = "dual-span";
               fallbackPolicy = "repeat-single";
             };
             monitors = [
-              {
-                name = "DP-1";
-                width = 2560;
-                height = 1440;
-                refresh = 144;
-                primary = true;
-              }
               {
                 name = "DP-2";
                 width = 2560;
                 height = 1440;
                 refresh = 144;
                 primary = false;
+              }
+              {
+                name = "DP-1";
+                width = 2560;
+                height = 1440;
+                refresh = 144;
+                primary = true;
               }
             ];
           };
