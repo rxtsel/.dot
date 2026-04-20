@@ -140,38 +140,6 @@
     wallust = lib.getExe pkgs.wallust;
     swayncClient = "${pkgs.swaynotificationcenter}/bin/swaync-client";
 
-    ghosttyTemplate = ''
-      background = "{{background}}"
-      foreground = "{{foreground}}"
-      selection-background = "{{color7}}"
-      selection-foreground = "{{background}}"
-      cursor-color = "{{cursor}}"
-
-      palette = 0={{color0}}
-      palette = 1={{color1}}
-      palette = 2={{color2}}
-      palette = 3={{color3}}
-      palette = 4={{color4}}
-      palette = 5={{color5}}
-      palette = 6={{color6}}
-      palette = 7={{color7}}
-      palette = 8={{color8}}
-      palette = 9={{color9}}
-      palette = 10={{color10}}
-      palette = 11={{color11}}
-      palette = 12={{color12}}
-      palette = 13={{color13}}
-      palette = 14={{color14}}
-      palette = 15={{color15}}
-    '';
-
-    hyprTemplate = ''
-      general {
-          col.active_border = rgb({{color4 | strip}})
-          col.inactive_border = rgba({{color0 | strip}}00)
-      }
-    '';
-
     waybarTemplate = ''
       @define-color cursor {{cursor}};
       @define-color background {{background}};
@@ -219,19 +187,9 @@
             target = "~/.config/waybar/colors.css";
           };
 
-          hypr = {
-            template = "hyprland.conf";
-            target = "~/.config/hypr/themes/wallust.conf";
-          };
-
           swaync = {
             template = "swaync.css";
             target = "~/.config/swaync/colors.css";
-          };
-
-          ghostty = {
-            template = "ghostty.conf";
-            target = "~/.config/ghostty/themes/solarized";
           };
 
           niri = {
@@ -260,8 +218,6 @@
     ];
 
     xdg.configFile = {
-      "wallust/templates/ghostty.conf".text = ghosttyTemplate;
-      "wallust/templates/hyprland.conf".text = hyprTemplate;
       "wallust/templates/niri.kdl".text = niriTemplate;
       "wallust/templates/waybar.css".text = waybarTemplate;
       "wallust/templates/swaync.css".text = waybarTemplate;
