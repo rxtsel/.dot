@@ -93,6 +93,8 @@
           QT_QPA_PLATFORMTHEME_QT6 = "qt6ct";
         };
 
+        screenshot-path = "~/Pictures/screenshots/%Y-%m-%d %H-%M-%S.png";
+
         input = {
           focus-follows-mouse = {};
           workspace-auto-back-and-forth = {};
