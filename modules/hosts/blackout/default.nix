@@ -14,6 +14,7 @@
       neovim
       niri
       cursorTheme
+      clockify
       (
         {config, ...}: let
           user = config.preferences.user.name;
