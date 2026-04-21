@@ -11,16 +11,99 @@
     services.swaync = {
       enable = true;
       settings = {
-        "$schema" = "/etc/xdg/swaync/configSchema.json";
         positionX = "right";
         positionY = "top";
         cssPriority = "user";
-        "control-center-width" = 400;
-        "control-center-height" = 860;
-        "notification-window-width" = 480;
+        control-center-width = 400;
+        control-center-height = 860;
+        control-center-margin-top = 8;
+        control-center-margin-bottom = 0;
+        control-center-margin-right = 8;
+        control-center-margin-left = 0;
+        notification-window-width = 480;
+        notification-body-image-height = 100;
+        notification-body-image-width = 200;
         timeout = 10;
-        "timeout-low" = 2;
-        "timeout-critical" = 6;
+        timeout-low = 2;
+        timeout-critical = 6;
+        fit-to-screen = false;
+        keyboard-shortcuts = true;
+        image-visibility = "when-available";
+        transition-time = 200;
+        hide-on-clear = false;
+        hide-on-action = true;
+        script-fail-notify = true;
+
+        widgets = [
+          "label"
+          "buttons-grid"
+          "volume"
+          "mpris"
+          "dnd"
+          "title"
+          "notifications"
+        ];
+
+        widget-config = {
+          title = {
+            text = "Notifications";
+            clear-all-button = true;
+            button-text = "Clear all";
+          };
+
+          label = {
+            max-lines = 1;
+            text = "";
+          };
+
+          mpris = {
+            image-size = 96;
+            show-album-art = "when-available";
+            loop-carousel = false;
+          };
+
+          volume = {
+            label = "󰕾";
+            show-per-app = true;
+            expand-button-label = "󰘕";
+            collapse-button-label = "󰘖";
+            icon-size = 24;
+            show-per-app-icon = true;
+            show-per-app-label = false;
+          };
+
+          buttons-grid = {
+            actions = [
+              {
+                label = "󰔎";
+                command = "darkman toggle";
+              }
+              {
+                label = "";
+                command = "pactl set-source-mute @DEFAULT_SOURCE@ toggle";
+                type = "toggle";
+              }
+              {
+                label = "";
+                active = true;
+                command = "sh -c '[[ $SWAYNC_TOGGLE_STATE == true ]] && nmcli radio wifi on || nmcli radio wifi off'";
+                update-command = "sh -c '[[ $(nmcli r wifi) == \"enabled\" ]] && echo true || echo false'";
+              }
+              {
+                label = "";
+                command = "vicinae vicinae://launch/@Gelei/store.vicinae.bluetooth/devices";
+              }
+              {
+                label = "󰝚";
+                command = "/run/current-system/sw/bin/pear-desktop";
+              }
+              {
+                label = "";
+                command = "vicinae 'vicinae://launch/power'";
+              }
+            ];
+          };
+        };
       };
       style = ''
         @import url("colors.css");
