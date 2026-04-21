@@ -6,6 +6,7 @@
       starship
       ssh
       zoxide
+      fzf
     ];
   };
 }
