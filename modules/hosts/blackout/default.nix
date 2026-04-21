@@ -16,6 +16,7 @@
       cursorTheme
       clockify
       yaak
+      pearDesktop
       (
         {config, ...}: let
           user = config.preferences.user.name;
