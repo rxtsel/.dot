@@ -42,7 +42,7 @@
           };
 
           launcher_window = {
-            opacity = 1;
+            opacity = 0.6;
             client_side_decorations = {
               enabled = true;
               rounding = 16;
@@ -226,12 +226,21 @@
 
               list.item = {
                 selection = {
-                  background = "#073642";
-                  secondary_background = "#586E75";
+                  background = {
+                    name = "colors.core.border";
+                    opacity = 0.15;
+                    lighter = 5;
+                    darker = 15;
+                  };
                 };
 
                 hover = {
-                  background = "#073642";
+                  background = {
+                    name = "colors.core.border";
+                    opacity = 0.1;
+                    lighter = 10;
+                    darker = 10;
+                  };
                 };
               };
             };
@@ -268,12 +277,19 @@
 
               list.item = {
                 selection = {
-                  background = "#EEE8D5";
-                  secondary_background = "#F6F0DC";
+                  background = {
+                    name = "colors.core.border";
+                    opacity = 0.1;
+                    darker = 6;
+                  };
                 };
 
                 hover = {
-                  background = "#F7F2E5";
+                  background = {
+                    name = "colors.core.border";
+                    opacity = 0.05;
+                    darker = 6;
+                  };
                 };
               };
             };
