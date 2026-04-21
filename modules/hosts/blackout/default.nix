@@ -15,6 +15,7 @@
       niri
       cursorTheme
       clockify
+      yaak
       (
         {config, ...}: let
           user = config.preferences.user.name;
