@@ -63,6 +63,21 @@
             center = [];
             right = [
               {
+                blacklist = [];
+                chevronColor = "none";
+                colorizeIcons = false;
+                drawerEnabled = true;
+                hidePassive = false;
+                id = "Tray";
+                pinned = [];
+              }
+              {
+                displayMode = "onhover";
+                iconColor = "none";
+                id = "Bluetooth";
+                textColor = "none";
+              }
+              {
                 id = "Battery";
                 alwaysShowPercentage = false;
                 deviceNativePath = "__default__";
@@ -74,13 +89,39 @@
                 warningThreshold = 30;
               }
               {
+                displayMode = "onhover";
+                iconColor = "none";
+                id = "Volume";
+                middleClickCommand = "pwvucontrol || pavucontrol";
+                textColor = "none";
+              }
+              {
                 id = "Network";
                 displayMode = "alwaysHide";
                 iconColor = "none";
                 textColor = "none";
               }
               {
-                id = "Bluetooth";
+                compactMode = false;
+                diskPath = "/";
+                iconColor = "none";
+                id = "SystemMonitor";
+                showCpuCores = false;
+                showCpuFreq = false;
+                showCpuTemp = true;
+                showCpuUsage = true;
+                showDiskAvailable = false;
+                showDiskUsage = true;
+                showDiskUsageAsPercent = false;
+                showGpuTemp = false;
+                showLoadAverage = false;
+                showMemoryAsPercent = false;
+                showMemoryUsage = true;
+                showNetworkStats = false;
+                showSwapUsage = false;
+                textColor = "none";
+                useMonospaceFont = true;
+                usePadding = false;
               }
               {
                 id = "Clock";
