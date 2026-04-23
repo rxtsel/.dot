@@ -18,30 +18,21 @@
         {config, ...}: let
           user = config.preferences.user.name;
         in {
-          preferences.user = {
-            name = "rxtsel";
-            fullName = "Cristhian Melo";
-            email = "rxtsel@outlook.com";
-            gitSigningKeyPath = "~/.ssh/github_ed25519.pub";
-            sshIdentityFile = "~/.ssh/github_ed25519";
-          };
-
           networking.hostName = "matebook-d15";
 
           boot.loader.systemd-boot.enable = true;
           boot.loader.efi.canTouchEfiVariables = true;
           boot.loader.efi.efiSysMountPoint = "/boot";
 
+          services.power-profiles-daemon.enable = true;
+          services.upower.enable = true;
+
+          # Uncomment and set the user information for overriding the defaults
+          # preferences.user = {};
+
           my.host = {
             role = "laptop";
             features.ddcci = false;
-            wallpaper = {
-              pack = "solarized";
-              mode = "dark";
-              name = "pacman-1920x1080.png";
-              layoutPreference = "auto";
-              fallbackPolicy = "repeat-single";
-            };
             monitors = [
               {
                 name = "eDP-1";
@@ -53,8 +44,6 @@
             ];
           };
 
-          system.stateVersion = "25.11";
-
           home-manager.users.${user} = {
             imports = with inputs.self.modules.homeManager; [
               profileCommon
@@ -62,11 +51,11 @@
               profileGui
             ];
 
-            services.gammastep-custom.enable = true;
-
             home.username = user;
             home.homeDirectory = "/home/${user}";
           };
+
+          system.stateVersion = "25.11";
         }
       )
     ];

@@ -28,16 +28,12 @@
           boot.loader.efi.canTouchEfiVariables = true;
           boot.kernel.sysctl." vm.swappiness" = 10;
 
+          # Uncomment and set the user information for overriding the defaults
+          # preferences.user = {};
+
           my.host = {
             role = "desktop";
             features.ddcci = true;
-            wallpaper = {
-              pack = "solarized";
-              mode = "dark";
-              name = "green-flowers2-5120x1440.png";
-              layoutPreference = "dual-span";
-              fallbackPolicy = "repeat-single";
-            };
             monitors = [
               {
                 name = "DP-2";
@@ -56,8 +52,6 @@
             ];
           };
 
-          system.stateVersion = "25.11";
-
           home-manager.users.${user} = {
             imports = with inputs.self.modules.homeManager; [
               profileCommon
@@ -65,11 +59,11 @@
               profileGui
             ];
 
-            services.gammastep-custom.enable = true;
-
             home.username = user;
             home.homeDirectory = "/home/${user}";
           };
+
+          system.stateVersion = "25.11";
         }
       )
     ];

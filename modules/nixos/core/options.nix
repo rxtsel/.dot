@@ -37,42 +37,6 @@
           default = "laptop";
         };
 
-        wallpaper = {
-          pack = lib.mkOption {
-            type = lib.types.str;
-            default = "solarized";
-          };
-
-          mode = lib.mkOption {
-            type = lib.types.enum [
-              "dark"
-              "light"
-            ];
-            default = "dark";
-          };
-
-          name = lib.mkOption {
-            type = lib.types.nullOr lib.types.str;
-            default = null;
-          };
-
-          layoutPreference = lib.mkOption {
-            type = lib.types.enum [
-              "auto"
-              "single"
-              "dual-span"
-            ];
-            default = "auto";
-          };
-
-          fallbackPolicy = lib.mkOption {
-            type = lib.types.enum [
-              "repeat-single"
-            ];
-            default = "repeat-single";
-          };
-        };
-
         features.ddcci = lib.mkOption {
           type = lib.types.bool;
           default = false;
@@ -102,11 +66,6 @@
                 primary = lib.mkOption {
                   type = lib.types.bool;
                   default = false;
-                };
-
-                wallpaper = lib.mkOption {
-                  type = lib.types.nullOr lib.types.path;
-                  default = null;
                 };
               };
             }

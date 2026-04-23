@@ -87,6 +87,10 @@
           }
         '';
 
+        spawn-at-startup = [
+          "noctalia-shell"
+        ];
+
         environment = {
           QT_QPA_PLATFORM = "wayland";
           QT_QPA_PLATFORMTHEME = "qt6ct";
