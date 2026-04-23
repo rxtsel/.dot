@@ -95,8 +95,8 @@
               }
               {
                 id = "NotificationHistory";
-                hideWhenZero = true;
-                hideWhenZeroUnread = true;
+                hideWhenZero = false;
+                hideWhenZeroUnread = false;
                 iconColor = "none";
                 showUnreadBadge = true;
                 unreadBadgeColor = "error";
