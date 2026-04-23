@@ -5,6 +5,7 @@
       brightnessctl
       tree
       opencode
+      codex
       eza
       bat
       imagemagick
