@@ -72,6 +72,14 @@
                 pinned = [];
               }
               {
+                id = "plugin:port-monitor";
+                defaultSettings = {
+                  hideSystemPorts = true;
+                  hideWhenEmpty = true;
+                  refreshInterval = 5;
+                };
+              }
+              {
                 displayMode = "onhover";
                 iconColor = "none";
                 id = "Bluetooth";
