@@ -96,24 +96,6 @@
               };
             };
 
-            "@sovereign/store.vicinae.awww-switcher" = {
-              preferences = {
-                colorGenTool = "wallust";
-                gridRows = "4";
-                postProduction = "no";
-                showImageDetails = true;
-                toggleVicinaeSetting = true;
-                transitionDuration = "3";
-                transitionFPS = "60";
-                transitionStep = "90";
-                transitionType = "random";
-                wallpaperPath = "~/.dotfiles/assets/wallpapers";
-                leftMonitor = "DP-2";
-                rightMonitor = "DP-1";
-              };
-              entrypoints.wprandom.enabled = false;
-            };
-
             browser-extension.enabled = false;
 
             calculator = {
