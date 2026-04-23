@@ -73,6 +73,15 @@
         (mkWorkspace "6:email" primary)
       ];
 
+    # Util for run noctalia commands
+    noctalia = cmd:
+      [
+        "noctalia-shell"
+        "ipc"
+        "call"
+      ]
+      ++ (pkgs.lib.splitString " " cmd);
+
     niriPackage = inputs.wrapper-modules.wrappers.niri.wrap {
       inherit pkgs;
       package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri;
@@ -120,17 +129,22 @@
         hotkey-overlay.skip-at-startup = {};
 
         blur = {
-          passes = 3;
-          offset = 3.0;
-          noise = 0.02;
-          saturation = 1.5;
+          passes = 2; # more passes = stronger blur (default: 3)
+          offset = 3.0; # sample distance per pass (default: 3.0)
+          noise = 0.03; # grain overlay (default: 0.02)
+          saturation = 1.0; # color saturation boost (default: 1.5)
+        };
+
+        debug = {
+          # Allows notification actions and window activation from Noctalia.
+          honor-xdg-activation-with-invalid-serial = {};
         };
 
         inherit (buildWindowRules) window-rules layer-rules;
 
         overview.workspace-shadow.off = {};
 
-        binds = baseBinds // lib.optionalAttrs cfg.features.ddcci ddcciBinds;
+        binds = baseBinds;
       };
     };
 
@@ -143,7 +157,10 @@
         else lib.getExe pkgs.brave;
       "Mod+E".spawn-sh = "${lib.getExe pkgs.ghostty} -e yazi";
       "Mod+Space".spawn-sh = "${lib.getExe pkgs.vicinae} toggle";
-      "Super+Alt+L".spawn = lib.getExe pkgs.swaylock;
+      "Mod+A".spawn = noctalia "controlCenter toggle";
+      "Mod+Comma".spawn = noctalia "settings toggle";
+      "Super+Alt+L".spawn = noctalia "lockScreen lock";
+      "Ctrl+Alt+W".spawn = noctalia "wallpaper toggle";
       "Super+Alt+S".spawn-sh = "pkill orca || exec orca";
       "Mod+Q".close-window = {};
       "Mod+F".maximize-column = {};
@@ -152,8 +169,6 @@
       "Mod+O".toggle-overview = {};
       "Mod+BracketLeft".consume-or-expel-window-left = {};
       "Mod+BracketRight".consume-or-expel-window-right = {};
-      "Mod+Comma".consume-window-into-column = {};
-      "Mod+Period".expel-window-from-column = {};
       "Mod+R".switch-preset-column-width = {};
       "Mod+Shift+R".switch-preset-window-height = {};
       "Mod+Ctrl+R".reset-window-height = {};
@@ -168,23 +183,22 @@
       "Mod+W".toggle-column-tabbed-display = {};
       "Mod+Shift+S".screenshot = {};
       "Mod+Escape".toggle-keyboard-shortcuts-inhibit = {};
-      "Ctrl+Alt+Delete".quit = {};
+      "Ctrl+Alt+Delete".spawn = noctalia "sessionMenu toggle";
       "Mod+Shift+P".power-off-monitors = {};
-      "Mod+N".spawn-sh = "swaync-client -t";
+      "Mod+N".spawn = noctalia "notifications toggleHistory";
 
-      "XF86AudioRaiseVolume".spawn-sh = "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 0.1+";
-      "XF86AudioLowerVolume".spawn-sh = "wpctl set-volume -l 1.0 @DEFAULT_AUDIO_SINK@ 0.1-";
-      "XF86AudioMute".spawn-sh = "wpctl set-mute -l 1.0 @DEFAULT_AUDIO_SINK@ toggle";
-      "XF86AudioMicMute".spawn-sh = "wpctl set-mute -l 1.0 @DEFAULT_AUDIO_SOURCE@ toggle";
+      "XF86AudioRaiseVolume".spawn = noctalia "volume increase";
+      "XF86AudioLowerVolume".spawn = noctalia "volume decrease";
+      "XF86AudioMute".spawn = noctalia "volume muteOutput";
+      "XF86AudioMicMute".spawn = noctalia "volume muteInput";
 
-      "XF86AudioPlay".spawn-sh = "playerctl play-pause";
-      "XF86AudioStop".spawn-sh = "playerctl stop";
-      "XF86AudioPrev".spawn-sh = "playerctl previous";
-      "XF86AudioNext".spawn-sh = "playerctl next";
+      "XF86AudioPlay".spawn = noctalia "media play";
+      "XF86AudioStop".spawn = noctalia "media stop";
+      "XF86AudioPrev".spawn = noctalia "media previous";
+      "XF86AudioNext".spawn = noctalia "media next";
 
-      # Default brightness binds (overridden by ddcciBinds when ddcci=true)
-      "XF86MonBrightnessUp".spawn-sh = "brightnessctl --class=backlight set +10%";
-      "XF86MonBrightnessDown".spawn-sh = "brightnessctl --class=backlight set 10%-";
+      "XF86MonBrightnessUp".spawn = noctalia "brightness increase";
+      "XF86MonBrightnessDown".spawn = noctalia "brightness decrease";
 
       "Mod+Left".focus-column-left = {};
       "Mod+Down".focus-window-down = {};
@@ -277,11 +291,6 @@
       "Mod+Ctrl+9".move-column-to-workspace = 9;
     };
 
-    ddcciBinds = {
-      "XF86MonBrightnessUp".spawn-sh = "ddcutil setvcp 10 + 10";
-      "XF86MonBrightnessDown".spawn-sh = "ddcutil setvcp 10 - 10";
-    };
-
     # ── layout ───────────────────────────────────────────────────────────────
     buildLayout = {
       layout = {
@@ -325,8 +334,15 @@
     # ── window rules ─────────────────────────────────────────────────────────
     buildWindowRules = {
       window-rules = [
+        # Apps: blur them all without xray for a better look
         {
-          geometry-corner-radius = 8;
+          background-effect = {
+            blur = true;
+            xray = false;
+          };
+        }
+        {
+          geometry-corner-radius = 12;
           clip-to-geometry = true;
         }
         {
@@ -389,13 +405,20 @@
 
       layer-rules = [
         {
-          matches = [{namespace = "^awww-daemon$";}];
+          matches = [{namespace = "^noctalia-wallpaper*";}];
           place-within-backdrop = true;
+        }
+        # Noctalia: blur everywhere without xray for a better look
+        {
+          matches = [{namespace = "^noctalia-(background|launcher-overlay|dock)-.*$";}];
+          background-effect = {
+            xray = false;
+          };
         }
       ];
     };
   in {
-    environment.systemPackages = lib.optionals cfg.features.ddcci [pkgs.ddcutil pkgs.xwayland-satellite];
+    environment.systemPackages = lib.optionals cfg.features.ddcci [pkgs.xwayland-satellite];
 
     programs.niri = {
       enable = true;
