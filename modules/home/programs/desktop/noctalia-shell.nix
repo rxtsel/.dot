@@ -258,7 +258,7 @@
         wallpaper = {
           enabled = true;
           overviewEnabled = false;
-          directory = "/home/${username}/.dotfiles/assets/wallpapers";
+          directory = "~/.dotfiles/assets/wallpapers";
           monitorDirectories = [];
           enableMultiMonitorDirectories = false;
           showHiddenFiles = false;
@@ -281,7 +281,7 @@
             "pixelate"
             "honeycomb"
           ];
-          skipStartupTransition = false;
+          skipStartupTransition = true;
           transitionEdgeSmoothness = 0.05;
           panelPosition = "top_center";
           hideWallpaperFilenames = false;
@@ -292,13 +292,13 @@
           wallhavenQuery = "";
           wallhavenSorting = "relevance";
           wallhavenOrder = "desc";
-          wallhavenCategories = "111";
+          wallhavenCategories = "100";
           wallhavenPurity = "100";
-          wallhavenRatios = "";
+          wallhavenRatios = "16x9";
           wallhavenApiKey = "";
           wallhavenResolutionMode = "atleast";
-          wallhavenResolutionWidth = "";
-          wallhavenResolutionHeight = "";
+          wallhavenResolutionWidth = "2560";
+          wallhavenResolutionHeight = "1440";
           sortOrder = "name";
           favorites = [];
         };
@@ -398,7 +398,7 @@
 
         sessionMenu = {
           enableCountdown = true;
-          countdownDuration = 10000;
+          countdownDuration = 6000;
           position = "center";
           showHeader = true;
           showKeybinds = true;
@@ -457,7 +457,7 @@
           monitors = [];
           location = "top_right";
           overlayLayer = true;
-          backgroundOpacity = 0.3;
+          backgroundOpacity = 0.8;
           respectExpireTimeout = false;
           lowUrgencyDuration = 3;
           normalUrgencyDuration = 8;
@@ -511,14 +511,47 @@
           darkMode = true;
           schedulingMode = "manual";
           manualSunrise = "06:30";
-          manualSunset = "18:30";
+          manualSunset = "18:00";
           generationMethod = "monochrome";
           monitorForColors = "";
           syncGsettings = true;
         };
 
         templates = {
-          activeTemplates = [];
+          activeTemplates = [
+            {
+              enabled = true;
+              id = "btop";
+            }
+            {
+              enabled = true;
+              id = "cava";
+            }
+            {
+              enabled = true;
+              id = "niri";
+            }
+            {
+              enabled = true;
+              id = "yazi";
+            }
+            {
+              enabled = true;
+              id = "zenBrowser";
+            }
+            {
+              enabled = true;
+              id = "discord";
+            }
+            {
+              enabled = true;
+              id = "gtk";
+            }
+            {
+              enabled = true;
+              id = "qt";
+            }
+          ];
           enableUserTheming = false;
         };
 
