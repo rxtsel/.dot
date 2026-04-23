@@ -17,6 +17,7 @@
       clockify
       yaak
       pearDesktop
+      tailscale
       (
         {config, ...}: let
           user = config.preferences.user.name;
