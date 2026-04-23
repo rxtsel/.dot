@@ -9,6 +9,7 @@
       bat
       imagemagick
       btop
+      jq
     ];
   };
 }
