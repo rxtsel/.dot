@@ -7,6 +7,7 @@
       ssh
       zoxide
       fzf
+      macchina
     ];
   };
 }
