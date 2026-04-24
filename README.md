@@ -4,7 +4,7 @@ NixOS setup based on a Solarized-style theme. This repository tries to follow a 
 
 If you download this repo, change `modules/nixos/core/options.nix` or set `preferences.user` in your own host configuration before building.
 
-![Screenshot of Niri](./assets/screenshots/2026-04-23 19-10-38.png)
+![Screenshot of Niri](./assets/screenshots/2026-04-23%2019-10-38.png)
 
 ## Structure
 
