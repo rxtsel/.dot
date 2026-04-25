@@ -8,6 +8,7 @@
       zoxide
       fzf
       macchina
+      yazi
     ];
   };
 }
