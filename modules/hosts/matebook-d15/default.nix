@@ -14,6 +14,8 @@
       neovim
       niri
       cursorTheme
+      yaak
+      pearDesktop
       (
         {config, ...}: let
           user = config.preferences.user.name;
