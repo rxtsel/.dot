@@ -1,9 +1,5 @@
 {lib, ...}: {
-  flake.modules.homeManager.thunderbird = {
-    pkgs,
-    config,
-    ...
-  }: {
+  flake.modules.homeManager.thunderbird = {config, ...}: {
     options.services.thunderbird.enable = lib.mkOption {
       type = lib.types.bool;
       default = true;
@@ -54,23 +50,6 @@
         profiles.default = {
           isDefault = true;
           accountsOrder = ["gmail"];
-        };
-      };
-
-      systemd.user.services.thunderbird = {
-        Unit = {
-          Description = "Thunderbird Mail Client";
-          After = ["graphical-session.target"];
-          PartOf = ["graphical-session.target"];
-        };
-
-        Service = {
-          ExecStart = "${lib.getExe pkgs.thunderbird}";
-          Restart = "no";
-        };
-
-        Install = {
-          WantedBy = ["graphical-session.target"];
         };
       };
     };

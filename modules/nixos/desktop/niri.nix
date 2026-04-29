@@ -98,6 +98,8 @@
 
         spawn-at-startup = [
           "noctalia-shell"
+          "discord"
+          "thunderbird"
         ];
 
         environment = {
