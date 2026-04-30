@@ -12,7 +12,7 @@
         tui.theme = "solarized-dark";
       };
 
-      custom-instructions = ''
+      context = ''
         ## CODE RULES
 
         * Inside code blocks: all content must be in English (code, comments, variables, functions, classes, docstrings).
