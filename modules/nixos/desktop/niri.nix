@@ -153,10 +153,7 @@
     # ── binds ────────────────────────────────────────────────────────────────
     baseBinds = {
       "Mod+T".spawn = lib.getExe pkgs.ghostty;
-      "Mod+B".spawn =
-        if (config.my.host.role == "desktop")
-        then "zen-twilight"
-        else lib.getExe pkgs.brave;
+      "Mod+B".spawn = "zen-twilight";
       "Mod+E".spawn-sh = "${lib.getExe pkgs.ghostty} -e yazi";
       "Mod+Space".spawn-sh = "${lib.getExe pkgs.vicinae} toggle";
       "Mod+A".spawn = noctalia "controlCenter toggle";

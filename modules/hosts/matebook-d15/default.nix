@@ -16,6 +16,7 @@
       cursorTheme
       yaak
       pearDesktop
+      brave
       (
         {config, ...}: let
           user = config.preferences.user.name;
