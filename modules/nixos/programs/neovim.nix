@@ -19,6 +19,7 @@
         copilot-language-server
         tailwindcss-language-server
         vscode-css-languageserver
+        oxlint
 
         # Formatters
         alejandra
