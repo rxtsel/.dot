@@ -26,6 +26,7 @@
         rustfmt
         biome
         prettierd
+        oxfmt
 
         # Neovim deps
         tree-sitter
