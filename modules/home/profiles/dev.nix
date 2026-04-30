@@ -4,6 +4,7 @@
       git
       lazygit
       podman
+      codex
     ];
   };
 }
