@@ -153,7 +153,7 @@
     # ── binds ────────────────────────────────────────────────────────────────
     baseBinds = {
       "Mod+T".spawn = lib.getExe pkgs.ghostty;
-      "Mod+B".spawn = "zen-twilight";
+      "Mod+B".spawn = "zen-beta";
       "Mod+E".spawn-sh = "${lib.getExe pkgs.ghostty} -e yazi";
       "Mod+Space".spawn-sh = "${lib.getExe pkgs.vicinae} toggle";
       "Mod+A".spawn = noctalia "controlCenter toggle";
@@ -351,11 +351,11 @@
           open-focused = true;
         }
         {
-          matches = [{app-id = "brave-browser";} {app-id = "^ResponsivelyApp$";} {app-id = "zen-twilight$";}];
+          matches = [{app-id = "brave-browser";} {app-id = "^ResponsivelyApp$";} {app-id = "zen-(twilight|beta)$";}];
           open-on-workspace = "2:browser";
         }
         {
-          matches = [{app-id = "brave-browser$";} {app-id = "zen-twilight$";}];
+          matches = [{app-id = "brave-browser$";} {app-id = "zen-(twilight|beta)$";}];
           open-focused = true;
           open-maximized = true;
         }

@@ -20,7 +20,7 @@
     });
   in {
     imports = [
-      inputs.zen-browser.homeModules.twilight
+      inputs.zen-browser.homeModules.beta
     ];
 
     programs.zen-browser = {
@@ -179,9 +179,7 @@
         };
 
         ExtensionSettings = mkExtensionSettings {
-          "{446900e4-71c2-419f-a6a7-df9c091e268b}" = "bitwarden-password-manager";
           "uBlock0@raymondhill.net" = "ublock-origin";
-          "{d7742d87-e61d-4b78-b8a1-b469842139fa}" = "vimium-ff";
           "{50864413-c4c8-43b0-80b8-982c4a368ac9}" = "visbug";
           "@react-devtools" = "react-devtools";
           "wappalyzer@crunchlabz.com" = "wappalyzer";
