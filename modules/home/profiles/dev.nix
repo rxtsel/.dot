@@ -5,6 +5,7 @@
       lazygit
       podman
       codex
+      opencode
     ];
   };
 }
