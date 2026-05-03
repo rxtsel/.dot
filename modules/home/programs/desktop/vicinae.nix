@@ -80,7 +80,7 @@
             "@jomifepe/store.raycast.bitwarden" = {
               preferences = {
                 fetchFavicons = true;
-                repromptIgnoreDuration = "86400000";
+                repromptIgnoreDuration = "28800000";
                 serverUrl = "";
                 shouldCacheVaultItems = true;
                 syncOnLaunch = true;
