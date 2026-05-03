@@ -9,6 +9,10 @@
         autoshare = false;
       };
 
+      tui = {
+        theme = "solarized";
+      };
+
       rules = ''
         ## CODE RULES
 
