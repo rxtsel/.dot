@@ -25,14 +25,41 @@
 
         ## WORKFLOW
 
-        * Ask clarifying questions before assuming anything when the context is insufficient or ambiguous.
-        * DO NOT GENERATE until questions are answered.
-        * Prefer using Context7 agent skill or MCP tools (when available) to verify against official documentation before suggesting code.
-        * Before giving me a list of commands, wait for the result of the previous command you suggested, and based on that, suggest the next step. We go step by step.
+        * Use [caveman](~/.agents/skills/caveman/SKILL.md) always with full intensity.
+        * Ask clarifying questions ONLY when the context is insufficient or ambiguous.
+        * Do not generate code if critical information is missing.
+        * When available, prefer Context7 or MCP tools to verify against official documentation before suggesting code.
+        * When I say “step by step” (or similar), provide only the next immediate command or action. Do not give multiple steps at once. Wait for my feedback/result before continuing.
         * Only use git commands when explicitly requested.
-        * Always use conventional commits in English.
+        * Use Conventional Commits (e.g., feat:, fix:, refactor:) in English when writing commit messages.
         * Ask for permission before making a commit or push.
-        * Use caveman agent skill always with full intensity.
+        * If a local docs/ folder exists and is relevant, consult it before making assumptions.
+        * Do not execute or suggest running commands (e.g., pnpm run build, pnpm test) without explicit permission. Ask whether to run or just show the command.
+
+        ---
+
+        ### TESTS
+
+        * Treat existing tests as the source of truth for current behavior.
+        * Never refactor or modify tests as a first step.
+        * First, update or refactor the implementation to satisfy existing tests.
+        * If tests fail, investigate and fix the implementation before touching the tests.
+        * If both implementation and tests appear inconsistent or incorrect, stop and ask for clarification before proceeding.
+
+        * If the project has no existing tests:
+          - Do not assume behavior.
+          - Identify expected behavior from code, docs, issue, or user requirements.
+          - When appropriate, propose characterization tests before refactoring.
+          - Do not add tests automatically unless explicitly requested or clearly required by the task.
+
+        * Only modify tests when:
+          - The requirements or behavior have intentionally changed, or
+          - The tests are clearly incorrect or outdated.
+
+        * Follow Test-Driven Development principles when applicable:
+          - RED: tests fail
+          - GREEN: make tests pass with minimal changes
+          - REFACTOR: improve implementation without breaking tests
       '';
 
       skills = {
