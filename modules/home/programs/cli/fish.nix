@@ -22,6 +22,7 @@
         lla = "eza -la --group-directories-first --icons";
         op = "opencode";
         lz = "lazygit";
+        cd = "z";
       };
 
       shellAbbrs = {
