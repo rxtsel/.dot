@@ -349,6 +349,14 @@
           background-effect.blur = true;
           open-on-workspace = "1:code";
           open-focused = true;
+          open-maximized = true;
+          open-maximized-to-edges = true;
+          focus-ring = {
+            off = {};
+          };
+          border = {
+            off = {};
+          };
         }
         {
           matches = [{app-id = "brave-browser";} {app-id = "^ResponsivelyApp$";} {app-id = "zen-(twilight|beta)$";}];
