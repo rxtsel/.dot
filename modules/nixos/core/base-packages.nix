@@ -8,6 +8,7 @@
       btop
       jq
       ripgrep
+      pnpm
     ];
   };
 }
