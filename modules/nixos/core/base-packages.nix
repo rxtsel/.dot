@@ -9,6 +9,7 @@
       jq
       ripgrep
       pnpm
+      nodejs-slim_latest
     ];
   };
 }
