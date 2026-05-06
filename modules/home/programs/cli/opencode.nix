@@ -6,15 +6,6 @@ in {
       enable = true;
       enableMcpIntegration = true;
 
-      settings = {
-        autoupdate = true;
-        autoshare = false;
-      };
-
-      tui = {
-        theme = "solarized";
-      };
-
       context = ai.context;
       skills = ai.skills;
     };

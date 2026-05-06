@@ -10,10 +10,6 @@ in {
         runtime = "native";
       };
 
-      settings = {
-        tui.theme = "solarized-dark";
-      };
-
       context = ai.context;
       skills = ai.skills;
     };
