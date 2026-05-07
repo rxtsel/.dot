@@ -4,7 +4,6 @@
       ghostty
       vicinae
       thunderbird
-      zen-browser
       discord
       noctalia-shell
     ];
