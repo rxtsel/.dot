@@ -19,6 +19,7 @@
       pearDesktop
       tailscale
       brave
+      beekeeper-studio
       (
         {config, ...}: let
           user = config.preferences.user.name;
