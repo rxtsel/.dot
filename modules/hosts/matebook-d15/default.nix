@@ -59,6 +59,13 @@
             home.homeDirectory = "/home/${user}";
           };
 
+          swapDevices = [
+            {
+              device = "/swapfile";
+              size = 8 * 1024; # 8 GB
+            }
+          ];
+
           system.stateVersion = "25.11";
         }
       )
