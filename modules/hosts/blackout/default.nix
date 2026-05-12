@@ -4,6 +4,7 @@
       blackoutHardware
       coreOptions
       coreCommon
+      audio
       coreUser
       coreBasePackages
       nix

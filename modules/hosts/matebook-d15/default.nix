@@ -4,6 +4,7 @@
       matebookD15Hardware
       coreOptions
       coreCommon
+      audio
       coreUser
       coreBasePackages
       nix
