@@ -82,19 +82,14 @@
               {
                 displayMode = "onhover";
                 iconColor = "none";
-                id = "Bluetooth";
+                id = "VPN";
                 textColor = "none";
               }
               {
-                id = "Battery";
-                alwaysShowPercentage = false;
-                deviceNativePath = "__default__";
-                displayMode = "graphic";
-                hideIfIdle = false;
-                hideIfNotDetected = true;
-                showNoctaliaPerformance = false;
-                showPowerProfiles = false;
-                warningThreshold = 30;
+                displayMode = "onhover";
+                iconColor = "none";
+                id = "Bluetooth";
+                textColor = "none";
               }
               {
                 displayMode = "onhover";
@@ -108,6 +103,17 @@
                 displayMode = "alwaysHide";
                 iconColor = "none";
                 textColor = "none";
+              }
+              {
+                id = "Battery";
+                alwaysShowPercentage = false;
+                deviceNativePath = "__default__";
+                displayMode = "graphic";
+                hideIfIdle = false;
+                hideIfNotDetected = true;
+                showNoctaliaPerformance = false;
+                showPowerProfiles = false;
+                warningThreshold = 30;
               }
               {
                 compactMode = false;
