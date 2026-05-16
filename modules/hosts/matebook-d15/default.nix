@@ -13,6 +13,7 @@
       bluetooth
       fcitx5
       neovim
+      vpn
       niri
       cursorTheme
       yaak
