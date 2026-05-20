@@ -4,6 +4,7 @@
       blackoutHardware
       coreOptions
       coreCommon
+      network
       audio
       coreUser
       coreBasePackages
