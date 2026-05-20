@@ -4,6 +4,7 @@
       matebookD15Hardware
       coreOptions
       coreCommon
+      network
       audio
       coreUser
       coreBasePackages
