@@ -4,8 +4,6 @@
       git
       lazygit
       podman
-      codex
-      opencode
     ];
   };
 }

@@ -5,7 +5,9 @@
         enable = true;
         silent = true;
         loadInNixShell = true;
-        direnvrcExtra = "";
+        direnvrcExtra = ''
+          : ''${DIRENV_LOG_FORMAT:=}
+        '';
         nix-direnv.enable = true;
       };
 
