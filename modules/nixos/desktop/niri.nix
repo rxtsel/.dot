@@ -425,7 +425,9 @@
       ];
     };
   in {
-    environment.systemPackages = lib.optionals cfg.features.ddcci [pkgs.xwayland-satellite];
+    environment.systemPackages = with pkgs; [
+      xwayland-satellite
+    ];
 
     programs.niri = {
       enable = true;
