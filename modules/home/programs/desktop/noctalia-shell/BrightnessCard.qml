@@ -87,7 +87,9 @@ NBox {
         }
 
         NText {
-          text: root.brightnessControlAvailable ? `${I18n.tr("common.brightness")} (${root.controllableMonitors.length} displays)` : "No display"
+          text: root.controllableMonitors.length > 1
+            ? `${I18n.tr("common.brightness")} (${root.controllableMonitors.length} displays)`
+            : I18n.tr("common.brightness")
           pointSize: Style.fontSizeXS
           color: Color.mOnSurfaceVariant
           elide: Text.ElideRight
