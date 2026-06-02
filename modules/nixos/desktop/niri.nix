@@ -425,9 +425,16 @@
       ];
     };
   in {
-    environment.systemPackages = with pkgs; [
-      xwayland-satellite
-    ];
+    environment.systemPackages = with pkgs;
+      [
+        xwayland-satellite
+      ]
+      ++ lib.optionals cfg.features.ddcci [
+        ddcutil
+      ];
+
+    hardware.i2c.enable = cfg.features.ddcci;
+    users.users.${config.preferences.user.name}.extraGroups = lib.mkIf cfg.features.ddcci ["i2c" "video"];
 
     programs.niri = {
       enable = true;
