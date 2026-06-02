@@ -1,6 +1,17 @@
 {inputs, ...}: {
-  flake.modules.homeManager.noctalia-shell = {osConfig, ...}: let
+  flake.modules.homeManager.noctalia-shell = {
+    osConfig,
+    pkgs,
+    ...
+  }: let
     username = osConfig.preferences.user.name;
+    patchedNoctaliaShell = inputs.noctalia.packages.${pkgs.stdenv.hostPlatform.system}.default.overrideAttrs (old: {
+      postPatch =
+        (old.postPatch or "")
+        + ''
+          cp ${./noctalia-shell/BrightnessCard.qml} Modules/Cards/BrightnessCard.qml
+        '';
+    });
   in {
     imports = [
       inputs.noctalia.homeModules.default
@@ -8,6 +19,7 @@
 
     programs.noctalia-shell = {
       enable = true;
+      package = patchedNoctaliaShell;
       settings = {
         settingsVersion = 59;
 
