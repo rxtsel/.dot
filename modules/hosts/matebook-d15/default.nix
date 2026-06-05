@@ -20,6 +20,7 @@
       yaak
       pearDesktop
       brave
+      pass
       (
         {config, ...}: let
           user = config.preferences.user.name;

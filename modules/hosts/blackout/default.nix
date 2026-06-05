@@ -22,6 +22,7 @@
       tailscale
       brave
       beekeeper-studio
+      pass
       (
         {config, ...}: let
           user = config.preferences.user.name;

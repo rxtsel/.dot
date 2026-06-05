@@ -2,7 +2,6 @@
   flake.modules.homeManager.vicinae = {
     config,
     osConfig,
-    pkgs,
     ...
   }: let
     cfg = config.services.vicinae-custom;
@@ -15,9 +14,6 @@
     };
 
     config = lib.mkIf cfg.enable {
-      home.packages = with pkgs; [
-        bitwarden-cli
-      ];
       programs.vicinae = {
         enable = true;
         useLayerShell = true;
@@ -77,24 +73,7 @@
               };
             };
 
-            "@jomifepe/store.raycast.bitwarden" = {
-              preferences = {
-                fetchFavicons = true;
-                repromptIgnoreDuration = "28800000";
-                serverUrl = "";
-                shouldCacheVaultItems = true;
-                syncOnLaunch = true;
-                windowActionOnCopy = "close";
-                cliPath = "/etc/profiles/per-user/${username}/bin/bw";
-              };
-              entrypoints = {
-                create-send.enabled = false;
-                lock-vault.enabled = true;
-                logout-vault.enabled = false;
-                receive-send.enabled = false;
-                search-sends.enabled = false;
-              };
-            };
+            "@tinkerbells/store.vicinae.pass:pass" = {};
 
             browser-extension.enabled = false;
 
