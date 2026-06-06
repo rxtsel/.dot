@@ -6,6 +6,7 @@
       thunderbird
       discord
       noctalia-shell
+      wezterm
     ];
   };
 }
