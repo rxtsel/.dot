@@ -45,7 +45,7 @@
               border_width = 1;
             };
             compact_mode = {
-              enabled = true;
+              enabled = false;
             };
             layer_shell = {
               enabled = true;
@@ -73,7 +73,13 @@
               };
             };
 
-            "@tinkerbells/store.vicinae.pass:pass" = {};
+            "@tinkerbells/store.vicinae.pass" = {
+              preferences = {
+                action = "copy";
+                passwordStorePath = "~/.password-store";
+                otpAfterPassword = true;
+              };
+            };
 
             browser-extension.enabled = false;
 
