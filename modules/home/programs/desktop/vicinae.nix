@@ -278,8 +278,9 @@
 
       home.activation.writeVicinaeSettings = lib.hm.dag.entryAfter ["writeBoundary"] ''
         run mkdir -p "$HOME/.config/vicinae"
-        run rm -f "$HOME/.config/vicinae/settings.json"
-        run install -m 0644 ${vicinaeSettingsFile} "$HOME/.config/vicinae/settings.json"
+        if [ ! -e "$HOME/.config/vicinae/settings.json" ]; then
+          run install -m 0644 ${vicinaeSettingsFile} "$HOME/.config/vicinae/settings.json"
+        fi
       '';
 
       systemd.user.services.vicinae.Service.Environment = [
