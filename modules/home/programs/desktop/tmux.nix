@@ -27,6 +27,7 @@
         set -g repeat-time 0
         set -g detach-on-destroy off
         set -g extended-keys on
+        set -g extended-keys-format csi-u
         set -g default-command "''${SHELL}"
         set -g set-titles on
         set -g set-titles-string "#T"
