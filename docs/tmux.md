@@ -62,6 +62,7 @@ Pane resizing also uses Vim-style keys. The resize amount is `5` cells.
 | --- | --- |
 | `C-a r` | Reload `~/.config/tmux/tmux.conf` |
 | `C-a g` | Open `lazygit` in a popup using the current pane directory |
+| `C-a s` | Open the Sesh session picker with fzf |
 
 ## Theme switching
 
