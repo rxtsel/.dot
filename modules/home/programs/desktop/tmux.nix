@@ -1,44 +1,5 @@
 {...}: {
-  flake.modules.homeManager.tmux = {pkgs, ...}: let
-    tmuxThemeSync = pkgs.writeShellApplication {
-      name = "tmux-theme-sync";
-      runtimeInputs = [
-        pkgs.glib
-        pkgs.gsettings-desktop-schemas
-        pkgs.tmux
-      ];
-      text = ''
-        export XDG_DATA_DIRS="${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:''${XDG_DATA_DIRS:-}"
-
-        apply_theme() {
-          local scheme theme theme_file
-
-          scheme="$(gsettings get org.gnome.desktop.interface color-scheme 2>/dev/null || true)"
-
-          case "$scheme" in
-            *prefer-light* | *light*) theme="light" ;;
-            *) theme="dark" ;;
-          esac
-
-          theme_file="$HOME/.config/tmux/themes/solarized_osaka_''${theme}.tmux"
-
-          tmux list-sessions >/dev/null 2>&1 || return 0
-          [ -f "$theme_file" ] || return 0
-
-          tmux set-environment -g TMUX_THEME "$theme"
-          tmux source-file "$theme_file"
-          tmux display-message "tmux theme: $theme" 2>/dev/null || true
-        }
-
-        apply_theme
-
-        gsettings monitor org.gnome.desktop.interface color-scheme |
-          while read -r _; do
-            apply_theme
-          done
-      '';
-    };
-  in {
+  flake.modules.homeManager.tmux = {...}: {
     programs.tmux = {
       enable = true;
 
@@ -113,21 +74,6 @@
         bind Space last-window
         bind C-a last-window
       '';
-    };
-
-    systemd.user.services.tmux-theme-sync = {
-      Unit = {
-        Description = "Synchronize tmux theme with the desktop color scheme";
-        After = ["graphical-session.target"];
-        PartOf = ["graphical-session.target"];
-      };
-
-      Service = {
-        ExecStart = "${tmuxThemeSync}/bin/tmux-theme-sync";
-        Restart = "on-failure";
-      };
-
-      Install.WantedBy = ["graphical-session.target"];
     };
 
     xdg.configFile = {

@@ -592,7 +592,8 @@
         };
 
         hooks = {
-          enabled = false;
+          enabled = true;
+          darkModeChange = "${pkgs.systemd}/bin/systemctl --user restart desktop-theme-sync.service";
         };
 
         plugins = {

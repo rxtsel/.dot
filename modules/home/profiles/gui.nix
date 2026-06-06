@@ -8,6 +8,7 @@
       noctalia-shell
       wezterm
       tmux
+      theme-sync
     ];
   };
 }
