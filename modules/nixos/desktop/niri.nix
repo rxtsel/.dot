@@ -6,6 +6,17 @@
     ...
   }: let
     cfg = config.my.host;
+    desktopCfg = config.my.desktop;
+
+    terminalPackage =
+      if desktopCfg.terminal == "wezterm"
+      then pkgs.wezterm
+      else pkgs.ghostty;
+    terminalExe = lib.getExe terminalPackage;
+    terminalAppId =
+      if desktopCfg.terminal == "wezterm"
+      then "^org\\.wezfurlong\\.wezterm$"
+      else "^com\\.mitchellh\\.ghostty$";
 
     # Sort: non-primary first (left), primary last (right)
     sortedMonitors = lib.sort (a: b: (!a.primary) && b.primary) cfg.monitors;
@@ -152,9 +163,9 @@
 
     # ── binds ────────────────────────────────────────────────────────────────
     baseBinds = {
-      "Mod+T".spawn = lib.getExe pkgs.ghostty;
+      "Mod+T".spawn = terminalExe;
       "Mod+B".spawn = "brave";
-      "Mod+E".spawn-sh = "${lib.getExe pkgs.ghostty} -e yazi";
+      "Mod+E".spawn-sh = "${terminalExe} -e yazi";
       "Mod+Space".spawn-sh = "${lib.getExe pkgs.vicinae} toggle";
       "Mod+A".spawn = noctalia "controlCenter toggle";
       "Mod+Comma".spawn = noctalia "settings toggle";
@@ -345,7 +356,7 @@
           clip-to-geometry = true;
         }
         {
-          matches = [{app-id = "^com\\.mitchellh\\.ghostty$";}];
+          matches = [{app-id = terminalAppId;}];
           background-effect.blur = true;
           open-on-workspace = "1:code";
           open-focused = true;

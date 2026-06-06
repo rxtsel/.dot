@@ -1,7 +1,11 @@
-{lib, ...}: {
+{...}: {
   flake.modules.homeManager.wezterm = {
+    lib,
+    osConfig,
+    ...
+  }: {
     programs.wezterm = {
-      enable = true;
+      enable = osConfig.my.desktop.terminal == "wezterm";
 
       settings = {
         color_scheme = lib.generators.mkLuaInline ''

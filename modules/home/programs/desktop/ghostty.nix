@@ -1,7 +1,7 @@
 {...}: {
-  flake.modules.homeManager.ghostty = {
+  flake.modules.homeManager.ghostty = {osConfig, ...}: {
     programs.ghostty = {
-      enable = true;
+      enable = osConfig.my.desktop.terminal == "ghostty";
       enableFishIntegration = true;
       installVimSyntax = true;
 

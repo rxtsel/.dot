@@ -28,6 +28,17 @@
         };
       };
 
+      my.desktop = {
+        terminal = lib.mkOption {
+          type = lib.types.enum [
+            "ghostty"
+            "wezterm"
+          ];
+          default = "wezterm";
+          description = "Preferred terminal emulator used by desktop modules.";
+        };
+      };
+
       my.host = {
         role = lib.mkOption {
           type = lib.types.enum [

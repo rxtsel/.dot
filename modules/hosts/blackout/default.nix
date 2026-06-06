@@ -36,6 +36,8 @@
           # Uncomment and set the user information for overriding the defaults
           # preferences.user = {};
 
+          my.desktop.terminal = "wezterm";
+
           my.host = {
             role = "desktop";
             features.ddcci = true;
