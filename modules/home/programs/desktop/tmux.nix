@@ -32,7 +32,7 @@
 
         # Theme state
         # Initialize tmux's own environment from the terminal environment only once.
-        if-shell 'tmux show-environment -g TMUX_THEME >/dev/null 2>&1' 'display-message -p ""' 'set-environment -g TMUX_THEME "''${TMUX_THEME:-dark}"'
+        if-shell 'tmux show-environment -g TMUX_THEME >/dev/null 2>&1' 'display-message -p ""' 'set-environment -g TMUX_THEME dark'
         if-shell '[ "$(tmux show-environment -g TMUX_THEME 2>/dev/null | cut -d= -f2)" = "light" ]' 'source-file ~/.config/tmux/themes/solarized_osaka_light.tmux' 'source-file ~/.config/tmux/themes/solarized_osaka_dark.tmux'
 
         # Windows / panes
