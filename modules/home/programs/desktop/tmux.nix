@@ -15,7 +15,6 @@
       aggressiveResize = true;
       customPaneNavigationAndResize = true;
       focusEvents = true;
-      newSession = true;
       resizeAmount = 5;
 
       extraConfig = ''
