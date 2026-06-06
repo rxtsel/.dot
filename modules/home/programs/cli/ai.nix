@@ -5,6 +5,228 @@
     ];
 
     # Custom Pi extensions
+    home.file.".pi/agent/extensions/system-theme.ts".text = ''
+      import { existsSync, mkdirSync, readFileSync, watch } from "node:fs";
+      import { dirname } from "node:path";
+      import type { ExtensionAPI, ExtensionContext } from "@earendil-works/pi-coding-agent";
+
+      const stateFile = `''${process.env.HOME}/.cache/pi-system-theme/theme`;
+
+      function readTheme() {
+        if (!existsSync(stateFile)) return undefined;
+
+        const theme = readFileSync(stateFile, "utf8").trim();
+        return theme || undefined;
+      }
+
+      function applyTheme(ctx: ExtensionContext, previousTheme?: string) {
+        if (!ctx.hasUI) return previousTheme;
+
+        const theme = readTheme();
+        if (!theme || theme === previousTheme) return previousTheme;
+
+        const result = ctx.ui.setTheme(theme);
+        if (!result.success) {
+          ctx.ui.notify(`Failed to apply Pi theme ''${theme}: ''${result.error}`, "warning");
+          return previousTheme;
+        }
+
+        return theme;
+      }
+
+      export default function (pi: ExtensionAPI) {
+        let closeWatcher: (() => void) | undefined;
+        let currentTheme: string | undefined;
+
+        pi.on("session_start", async (_event, ctx) => {
+          mkdirSync(dirname(stateFile), { recursive: true });
+          currentTheme = applyTheme(ctx, currentTheme);
+
+          const watcher = watch(dirname(stateFile), (eventType, filename) => {
+            if (eventType !== "change" && eventType !== "rename") return;
+            if (filename?.toString() !== "theme") return;
+
+            currentTheme = applyTheme(ctx, currentTheme);
+          });
+
+          closeWatcher = () => watcher.close();
+        });
+
+        pi.on("session_shutdown", async () => {
+          closeWatcher?.();
+          closeWatcher = undefined;
+        });
+      }
+    '';
+
+    home.file.".pi/agent/themes/solarized-dark.json".text = ''
+      {
+        "$schema": "https://raw.githubusercontent.com/earendil-works/pi/main/packages/coding-agent/src/modes/interactive/theme/theme-schema.json",
+        "name": "solarized-dark",
+        "vars": {
+          "bg": "#002b36",
+          "panel": "#073642",
+          "panelAlt": "#0b3c49",
+          "selected": "#184956",
+          "border": "#2f5a66",
+          "accent": "#268bd2",
+          "cyan": "#2aa198",
+          "green": "#859900",
+          "red": "#dc322f",
+          "yellow": "#b58900",
+          "orange": "#cb4b16",
+          "purple": "#6c71c4",
+          "text": "#93a1a1",
+          "muted": "#839496",
+          "dim": "#657b83",
+          "toolSuccessBg": "#1c3c30",
+          "toolErrorBg": "#3f2b29"
+        },
+        "colors": {
+          "accent": "accent",
+          "border": "border",
+          "borderAccent": "cyan",
+          "borderMuted": "dim",
+          "success": "green",
+          "error": "red",
+          "warning": "yellow",
+          "muted": "muted",
+          "dim": "dim",
+          "text": "",
+          "thinkingText": "muted",
+          "selectedBg": "selected",
+          "userMessageBg": "panel",
+          "userMessageText": "",
+          "customMessageBg": "panelAlt",
+          "customMessageText": "",
+          "customMessageLabel": "purple",
+          "toolPendingBg": "panelAlt",
+          "toolSuccessBg": "toolSuccessBg",
+          "toolErrorBg": "toolErrorBg",
+          "toolTitle": "accent",
+          "toolOutput": "muted",
+          "mdHeading": "orange",
+          "mdLink": "accent",
+          "mdLinkUrl": "muted",
+          "mdCode": "cyan",
+          "mdCodeBlock": "green",
+          "mdCodeBlockBorder": "border",
+          "mdQuote": "muted",
+          "mdQuoteBorder": "border",
+          "mdHr": "border",
+          "mdListBullet": "purple",
+          "toolDiffAdded": "green",
+          "toolDiffRemoved": "red",
+          "toolDiffContext": "muted",
+          "syntaxComment": "dim",
+          "syntaxKeyword": "purple",
+          "syntaxFunction": "accent",
+          "syntaxVariable": "red",
+          "syntaxString": "green",
+          "syntaxNumber": "orange",
+          "syntaxType": "yellow",
+          "syntaxOperator": "cyan",
+          "syntaxPunctuation": "text",
+          "thinkingOff": "dim",
+          "thinkingMinimal": "border",
+          "thinkingLow": "accent",
+          "thinkingMedium": "cyan",
+          "thinkingHigh": "purple",
+          "thinkingXhigh": "red",
+          "bashMode": "green"
+        },
+        "export": {
+          "pageBg": "#002b36",
+          "cardBg": "#073642",
+          "infoBg": "#163630"
+        }
+      }
+    '';
+
+    home.file.".pi/agent/themes/solarized-light.json".text = ''
+      {
+        "$schema": "https://raw.githubusercontent.com/earendil-works/pi/main/packages/coding-agent/src/modes/interactive/theme/theme-schema.json",
+        "name": "solarized-light",
+        "vars": {
+          "bg": "#fdf6e3",
+          "panel": "#eee8d5",
+          "panelAlt": "#e7e1cd",
+          "selected": "#ddd6c2",
+          "border": "#c7c1ae",
+          "accent": "#268bd2",
+          "cyan": "#2aa198",
+          "green": "#859900",
+          "red": "#dc322f",
+          "yellow": "#b58900",
+          "orange": "#cb4b16",
+          "purple": "#6c71c4",
+          "text": "#586e75",
+          "muted": "#657b83",
+          "dim": "#93a1a1",
+          "toolSuccessBg": "#e7ecd2",
+          "toolErrorBg": "#f4e0d5"
+        },
+        "colors": {
+          "accent": "accent",
+          "border": "border",
+          "borderAccent": "cyan",
+          "borderMuted": "dim",
+          "success": "green",
+          "error": "red",
+          "warning": "yellow",
+          "muted": "muted",
+          "dim": "dim",
+          "text": "",
+          "thinkingText": "muted",
+          "selectedBg": "selected",
+          "userMessageBg": "panel",
+          "userMessageText": "",
+          "customMessageBg": "panelAlt",
+          "customMessageText": "",
+          "customMessageLabel": "purple",
+          "toolPendingBg": "panelAlt",
+          "toolSuccessBg": "toolSuccessBg",
+          "toolErrorBg": "toolErrorBg",
+          "toolTitle": "accent",
+          "toolOutput": "muted",
+          "mdHeading": "orange",
+          "mdLink": "accent",
+          "mdLinkUrl": "muted",
+          "mdCode": "cyan",
+          "mdCodeBlock": "green",
+          "mdCodeBlockBorder": "border",
+          "mdQuote": "muted",
+          "mdQuoteBorder": "border",
+          "mdHr": "border",
+          "mdListBullet": "purple",
+          "toolDiffAdded": "green",
+          "toolDiffRemoved": "red",
+          "toolDiffContext": "muted",
+          "syntaxComment": "dim",
+          "syntaxKeyword": "purple",
+          "syntaxFunction": "accent",
+          "syntaxVariable": "red",
+          "syntaxString": "green",
+          "syntaxNumber": "orange",
+          "syntaxType": "yellow",
+          "syntaxOperator": "cyan",
+          "syntaxPunctuation": "text",
+          "thinkingOff": "dim",
+          "thinkingMinimal": "border",
+          "thinkingLow": "accent",
+          "thinkingMedium": "cyan",
+          "thinkingHigh": "purple",
+          "thinkingXhigh": "red",
+          "bashMode": "green"
+        },
+        "export": {
+          "pageBg": "#fdf6e3",
+          "cardBg": "#eee8d5",
+          "infoBg": "#f4e9c8"
+        }
+      }
+    '';
+
     home.file.".pi/agent/extensions/autocommit.ts".text = ''
       import type { ExtensionAPI } from "@earendil-works/pi-coding-agent";
 

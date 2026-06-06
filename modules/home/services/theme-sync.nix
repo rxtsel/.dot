@@ -43,9 +43,20 @@
           vicinae theme set "$theme_name" >/dev/null 2>&1 || true
         }
 
+        sync_pi() {
+          local theme state_dir state_file
+          theme="$(current_theme)"
+          state_dir="$HOME/.cache/pi-system-theme"
+          state_file="$state_dir/theme"
+
+          mkdir -p "$state_dir"
+          printf 'solarized-%s\n' "$theme" > "$state_file"
+        }
+
         apply_all() {
           sync_tmux
           sync_vicinae
+          sync_pi
         }
 
         if [ "''${1:-}" = "--apply" ]; then
