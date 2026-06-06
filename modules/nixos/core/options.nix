@@ -37,6 +37,16 @@
           default = "wezterm";
           description = "Preferred terminal emulator used by desktop modules.";
         };
+
+        autostartApps = lib.mkOption {
+          type = lib.types.listOf (lib.types.enum [
+            "noctalia-shell"
+            "discord"
+            "thunderbird"
+          ]);
+          default = [];
+          description = "Desktop applications to spawn when the graphical session starts.";
+        };
       };
 
       my.host = {

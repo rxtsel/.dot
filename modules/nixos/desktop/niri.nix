@@ -84,6 +84,12 @@
         (mkWorkspace "6:email" primary)
       ];
 
+    autostartCommands = lib.attrVals desktopCfg.autostartApps {
+      noctalia-shell = "noctalia-shell";
+      discord = "discord";
+      thunderbird = "thunderbird";
+    };
+
     # Util for run noctalia commands
     noctalia = cmd:
       [
@@ -107,11 +113,7 @@
           }
         '';
 
-        spawn-at-startup = [
-          "noctalia-shell"
-          "discord"
-          "thunderbird"
-        ];
+        spawn-at-startup = autostartCommands;
 
         environment = {
           QT_QPA_PLATFORM = "wayland";

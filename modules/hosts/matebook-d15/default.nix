@@ -37,7 +37,10 @@
           # Uncomment and set the user information for overriding the defaults
           # preferences.user = {};
 
-          my.desktop.terminal = "wezterm";
+          my.desktop = {
+            terminal = "wezterm";
+            autostartApps = ["noctalia-shell"];
+          };
 
           my.host = {
             role = "laptop";
