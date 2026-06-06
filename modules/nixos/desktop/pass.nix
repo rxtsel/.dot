@@ -5,8 +5,9 @@
       pinentryPackage = pkgs.pinentry-curses;
     };
 
-    environment.systemPackages = [
-      (pkgs.pass.withExtensions (exts: [
+    environment.systemPackages = with pkgs; [
+      oath-toolkit
+      (pass.withExtensions (exts: [
         exts.pass-otp
       ]))
     ];
