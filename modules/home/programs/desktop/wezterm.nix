@@ -23,6 +23,16 @@
         enable_tab_bar = false;
         font = lib.generators.mkLuaInline ''wezterm.font("CaskaydiaCove Nerd Font")'';
         font_size = 16;
+
+        term = "wezterm";
+        enable_scroll_bar = false;
+        scrollback_lines = 10000;
+        check_for_updates = false;
+        automatically_reload_config = true;
+
+        adjust_window_size_when_changing_font_size = false;
+        cursor_blink_rate = 0;
+
         window_decorations = "NONE";
         window_background_opacity = 0.65;
         window_padding = {
