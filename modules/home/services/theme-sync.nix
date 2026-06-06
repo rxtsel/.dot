@@ -44,13 +44,18 @@
         }
 
         sync_pi() {
-          local theme state_dir state_file
+          local theme theme_name state_dir state_file
           theme="$(current_theme)"
+          theme_name="solarized-$theme"
           state_dir="$HOME/.cache/pi-system-theme"
           state_file="$state_dir/theme"
 
           mkdir -p "$state_dir"
-          printf 'solarized-%s\n' "$theme" > "$state_file"
+          if [ -f "$state_file" ] && [ "$(cat "$state_file")" = "$theme_name" ]; then
+            return 0
+          fi
+
+          printf '%s\n' "$theme_name" > "$state_file"
         }
 
         apply_all() {
