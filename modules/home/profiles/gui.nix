@@ -7,6 +7,7 @@
       discord
       noctalia-shell
       wezterm
+      tmux
     ];
   };
 }
