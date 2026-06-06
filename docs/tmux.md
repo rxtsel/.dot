@@ -63,6 +63,16 @@ Pane resizing also uses Vim-style keys. The resize amount is `5` cells.
 | `C-a r` | Reload `~/.config/tmux/tmux.conf` |
 | `C-a g` | Open `lazygit` in a popup using the current pane directory |
 
+## Theme switching
+
+The tmux statusline supports light and dark variants through the tmux global environment variable `TMUX_THEME`.
+
+| Keybinding | Action |
+| --- | --- |
+| `C-a O` | Toggle between light and dark tmux statusline themes |
+| `C-a D` | Force the dark tmux statusline theme |
+| `C-a L` | Force the light tmux statusline theme |
+
 ## Notes
 
 - `$TERM` inside tmux is set to `tmux-256color`.
