@@ -12,6 +12,7 @@
       nodejs_25
       python3
       bun
+      wget
     ];
   };
 }
