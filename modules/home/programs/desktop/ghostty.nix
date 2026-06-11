@@ -8,7 +8,7 @@
       settings = {
         theme = "light:solarized-osaka-light, dark:solarized-osaka-dark";
         background-opacity = 0.5;
-        font-family = "CaskaydiaCove Nerd Font";
+        font-family = "DankMono Nerd Font";
         font-size = 18;
 
         cursor-invert-fg-bg = true;

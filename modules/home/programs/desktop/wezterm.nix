@@ -33,8 +33,9 @@
         '';
 
         enable_tab_bar = false;
-        font = lib.generators.mkLuaInline ''wezterm.font("CaskaydiaCove Nerd Font")'';
-        font_size = 16;
+        enable_wayland = true;
+        font = lib.generators.mkLuaInline ''wezterm.font("DankMono Nerd Font")'';
+        font_size = 18;
 
         term = "wezterm";
         enable_scroll_bar = false;
@@ -43,7 +44,9 @@
         automatically_reload_config = true;
 
         adjust_window_size_when_changing_font_size = false;
-        cursor_blink_rate = 0;
+        cursor_blink_rate = 500;
+        cursor_blink_ease_in = "Constant";
+        cursor_blink_ease_out = "Constant";
 
         window_decorations = "NONE";
         window_background_opacity = 0.65;

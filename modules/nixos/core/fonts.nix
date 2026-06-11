@@ -6,7 +6,6 @@
       packages = with pkgs; [
         noto-fonts-color-emoji
         nerd-fonts.symbols-only
-        nerd-fonts.caskaydia-cove
         twemoji-color-font
         font-awesome
         powerline-fonts
