@@ -9,7 +9,7 @@
   perSystem = {pkgs, ...}: {
     packages.neovim = inputs.wrapper-modules.wrappers.neovim.wrap {
       config.pkgs = pkgs;
-      config.extraPackages = with pkgs; [
+      config.runtimePkgs = with pkgs; [
         # LSPs
         astro-language-server
         lua-language-server

@@ -5,7 +5,7 @@
       vicinae
       thunderbird
       discord
-      noctalia-shell
+      noctalia
       wezterm
       theme-sync
     ];

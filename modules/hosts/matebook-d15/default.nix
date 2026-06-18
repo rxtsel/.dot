@@ -39,7 +39,7 @@
 
           my.desktop = {
             terminal = "wezterm";
-            autostartApps = ["noctalia-shell"];
+            autostartApps = ["noctalia"];
           };
 
           my.host = {

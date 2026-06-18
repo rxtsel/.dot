@@ -85,7 +85,7 @@
       ];
 
     autostartCommands = lib.attrVals desktopCfg.autostartApps {
-      noctalia-shell = "noctalia-shell";
+      noctalia = "noctalia";
       discord = "discord";
       thunderbird = "thunderbird";
     };
