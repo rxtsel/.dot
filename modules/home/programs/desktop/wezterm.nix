@@ -8,14 +8,6 @@
       enable = osConfig.my.desktop.terminal == "wezterm";
 
       settings = {
-        default_prog = [
-          "tmux"
-          "new-session"
-          "-A"
-          "-s"
-          "main"
-        ];
-
         color_scheme = lib.generators.mkLuaInline ''
           (function()
               local appearance = "Dark"
