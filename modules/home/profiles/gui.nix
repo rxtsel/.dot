@@ -5,10 +5,8 @@
       vicinae
       thunderbird
       discord
-      noctalia-shell
+      noctalia
       wezterm
-      tmux
-      sesh
       theme-sync
     ];
   };

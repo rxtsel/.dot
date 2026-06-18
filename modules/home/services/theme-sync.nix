@@ -6,7 +6,6 @@
         pkgs.glib
         pkgs.gsettings-desktop-schemas
         pkgs.systemd
-        pkgs.tmux
         pkgs.vicinae
       ];
       text = ''
@@ -20,19 +19,6 @@
             *prefer-light* | *light*) printf light ;;
             *) printf dark ;;
           esac
-        }
-
-        sync_tmux() {
-          local theme theme_file
-          theme="$(current_theme)"
-          theme_file="$HOME/.config/tmux/themes/solarized_osaka_''${theme}.tmux"
-
-          tmux list-sessions >/dev/null 2>&1 || return 0
-          [ -f "$theme_file" ] || return 0
-
-          tmux set-environment -g TMUX_THEME "$theme"
-          tmux source-file "$theme_file"
-          tmux display-message "tmux theme: $theme" 2>/dev/null || true
         }
 
         sync_vicinae() {
@@ -59,7 +45,6 @@
         }
 
         apply_all() {
-          sync_tmux
           sync_vicinae
           sync_pi
         }

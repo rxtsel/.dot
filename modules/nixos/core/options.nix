@@ -40,7 +40,7 @@
 
         autostartApps = lib.mkOption {
           type = lib.types.listOf (lib.types.enum [
-            "noctalia-shell"
+            "noctalia"
             "discord"
             "thunderbird"
           ]);

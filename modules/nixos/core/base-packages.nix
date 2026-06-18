@@ -9,7 +9,7 @@
       jq
       ripgrep
       pnpm
-      nodejs_25
+      nodejs_24
       python3
       bun
       wget

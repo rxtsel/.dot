@@ -2,7 +2,7 @@
   flake.modules.homeManager.ssh = {osConfig, ...}: let
     identityFile = osConfig.preferences.user.sshIdentityFile;
   in {
-    programs.ssh = {
+    programs.ssh.settings = {
       enable = true;
       enableDefaultConfig = false;
 
