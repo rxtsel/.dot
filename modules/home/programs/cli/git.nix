@@ -32,5 +32,9 @@
         commit.gpgSign = true;
       };
     };
+
+    programs.gh = {
+      enable = true;
+    };
   };
 }
