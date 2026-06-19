@@ -93,9 +93,8 @@
     # Util for run noctalia commands
     noctalia = cmd:
       [
-        "noctalia-shell"
-        "ipc"
-        "call"
+        "noctalia"
+        "msg"
       ]
       ++ (pkgs.lib.splitString " " cmd);
 
@@ -169,10 +168,10 @@
       "Mod+B".spawn = "brave";
       "Mod+E".spawn-sh = "${terminalExe} -e yazi";
       "Mod+Space".spawn-sh = "${lib.getExe pkgs.vicinae} toggle";
-      "Mod+A".spawn = noctalia "controlCenter toggle";
-      "Mod+Comma".spawn = noctalia "settings toggle";
-      "Super+Alt+L".spawn = noctalia "lockScreen lock";
-      "Ctrl+Alt+W".spawn = noctalia "wallpaper toggle";
+      "Mod+A".spawn = noctalia "panel-toggle control-center";
+      "Mod+Comma".spawn = noctalia "settings-toggle";
+      "Super+Alt+L".spawn = noctalia "session lock";
+      "Ctrl+Alt+W".spawn = noctalia "panel-toggle wallpaper";
       "Super+Alt+S".spawn-sh = "pkill orca || exec orca";
       "Mod+Q".close-window = {};
       "Mod+F".maximize-column = {};
@@ -195,22 +194,25 @@
       "Mod+W".toggle-column-tabbed-display = {};
       "Mod+Shift+S".screenshot = {};
       "Mod+Escape".toggle-keyboard-shortcuts-inhibit = {};
-      "Ctrl+Alt+Delete".spawn = noctalia "sessionMenu toggle";
+      "Ctrl+Alt+Delete".spawn = noctalia "panel-toggle session";
       "Mod+Shift+P".power-off-monitors = {};
-      "Mod+N".spawn = noctalia "notifications toggleHistory";
+      "Mod+N".spawn = noctalia "panel-toggle control-center notifications";
 
-      "XF86AudioRaiseVolume".spawn = noctalia "volume increase";
-      "XF86AudioLowerVolume".spawn = noctalia "volume decrease";
-      "XF86AudioMute".spawn = noctalia "volume muteOutput";
-      "XF86AudioMicMute".spawn = noctalia "volume muteInput";
+      "XF86AudioRaiseVolume".spawn = noctalia "volume-up";
+      "XF86AudioLowerVolume".spawn = noctalia "volume-down";
+      "XF86AudioMute".spawn = noctalia "volume-mute";
+      "XF86AudioMicMute".spawn = noctalia "mic-mute";
 
-      "XF86AudioPlay".spawn = noctalia "media play";
+      "XF86AudioPlay".spawn = noctalia "media toggle";
       "XF86AudioStop".spawn = noctalia "media stop";
       "XF86AudioPrev".spawn = noctalia "media previous";
       "XF86AudioNext".spawn = noctalia "media next";
 
-      "XF86MonBrightnessUp".spawn = noctalia "brightness increase";
-      "XF86MonBrightnessDown".spawn = noctalia "brightness decrease";
+      "XF86MonBrightnessUp".spawn = noctalia "brightness-up all";
+      "XF86MonBrightnessDown".spawn = noctalia "brightness-down all";
+      "Mod+XF86AudioRaiseVolume".spawn = noctalia "brightness-up all";
+      "Mod+XF86AudioLowerVolume".spawn = noctalia "brightness-down all";
+      "Mod+XF86AudioMute".spawn = noctalia "dpms-off";
 
       "Mod+Left".focus-column-left = {};
       "Mod+Down".focus-window-down = {};
