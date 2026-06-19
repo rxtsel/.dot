@@ -43,6 +43,15 @@
         if [ ! -f "$state_file" ] || [ "$(cat "$state_file")" != "$theme_name" ]; then
           printf '%s\n' "$theme_name" > "$state_file"
         fi
+
+        # Wallpaper based on theme mode
+        wp_dir="$HOME/.dotfiles/assets/wallpapers/$theme"
+        if [ -d "$wp_dir" ]; then
+          wp=$(find "$wp_dir" -type f \( -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' \) 2>/dev/null | shuf -n 1)
+          if [ -n "$wp" ]; then
+            noctalia msg wallpaper-set "$wp" 2>/dev/null || true
+          fi
+        fi
       '';
     };
   in {

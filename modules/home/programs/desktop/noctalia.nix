@@ -284,12 +284,11 @@
           enabled = true;
           overviewEnabled = false;
           directory = "~/.dotfiles/assets/wallpapers";
-          monitorDirectories = [];
-          enableMultiMonitorDirectories = false;
+          directoryLight = "~/.dotfiles/assets/wallpapers/light";
+          directoryDark = "~/.dotfiles/assets/wallpapers/dark";
           showHiddenFiles = false;
           viewMode = "recursive";
           setWallpaperOnAllMonitors = true;
-          linkLightAndDarkWallpapers = false;
           fillMode = "crop";
           fillColor = "#000000";
           useSolidColor = false;
@@ -298,7 +297,7 @@
           wallpaperChangeMode = "random";
           randomIntervalSec = 300;
           transitionDuration = 1500;
-          transition = ["disc" "fade" "wipe" "zoom"];
+          transition = ["fade" "zoom"];
           skipStartupTransition = true;
           transitionEdgeSmoothness = 0.05;
           panelPosition = "top_center";
@@ -319,20 +318,6 @@
           wallhavenResolutionHeight = "1440";
           sortOrder = "name";
           favorites = [];
-          default = {
-            path = "/home/rxtsel/.dotfiles/assets/wallpapers/wallhaven_nemk5o.jpg";
-          };
-          last = {
-            path = "/home/rxtsel/.dotfiles/assets/wallpapers/wallhaven_nemk5o.jpg";
-          };
-          monitors = {
-            "DP-1" = {
-              path = "/home/rxtsel/.dotfiles/assets/wallpapers/wallhaven_nemk5o.jpg";
-            };
-            "DP-2" = {
-              path = "/home/rxtsel/.dotfiles/assets/wallpapers/wallhaven_nemk5o.jpg";
-            };
-          };
         };
 
         appLauncher = {
@@ -541,7 +526,6 @@
         colorSchemes = {
           useWallpaperColors = true;
           predefinedScheme = "Monochrome";
-          darkMode = true;
           schedulingMode = "manual";
           manualSunrise = "06:30";
           manualSunset = "18:00";
