@@ -5,61 +5,44 @@
       runtimeInputs = [
         pkgs.glib
         pkgs.gsettings-desktop-schemas
-        pkgs.systemd
         pkgs.vicinae
       ];
       text = ''
         export XDG_DATA_DIRS="${pkgs.gsettings-desktop-schemas}/share/gsettings-schemas/${pkgs.gsettings-desktop-schemas.name}:''${XDG_DATA_DIRS:-}"
 
         current_theme() {
+          local mode
+          mode="$(noctalia msg theme-mode-get 2>/dev/null || true)"
+          if [ -n "$mode" ]; then
+            printf '%s' "$mode"
+            return
+          fi
           local scheme
           scheme="$(gsettings get org.gnome.desktop.interface color-scheme 2>/dev/null || true)"
-
           case "$scheme" in
             *prefer-light* | *light*) printf light ;;
             *) printf dark ;;
           esac
         }
 
-        sync_vicinae() {
-          local theme theme_name
-          theme="$(current_theme)"
-          theme_name="solarized-$theme"
+        theme="$(current_theme)"
+        theme_name="solarized-$theme"
 
-          vicinae theme set "$theme_name" >/dev/null 2>&1 || true
-        }
+        vicinae theme set "$theme_name" >/dev/null 2>&1 || true
 
-        sync_pi() {
-          local theme theme_name state_dir state_file
-          theme="$(current_theme)"
-          theme_name="solarized-$theme"
-          state_dir="$HOME/.cache/pi-system-theme"
-          state_file="$state_dir/theme"
-
-          mkdir -p "$state_dir"
-          if [ -f "$state_file" ] && [ "$(cat "$state_file")" = "$theme_name" ]; then
-            return 0
-          fi
-
-          printf '%s\n' "$theme_name" > "$state_file"
-        }
-
-        apply_all() {
-          sync_vicinae
-          sync_pi
-        }
-
-        if [ "''${1:-}" = "--apply" ]; then
-          apply_all
-          exit 0
+        # Update gsettings
+        if [ "$theme" = "dark" ]; then
+          gsettings set org.gnome.desktop.interface color-scheme prefer-dark 2>/dev/null || true
+        else
+          gsettings set org.gnome.desktop.interface color-scheme prefer-light 2>/dev/null || true
         fi
 
-        apply_all
-
-        gsettings monitor org.gnome.desktop.interface color-scheme |
-          while read -r _; do
-            apply_all
-          done
+        state_dir="$HOME/.cache/pi-system-theme"
+        state_file="$state_dir/theme"
+        mkdir -p "$state_dir"
+        if [ ! -f "$state_file" ] || [ "$(cat "$state_file")" != "$theme_name" ]; then
+          printf '%s\n' "$theme_name" > "$state_file"
+        fi
       '';
     };
   in {
@@ -73,8 +56,8 @@
       };
 
       Service = {
+        Type = "oneshot";
         ExecStart = "${desktopThemeSync}/bin/desktop-theme-sync";
-        Restart = "on-failure";
       };
 
       Install.WantedBy = ["graphical-session.target"];
