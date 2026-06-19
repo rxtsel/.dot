@@ -1,9 +1,5 @@
 {inputs, ...}: {
-  flake.modules.homeManager.noctalia = {
-    osConfig,
-    pkgs,
-    ...
-  }: let
+  flake.modules.homeManager.noctalia = {osConfig, ...}: let
     username = osConfig.preferences.user.name;
   in {
     imports = [
@@ -302,15 +298,7 @@
           wallpaperChangeMode = "random";
           randomIntervalSec = 300;
           transitionDuration = 1500;
-          transitionType = [
-            "fade"
-            "disc"
-            "stripes"
-            "wipe"
-            "pixelate"
-            "honeycomb"
-          ];
-          transition = ["disc" "fade" "honeycomb" "stripes" "wipe" "zoom"];
+          transition = ["disc" "fade" "wipe" "zoom"];
           skipStartupTransition = true;
           transitionEdgeSmoothness = 0.05;
           panelPosition = "top_center";
@@ -611,8 +599,8 @@
         };
 
         hooks = {
-          enabled = true;
-          darkModeChange = "${pkgs.systemd}/bin/systemctl --user restart desktop-theme-sync.service";
+          started = "systemctl --user start desktop-theme-sync.service";
+          theme_mode_changed = "systemctl --user start desktop-theme-sync.service";
         };
 
         idle = {
@@ -764,7 +752,6 @@
         };
 
         theme = {
-          builtin = "Tokyo-Night";
           community_palette = "Solarized";
           mode = "auto";
           source = "wallpaper";
@@ -783,9 +770,6 @@
           };
           privacy = {
             hide_inactive = true;
-          };
-          recorder = {
-            type = "noctalia/screen_recorder:recorder";
           };
           tray = {
             drawer = true;
