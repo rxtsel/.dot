@@ -20,6 +20,7 @@
       yaak
       pearDesktop
       tailscale
+      obsidian
       brave
       beekeeper-studio
       pass
@@ -32,6 +33,8 @@
           boot.loader.systemd-boot.enable = true;
           boot.loader.efi.canTouchEfiVariables = true;
           boot.kernel.sysctl." vm.swappiness" = 10;
+
+          nixpkgs.config.allowUnfree = true;
 
           # Uncomment and set the user information for overriding the defaults
           # preferences.user = {};

@@ -21,6 +21,7 @@
       pearDesktop
       brave
       pass
+      obsidian
       (
         {config, ...}: let
           user = config.preferences.user.name;
