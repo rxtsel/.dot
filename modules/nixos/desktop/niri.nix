@@ -294,15 +294,15 @@
       "Mod+8".focus-workspace = 8;
       "Mod+9".focus-workspace = 9;
 
-      "Mod+Ctrl+1".move-column-to-workspace = "1:code";
-      "Mod+Ctrl+2".move-column-to-workspace = "2:browser";
-      "Mod+Ctrl+3".move-column-to-workspace = "3:explorer";
-      "Mod+Ctrl+4".move-column-to-workspace = "4:music";
-      "Mod+Ctrl+5".move-column-to-workspace = "5:social";
-      "Mod+Ctrl+6".move-column-to-workspace = "6:email";
-      "Mod+Ctrl+7".move-column-to-workspace = 7;
-      "Mod+Ctrl+8".move-column-to-workspace = 8;
-      "Mod+Ctrl+9".move-column-to-workspace = 9;
+      "Mod+Shift+1".move-column-to-workspace = "1:code";
+      "Mod+Shift+2".move-column-to-workspace = "2:browser";
+      "Mod+Shift+3".move-column-to-workspace = "3:explorer";
+      "Mod+Shift+4".move-column-to-workspace = "4:music";
+      "Mod+Shift+5".move-column-to-workspace = "5:social";
+      "Mod+Shift+6".move-column-to-workspace = "6:email";
+      "Mod+Shift+7".move-column-to-workspace = 7;
+      "Mod+Shift+8".move-column-to-workspace = 8;
+      "Mod+Shift+9".move-column-to-workspace = 9;
     };
 
     # ── layout ───────────────────────────────────────────────────────────────
