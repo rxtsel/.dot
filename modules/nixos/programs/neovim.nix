@@ -20,6 +20,7 @@
         tailwindcss-language-server
         vscode-css-languageserver
         oxlint
+        marksman
 
         # Formatters
         alejandra
