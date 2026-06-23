@@ -13,6 +13,7 @@
       python3
       bun
       wget
+      wl-clipboard
     ];
   };
 }
