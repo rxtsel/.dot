@@ -18,9 +18,10 @@
         vtsls
         copilot-language-server
         tailwindcss-language-server
-        vscode-css-languageserver
+        vscode-langservers-extracted
         oxlint
         marksman
+        yaml-language-server
 
         # Formatters
         alejandra
