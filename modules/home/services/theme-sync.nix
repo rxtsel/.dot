@@ -45,7 +45,7 @@
         fi
 
         # Wallpaper based on theme mode
-        wp_dir="$HOME/.dotfiles/assets/wallpapers/$theme"
+        wp_dir="$HOME/dotfiles/assets/wallpapers/$theme"
         if [ -d "$wp_dir" ]; then
           wp=$(find "$wp_dir" -type f \( -name '*.png' -o -name '*.jpg' -o -name '*.jpeg' \) 2>/dev/null | shuf -n 1)
           if [ -n "$wp" ]; then

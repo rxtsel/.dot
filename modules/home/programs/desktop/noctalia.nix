@@ -283,9 +283,9 @@
         wallpaper = {
           enabled = true;
           overviewEnabled = false;
-          directory = "~/.dotfiles/assets/wallpapers";
-          directoryLight = "~/.dotfiles/assets/wallpapers/light";
-          directoryDark = "~/.dotfiles/assets/wallpapers/dark";
+          directory = "~/dotfiles/assets/wallpapers";
+          directoryLight = "~/dotfiles/assets/wallpapers/light";
+          directoryDark = "~/dotfiles/assets/wallpapers/dark";
           showHiddenFiles = false;
           viewMode = "recursive";
           setWallpaperOnAllMonitors = true;

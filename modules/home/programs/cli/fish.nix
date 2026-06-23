@@ -25,7 +25,7 @@
       };
 
       shellAbbrs = {
-        nixrs = "sudo nixos-rebuild switch --flake ~/.dotfiles/#(hostnamectl --static)";
+        nixrs = "sudo nixos-rebuild switch --flake ~/dotfiles/#(hostnamectl --static)";
         nixgc = "sudo nix-collect-garbage -d && sudo nix-store --optimise";
         nixboot = "sudo bootctl cleanup";
         nixcleanall = "sudo nix-collect-garbage -d; and nix-collect-garbage -d; and sudo /run/current-system/bin/switch-to-configuration boot";
