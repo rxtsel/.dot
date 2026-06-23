@@ -76,12 +76,12 @@
       '';
     in
       lib.concatStrings [
-        (mkWorkspace "1:code" primary)
-        (mkWorkspace "2:browser" secondary)
-        (mkWorkspace "3:explorer" primary)
-        (mkWorkspace "4:music" primary)
-        (mkWorkspace "5:social" primary)
-        (mkWorkspace "6:email" primary)
+        (mkWorkspace "1" primary)
+        (mkWorkspace "2" secondary)
+        (mkWorkspace "3" primary)
+        (mkWorkspace "4" primary)
+        (mkWorkspace "5" primary)
+        (mkWorkspace "6" primary)
       ];
 
     autostartCommands = lib.attrVals desktopCfg.autostartApps {
@@ -284,22 +284,22 @@
       "Mod+Ctrl+Shift+WheelScrollDown".move-column-right = {};
       "Mod+Ctrl+Shift+WheelScrollUp".move-column-left = {};
 
-      "Mod+1".focus-workspace = "1:code";
-      "Mod+2".focus-workspace = "2:browser";
-      "Mod+3".focus-workspace = "3:explorer";
-      "Mod+4".focus-workspace = "4:music";
-      "Mod+5".focus-workspace = "5:social";
-      "Mod+6".focus-workspace = "6:email";
+      "Mod+1".focus-workspace = 1;
+      "Mod+2".focus-workspace = 2;
+      "Mod+3".focus-workspace = 3;
+      "Mod+4".focus-workspace = 4;
+      "Mod+5".focus-workspace = 5;
+      "Mod+6".focus-workspace = 6;
       "Mod+7".focus-workspace = 7;
       "Mod+8".focus-workspace = 8;
       "Mod+9".focus-workspace = 9;
 
-      "Mod+Shift+1".move-column-to-workspace = "1:code";
-      "Mod+Shift+2".move-column-to-workspace = "2:browser";
-      "Mod+Shift+3".move-column-to-workspace = "3:explorer";
-      "Mod+Shift+4".move-column-to-workspace = "4:music";
-      "Mod+Shift+5".move-column-to-workspace = "5:social";
-      "Mod+Shift+6".move-column-to-workspace = "6:email";
+      "Mod+Shift+1".move-column-to-workspace = 1;
+      "Mod+Shift+2".move-column-to-workspace = 2;
+      "Mod+Shift+3".move-column-to-workspace = 3;
+      "Mod+Shift+4".move-column-to-workspace = 4;
+      "Mod+Shift+5".move-column-to-workspace = 5;
+      "Mod+Shift+6".move-column-to-workspace = 6;
       "Mod+Shift+7".move-column-to-workspace = 7;
       "Mod+Shift+8".move-column-to-workspace = 8;
       "Mod+Shift+9".move-column-to-workspace = 9;
@@ -362,7 +362,7 @@
         {
           matches = [{app-id = terminalAppId;}];
           background-effect.blur = true;
-          open-on-workspace = "1:code";
+          open-on-workspace = "1";
           open-focused = true;
           open-maximized = true;
           open-maximized-to-edges = true;
@@ -375,7 +375,7 @@
         }
         {
           matches = [{app-id = "brave-browser";} {app-id = "^ResponsivelyApp$";} {app-id = "zen-(twilight|beta)$";}];
-          open-on-workspace = "2:browser";
+          open-on-workspace = "2";
         }
         {
           matches = [{app-id = "brave-browser$";} {app-id = "zen-(twilight|beta)$";}];
@@ -389,14 +389,14 @@
         {
           matches = [{title = "^Yazi$";}];
           open-maximized = true;
-          open-on-workspace = "3:explorer";
+          open-on-workspace = "3";
         }
         {
           matches = [
             {app-id = "^com\\.github\\.th_ch\\.youtube_music$";}
             {title = "^YouTube Music$";}
           ];
-          open-on-workspace = "4:music";
+          open-on-workspace = "4";
           open-focused = true;
           open-floating = true;
           default-window-height.proportion = 0.5;
@@ -404,7 +404,7 @@
         }
         {
           matches = [{app-id = "^discord$";}];
-          open-on-workspace = "5:social";
+          open-on-workspace = "5";
           open-focused = true;
           open-floating = true;
           default-window-height.proportion = 0.5;
@@ -414,11 +414,11 @@
           matches = [{app-id = "^Clockify$";}];
           open-fullscreen = false;
           open-floating = true;
-          open-on-workspace = "5:social";
+          open-on-workspace = "5";
         }
         {
           matches = [{app-id = "^thunderbird$";}];
-          open-on-workspace = "6:email";
+          open-on-workspace = "6";
           open-maximized = true;
           open-focused = false;
           block-out-from = "screencast";
