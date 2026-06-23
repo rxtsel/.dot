@@ -28,6 +28,8 @@ function M.setup(config)
 		{ key = "n", mods = "LEADER", action = act.ActivateTabRelative(1) },
 		{ key = "p", mods = "LEADER", action = act.ActivateTabRelative(-1) },
 		{ key = "w", mods = "LEADER", action = act.CloseCurrentTab({ confirm = true }) },
+		-- Lazygit
+		{ key = "g", mods = "LEADER", action = act.SpawnCommandInNewTab({ args = { "lazygit" } }) },
 	}
 end
 
