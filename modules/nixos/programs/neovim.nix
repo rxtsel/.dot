@@ -22,6 +22,7 @@
         oxlint
         marksman
         yaml-language-server
+        rust-analyzer
 
         # Formatters
         alejandra
