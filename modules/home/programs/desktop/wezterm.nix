@@ -175,6 +175,14 @@
               wezterm.action.CloseCurrentTab({ confirm = true })
             '';
           }
+
+          {
+            key = "g";
+            mods = "LEADER";
+            action = lib.generators.mkLuaInline ''
+              wezterm.action.SpawnCommandInNewTab({ args = { "lazygit" } })
+            '';
+          }
         ];
       };
 
