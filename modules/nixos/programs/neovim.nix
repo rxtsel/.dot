@@ -15,7 +15,7 @@
         lua-language-server
         nixd
         svelte-language-server
-        vtsls
+        typescript-go
         copilot-language-server
         tailwindcss-language-server
         vscode-langservers-extracted
