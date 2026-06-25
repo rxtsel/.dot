@@ -42,6 +42,7 @@
         wl-clipboard
         gcc
         lsof
+        ast-grep
       ];
     };
   };
