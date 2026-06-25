@@ -100,7 +100,7 @@
 
     niriPackage = inputs.wrapper-modules.wrappers.niri.wrap {
       inherit pkgs;
-      package = inputs.niri.packages.${pkgs.stdenv.hostPlatform.system}.niri;
+      package = pkgs.niri;
       settings = {
         extraConfig = ''
           include optional=true "~/.config/niri/wallust.kdl"

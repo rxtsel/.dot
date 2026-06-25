@@ -17,10 +17,6 @@
     llm-agents.url = "github:numtide/llm-agents.nix";
     wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
-    niri = {
-      url = "github:niri-wm/niri?ref=main";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
     noctalia = {
       url = "github:noctalia-dev/noctalia-shell";
       inputs.nixpkgs.follows = "nixpkgs";
