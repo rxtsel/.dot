@@ -216,6 +216,11 @@
           };
         };
 
+        hooks = {
+          started = "systemctl --user start desktop-theme-sync.service";
+          theme_mode_changed = "systemctl --user start desktop-theme-sync.service";
+        };
+
         widget = {
           clock = {
             format = "{:%a %d %b}, {:%H:%M}";
