@@ -24,6 +24,7 @@
       brave
       beekeeper-studio
       gpg
+      localsend
       (
         {config, ...}: let
           user = config.preferences.user.name;

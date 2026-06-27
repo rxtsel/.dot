@@ -23,6 +23,7 @@
       gpg
       obsidian
       onscreen-keyboard
+      localsend
       (
         {config, ...}: let
           user = config.preferences.user.name;
