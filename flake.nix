@@ -2,8 +2,14 @@
   description = "My NixOS setup";
 
   nixConfig = {
-    extra-substituters = ["https://cache.numtide.com"];
-    extra-trusted-public-keys = ["niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="];
+    extra-substituters = [
+      "https://cache.numtide.com"
+      "https://noctalia.cachix.org"
+    ];
+    extra-trusted-public-keys = [
+      "niks3.numtide.com-1:DTx8wZduET09hRmMtKdQDxNNthLQETkc/yaX7M4qK0g="
+      "noctalia.cachix.org-1:pCOR47nnMEo5thcxNDtzWpOxNFQsBRglJzxWPp3dkU4="
+    ];
   };
 
   inputs = {
@@ -17,10 +23,7 @@
     llm-agents.url = "github:numtide/llm-agents.nix";
     wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
-    noctalia = {
-      url = "github:noctalia-dev/noctalia-shell";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
+    noctalia.url = "github:noctalia-dev/noctalia/cachix";
   };
 
   outputs = {
