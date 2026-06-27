@@ -22,6 +22,7 @@
       brave
       pass
       obsidian
+      onscreen-keyboard
       (
         {config, ...}: let
           user = config.preferences.user.name;
