@@ -48,6 +48,9 @@
           end)()
         '';
 
+        # Prevent ssh conflict
+        mux_enable_ssh_agent = false;
+
         # Appearance
         window_background_opacity = 0.65;
         window_decorations = "RESIZE | NONE";

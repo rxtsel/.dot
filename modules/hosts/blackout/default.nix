@@ -23,7 +23,7 @@
       obsidian
       brave
       beekeeper-studio
-      pass
+      gpg
       (
         {config, ...}: let
           user = config.preferences.user.name;

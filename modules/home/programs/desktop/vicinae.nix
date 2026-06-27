@@ -66,14 +66,6 @@
           };
         };
 
-        "@tinkerbells/store.vicinae.pass" = {
-          preferences = {
-            action = "copy";
-            passwordStorePath = "~/.password-store";
-            otpAfterPassword = true;
-          };
-        };
-
         browser-extension.enabled = false;
 
         calculator = {

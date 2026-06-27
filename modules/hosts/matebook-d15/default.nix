@@ -20,7 +20,7 @@
       yaak
       pearDesktop
       brave
-      pass
+      gpg
       obsidian
       onscreen-keyboard
       (
