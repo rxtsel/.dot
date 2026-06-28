@@ -1,5 +1,5 @@
 {inputs, ...}: {
-  flake.modules.nixos.fonts = {pkgs, ...}: {
+  flake.modules.nixos.systemFonts = {pkgs, ...}: {
     fonts = {
       fontconfig.enable = true;
 

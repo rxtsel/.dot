@@ -2,12 +2,11 @@
   flake.modules.homeManager.vicinae = {
     config,
     lib,
-    osConfig,
     pkgs,
     ...
   }: let
     cfg = config.services.vicinae-custom;
-    username = osConfig.preferences.user.name;
+    homeDir = config.home.homeDirectory;
 
     settingsFormat = pkgs.formats.json {};
     vicinaeSettings = {
@@ -110,7 +109,7 @@
           preferences = {
             autoIndexing = false;
             excludedPaths = "";
-            paths = "/home/${username}";
+            paths = homeDir;
             watcherPaths = "";
           };
         };

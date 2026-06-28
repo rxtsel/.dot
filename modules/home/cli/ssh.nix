@@ -1,14 +1,13 @@
 {...}: {
-  flake.modules.homeManager.ssh = {osConfig, ...}: let
-    identityFile = osConfig.preferences.user.sshIdentityFile;
+  flake.modules.homeManager.ssh = {config, ...}: let
+    identityFile = config.my.identity.sshIdentityFile;
   in {
-    programs.ssh.settings = {
+    programs.ssh = {
       enable = true;
       enableDefaultConfig = false;
 
       matchBlocks = {
         "github.com" = {
-          host = "github.com";
           hostname = "github.com";
           user = "git";
           identityFile = identityFile;

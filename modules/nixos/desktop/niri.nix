@@ -449,7 +449,12 @@
       ];
 
     hardware.i2c.enable = cfg.features.ddcci;
-    users.users.${config.preferences.user.name}.extraGroups = lib.mkIf cfg.features.ddcci ["i2c" "video"];
+    users.users = lib.mkIf cfg.features.ddcci (
+      lib.mapAttrs (_name: _user: {
+        extraGroups = ["i2c" "video"];
+      })
+      config.my.users
+    );
 
     programs.niri = {
       enable = true;

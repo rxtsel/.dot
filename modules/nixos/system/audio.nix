@@ -1,5 +1,5 @@
 {...}: {
-  flake.modules.nixos.audio = {
+  flake.modules.nixos.systemAudio = {
     # Realtime scheduling (recommended for PipeWire)
     security.rtkit.enable = true;
 

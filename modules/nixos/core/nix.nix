@@ -1,5 +1,5 @@
 {inputs, ...}: {
-  flake.modules.nixos.nix = {...}: {
+  flake.modules.nixos.coreNix = {...}: {
     programs = {
       direnv = {
         enable = true;

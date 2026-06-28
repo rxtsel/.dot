@@ -1,6 +1,6 @@
 # ADR 0001: Dendritic Architecture and Home Manager Adoption
 
-- Status: Accepted
+- Status: Accepted, partially superseded by ADR 0002 for user composition
 - Date: 2026-04-18
 
 ## Context
@@ -32,10 +32,16 @@ We explicitly **do not adopt `den` at this stage**.
    - `modules/`
 2. Keep architecture explicit by domain under that root:
    - `modules/nixos/`
+   - `modules/nixos/core/`
+   - `modules/nixos/system/`
+   - `modules/nixos/desktop/`
+   - `modules/nixos/programs/`
+   - `modules/nixos/services/`
    - `modules/home/`
-   - `modules/home/programs/cli/`
-   - `modules/home/programs/desktop/`
-   - `modules/home/profiles/`
+   - `modules/home/core/`
+   - `modules/home/cli/`
+   - `modules/home/desktop/`
+   - `modules/home/services/`
    - `modules/hosts/`
 3. Treat non-entrypoint Nix files as top-level flake-parts modules.
 
@@ -55,10 +61,8 @@ Home Manager is adopted now, embedded in NixOS first.
 - Import `inputs.home-manager.flakeModules.home-manager`.
 - Move user-space program configuration to Home Manager over time.
 - Keep system-level responsibilities in NixOS modules.
-- Compose user environments from capability profiles rather than host-kind profiles:
-  - `profileCommon`
-  - `profileDev`
-  - `profileGui`
+- Compose user environments directly from small Home Manager capability modules.
+- Avoid mandatory shared profile layers for user environments; bundles may be added later only as optional convenience.
 
 ### Design principles
 
@@ -126,4 +130,5 @@ Home Manager is adopted now, embedded in NixOS first.
 
 ## Related docs
 
+- User-composable Home Manager environments: `docs/adr/0002-user-composable-home-environments.md`
 - Formatting and hook workflow: `docs/code-style.md`

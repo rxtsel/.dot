@@ -1,31 +1,42 @@
 {lib, ...}: {
   flake.modules.nixos.coreOptions = {...}: {
     options = {
-      preferences.user = {
-        name = lib.mkOption {
-          type = lib.types.str;
-          default = "rxtsel";
-        };
+      my.users = lib.mkOption {
+        type = lib.types.attrsOf (
+          lib.types.submodule ({name, ...}: {
+            options = {
+              fullName = lib.mkOption {
+                type = lib.types.str;
+                default = name;
+                description = "Human-readable full name for this local user.";
+              };
 
-        fullName = lib.mkOption {
-          type = lib.types.str;
-          default = "Cristhian Melo";
-        };
+              home = lib.mkOption {
+                type = lib.types.str;
+                default = "/home/${name}";
+                description = "Home directory for this local user.";
+              };
 
-        email = lib.mkOption {
-          type = lib.types.str;
-          default = "rxtsel@outlook.com";
-        };
+              extraGroups = lib.mkOption {
+                type = lib.types.listOf lib.types.str;
+                default = [];
+                description = "Additional system groups for this local user.";
+              };
 
-        gitSigningKeyPath = lib.mkOption {
-          type = lib.types.str;
-          default = "~/.ssh/github_ed25519.pub";
-        };
-
-        sshIdentityFile = lib.mkOption {
-          type = lib.types.str;
-          default = "~/.ssh/github_ed25519";
-        };
+              shell = lib.mkOption {
+                type = lib.types.enum [
+                  "bash"
+                  "fish"
+                  "zsh"
+                ];
+                default = "fish";
+                description = "Login shell for this local user.";
+              };
+            };
+          })
+        );
+        default = {};
+        description = "Local users declared by hosts. User environments are composed independently with Home Manager.";
       };
 
       my.desktop = {

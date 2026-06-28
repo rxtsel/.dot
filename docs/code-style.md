@@ -11,7 +11,8 @@ This repository uses a single formatting workflow for Nix code:
 - All `*.nix` files are formatted by `alejandra` through `treefmt`.
 - Keep naming consistent with the architecture:
   - file and directory names in `kebab-case`
-  - feature/profile names by capability (`profileCommon`, `profileDev`, `profileGui`)
+  - modules should be named by scope and capability, not by a specific user
+  - user environments should compose concrete Home Manager modules directly
 
 ## Commands
 

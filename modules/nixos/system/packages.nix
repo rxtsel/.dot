@@ -1,5 +1,5 @@
 {...}: {
-  flake.modules.nixos.coreBasePackages = {pkgs, ...}: {
+  flake.modules.nixos.systemPackages = {pkgs, ...}: {
     environment.systemPackages = with pkgs; [
       tree
       eza

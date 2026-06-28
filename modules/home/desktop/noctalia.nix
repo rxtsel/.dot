@@ -1,6 +1,8 @@
 {inputs, ...}: {
-  flake.modules.homeManager.noctalia = {osConfig, ...}: let
-    username = osConfig.preferences.user.name;
+  flake.modules.homeManager.noctalia = {config, ...}: let
+    homeDir = config.home.homeDirectory;
+    dotfilesDir = "${homeDir}/dotfiles";
+    defaultWallpaper = "${dotfilesDir}/assets/wallpapers/light/wallhaven_4973vx.jpg";
   in {
     imports = [
       inputs.noctalia.homeModules.default
@@ -163,7 +165,7 @@
         };
 
         shell = {
-          avatar_path = "/home/rxtsel/Pictures/logo.jpeg";
+          avatar_path = "${homeDir}/Pictures/logo.jpeg";
           clipboard_enabled = false;
           font_family = "SF Pro Display";
           polkit_agent = true;
@@ -181,7 +183,7 @@
             size = 12;
           };
           screenshot = {
-            directory = "/home/rxtsel/Pictures/screenshots";
+            directory = "${homeDir}/Pictures/screenshots";
           };
           shadow = {
             alpha = 0.01;
@@ -197,21 +199,21 @@
         };
 
         wallpaper = {
-          directory_dark = "~/dotfiles/assets/wallpapers/dark";
-          directory_light = "~/dotfiles/assets/wallpapers/light";
+          directory_dark = "${dotfilesDir}/assets/wallpapers/dark";
+          directory_light = "${dotfilesDir}/assets/wallpapers/light";
           transition = ["fade" "zoom"];
           default = {
-            path = "/home/rxtsel/dotfiles/assets/wallpapers/light/wallhaven_4973vx.jpg";
+            path = defaultWallpaper;
           };
           last = {
-            path = "/home/rxtsel/dotfiles/assets/wallpapers/light/wallhaven_4973vx.jpg";
+            path = defaultWallpaper;
           };
           monitors = {
             "DP-1" = {
-              path = "/home/rxtsel/dotfiles/assets/wallpapers/light/wallhaven_4973vx.jpg";
+              path = defaultWallpaper;
             };
             "DP-2" = {
-              path = "/home/rxtsel/dotfiles/assets/wallpapers/light/wallhaven_4973vx.jpg";
+              path = defaultWallpaper;
             };
           };
         };

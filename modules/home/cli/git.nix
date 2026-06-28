@@ -1,10 +1,10 @@
 {...}: {
   flake.modules.homeManager.git = {
+    config,
     pkgs,
-    osConfig,
     ...
   }: let
-    user = osConfig.preferences.user;
+    identity = config.my.identity;
   in {
     programs.git = {
       enable = true;
@@ -12,9 +12,9 @@
 
       settings = {
         user = {
-          name = user.fullName;
-          email = user.email;
-          signingkey = user.gitSigningKeyPath;
+          name = identity.fullName;
+          email = identity.email;
+          signingkey = identity.gitSigningKeyPath;
         };
 
         init.defaultBranch = "main";

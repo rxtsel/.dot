@@ -4,13 +4,13 @@
       blackoutHardware
       coreOptions
       coreCommon
-      network
-      audio
-      coreUser
-      coreBasePackages
-      nix
-      homeManager
-      fonts
+      systemNetwork
+      systemAudio
+      coreUsers
+      systemPackages
+      coreNix
+      coreHomeManager
+      systemFonts
       bluetooth
       fcitx5
       neovim
@@ -26,8 +26,8 @@
       gpg
       localsend
       (
-        {config, ...}: let
-          user = config.preferences.user.name;
+        {...}: let
+          user = "rxtsel";
         in {
           networking.hostName = "blackout";
 
@@ -37,8 +37,10 @@
 
           nixpkgs.config.allowUnfree = true;
 
-          # Uncomment and set the user information for overriding the defaults
-          # preferences.user = {};
+          my.users.${user} = {
+            fullName = "Cristhian Melo";
+            extraGroups = ["wheel"];
+          };
 
           my.desktop = {
             terminal = "wezterm";
@@ -72,13 +74,34 @@
 
           home-manager.users.${user} = {
             imports = with inputs.self.modules.homeManager; [
-              profileCommon
-              profileDev
-              profileGui
+              base
+              fish
+              starship
+              ssh
+              zoxide
+              fzf
+              macchina
+              yazi
+              ai
+              git
+              lazygit
+              podman
+              ghostty
+              vicinae
+              thunderbird
+              discord
+              noctalia
+              wezterm
+              theme-sync
             ];
 
             home.username = user;
             home.homeDirectory = "/home/${user}";
+
+            my.identity = {
+              fullName = "Cristhian Melo";
+              email = "rxtsel@outlook.com";
+            };
           };
 
           system.stateVersion = "25.11";
