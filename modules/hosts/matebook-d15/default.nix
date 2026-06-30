@@ -15,6 +15,8 @@
       fcitx5
       neovim
       vpn
+      gdm
+      gnomeShellMinimal
       niri
       cursorTheme
       yaak
@@ -26,7 +28,8 @@
       localsend
       (
         {...}: let
-          user = "rxtsel";
+          rxtsel = "rxtsel";
+          majo = "majo";
         in {
           networking.hostName = "matebook-d15";
 
@@ -37,9 +40,18 @@
           services.power-profiles-daemon.enable = true;
           services.upower.enable = true;
 
-          my.users.${user} = {
-            fullName = "Cristhian Melo";
-            extraGroups = ["wheel"];
+          hardware.graphics.enable = true;
+
+          my.users = {
+            ${rxtsel} = {
+              fullName = "Cristhian Melo";
+              extraGroups = ["wheel"];
+            };
+
+            ${majo} = {
+              fullName = "Majo";
+              shell = "bash";
+            };
           };
 
           my.desktop = {
@@ -61,35 +73,51 @@
             ];
           };
 
-          home-manager.users.${user} = {
-            imports = with inputs.self.modules.homeManager; [
-              base
-              fish
-              starship
-              ssh
-              zoxide
-              fzf
-              macchina
-              yazi
-              ai
-              git
-              lazygit
-              podman
-              ghostty
-              vicinae
-              thunderbird
-              discord
-              noctalia
-              wezterm
-              theme-sync
-            ];
+          home-manager.users = {
+            ${rxtsel} = {
+              imports = with inputs.self.modules.homeManager; [
+                base
+                fish
+                starship
+                ssh
+                zoxide
+                fzf
+                macchina
+                yazi
+                ai
+                git
+                lazygit
+                podman
+                ghostty
+                vicinae
+                thunderbird
+                discord
+                noctalia
+                wezterm
+                theme-sync
+              ];
 
-            home.username = user;
-            home.homeDirectory = "/home/${user}";
+              home.username = rxtsel;
+              home.homeDirectory = "/home/${rxtsel}";
 
-            my.identity = {
-              fullName = "Cristhian Melo";
-              email = "rxtsel@outlook.com";
+              my.identity = {
+                fullName = "Cristhian Melo";
+                email = "rxtsel@outlook.com";
+              };
+            };
+
+            ${majo} = {
+              imports = with inputs.self.modules.homeManager; [
+                base
+              ];
+
+              home.username = majo;
+              home.homeDirectory = "/home/${majo}";
+
+              my.identity = {
+                fullName = "Majo";
+                email = "majo@example.local";
+              };
             };
           };
 
