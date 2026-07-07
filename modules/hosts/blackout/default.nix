@@ -16,13 +16,8 @@
       neovim
       niri
       cursorTheme
-      clockify
-      yaak
       pearDesktop
       tailscale
-      obsidian
-      brave
-      beekeeper-studio
       gpg
       localsend
       (
@@ -93,6 +88,11 @@
               noctalia
               wezterm
               theme-sync
+              brave
+              obsidian
+              beekeeper-studio
+              clockify
+              yaak
             ];
 
             home.username = user;

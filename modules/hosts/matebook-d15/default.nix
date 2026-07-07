@@ -19,11 +19,8 @@
       gnomeShellMinimal
       niri
       cursorTheme
-      yaak
       pearDesktop
-      brave
       gpg
-      obsidian
       onscreen-keyboard
       localsend
       (
@@ -95,6 +92,9 @@
                 noctalia
                 wezterm
                 theme-sync
+                brave
+                obsidian
+                yaak
               ];
 
               home.username = rxtsel;
