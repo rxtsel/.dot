@@ -2,7 +2,9 @@
   flake.nixosConfigurations.blackout = inputs.nixpkgs.lib.nixosSystem {
     modules = with inputs.self.modules.nixos; [
       blackoutHardware
+      blackoutDisk
       coreOptions
+      coreDisko
       coreCommon
       systemNetwork
       systemAudio
