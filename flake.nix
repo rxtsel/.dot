@@ -24,6 +24,10 @@
     wrapper-modules.url = "github:BirdeeHub/nix-wrapper-modules";
     apple-fonts.url = "github:Lyndeno/apple-fonts.nix";
     noctalia.url = "github:noctalia-dev/noctalia/cachix";
+    disko = {
+      url = "github:nix-community/disko/latest";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
