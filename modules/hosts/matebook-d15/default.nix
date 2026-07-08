@@ -20,14 +20,13 @@ in {
       fcitx5
       neovim
       vpn
-      gdm
-      gnomeShellMinimal
       niri
       cursorTheme
       pearDesktop
       gpg
       onscreen-keyboard
       localsend
+      gaming
       {
         networking.hostName = hostName;
 
