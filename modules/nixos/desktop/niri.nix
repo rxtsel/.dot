@@ -173,6 +173,7 @@
       "Super+Alt+L".spawn = noctalia "session lock";
       "Ctrl+Alt+W".spawn = noctalia "panel-toggle wallpaper";
       "Super+Alt+S".spawn-sh = "pkill orca || exec orca";
+      "Mod+P".spawn-sh = "hyprpicker -a";
       "Mod+Q".close-window = {};
       "Mod+F".maximize-column = {};
       "Mod+Shift+F".fullscreen-window = {};
@@ -443,6 +444,7 @@
     environment.systemPackages = with pkgs;
       [
         xwayland-satellite
+        hyprpicker
       ]
       ++ lib.optionals cfg.features.ddcci [
         ddcutil
