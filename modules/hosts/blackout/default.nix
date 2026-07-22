@@ -25,6 +25,7 @@
       beekeeper-studio
       gpg
       localsend
+      android
       (
         {config, ...}: let
           user = config.preferences.user.name;

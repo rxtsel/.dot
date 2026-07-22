@@ -5,6 +5,7 @@
       git
       lazygit
       podman
+      devenv
     ];
   };
 }
