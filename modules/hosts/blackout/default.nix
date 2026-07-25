@@ -26,6 +26,7 @@
       gpg
       localsend
       android
+      virtualization
       (
         {config, ...}: let
           user = config.preferences.user.name;
