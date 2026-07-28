@@ -37,6 +37,27 @@
           boot.loader.efi.canTouchEfiVariables = true;
           boot.kernel.sysctl." vm.swappiness" = 10;
 
+          # Power utils for laptops
+          services.upower.enable = true;
+          services.tlp = {
+            enable = true;
+            settings = {
+              START_CHARGE_THRESH_BAT0 = 40;
+              STOP_CHARGE_THRESH_BAT0 = 80;
+            };
+          };
+          # Fingerprint
+          services.fprintd.enable = true;
+          security.pam.services.login.fprintAuth = true;
+          security.pam.services.sudo.fprintAuth = true;
+          # Firmware util
+          services.fwupd.enable = true;
+          # Nvme health
+          services.fstrim.enable = true;
+          # Mount bus
+          services.udisks2.enable = true;
+          services.gvfs.enable = true;
+
           nixpkgs.config.allowUnfree = true;
 
           my.desktop = {
@@ -72,6 +93,13 @@
             home.username = user;
             home.homeDirectory = "/home/${user}";
           };
+
+          swapDevices = [
+            {
+              device = "/swapfile";
+              size = 8 * 1024; # 8 GB
+            }
+          ];
 
           system.stateVersion = "25.11";
         }
