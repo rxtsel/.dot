@@ -406,7 +406,7 @@
         {
           matches = [{app-id = "^discord$";}];
           open-on-workspace = "5";
-          open-focused = true;
+          open-focused = false;
           open-floating = true;
           default-window-height.proportion = 0.5;
           default-column-width.proportion = 0.5;
