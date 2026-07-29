@@ -6,7 +6,7 @@
   }: {
     users.users.${config.preferences.user.name} = {
       isNormalUser = true;
-      extraGroups = ["wheel"];
+      extraGroups = ["wheel" "networkmanager"];
       shell = pkgs.fish;
     };
   };
