@@ -310,10 +310,8 @@
     buildLayout = {
       layout = {
         gaps = 4;
-        always-center-single-column = {};
         center-focused-column = "always";
         default-column-display = "tabbed";
-        default-column-width.proportion = 0.5;
         background-color = "transparent";
         preset-column-widths = [
           {proportion = 0.5;}
@@ -400,16 +398,16 @@
           open-on-workspace = "4";
           open-focused = true;
           open-floating = true;
-          default-window-height.proportion = 0.5;
-          default-column-width.proportion = 0.5;
+          default-window-height.fixed = 900;
+          default-column-width.fixed = 1600;
         }
         {
           matches = [{app-id = "^discord$";}];
           open-on-workspace = "5";
           open-focused = false;
           open-floating = true;
-          default-window-height.proportion = 0.5;
-          default-column-width.proportion = 0.5;
+          default-window-height.fixed = 900;
+          default-column-width.fixed = 1600;
         }
         {
           matches = [{app-id = "^Clockify$";}];
