@@ -27,6 +27,7 @@
       localsend
       android
       virtualization
+      acpiDdnt
       (
         {config, ...}: let
           user = config.preferences.user.name;
