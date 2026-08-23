@@ -47,10 +47,6 @@
               STOP_CHARGE_THRESH_BAT0 = 80;
             };
           };
-          # Fingerprint
-          services.fprintd.enable = true;
-          security.pam.services.login.fprintAuth = true;
-          security.pam.services.sudo.fprintAuth = true;
           # Firmware util
           services.fwupd.enable = true;
           # Nvme health
